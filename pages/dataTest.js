@@ -1,4 +1,4 @@
-import {getPoliticians} from '../lib/civic'
+import {getElections} from '../lib/civic'
 
 export default function dataTestPage({data}){
     return(
@@ -19,7 +19,7 @@ export default function dataTestPage({data}){
 }
 
 export async function getStaticProps(context){
-    const data = await getPoliticians()
+    const data = await getElections()
 
     return {
         props: { data },
