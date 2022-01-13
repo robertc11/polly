@@ -106,18 +106,11 @@ class Home extends React.Component{
 
 
                 <div id="bulletinBlock" className="rounded-lg flex flex-col justify-center items-center mx-auto shadow-lg bg-violet-100 w-2/3 p-5 font-dongji mb-10">
-                    <h1 className="text-2xl">Work together to <span className="text-violet-600 font-bold">improve</span> your community</h1>
+                    <h1 className="text-2xl mb-3.5">Work together to <span className="text-violet-600 font-bold">improve</span> your community</h1>
 
-                    <BulletinRow up={42} down={12} statement={"Neighbors want to Fix the Pothole on 5th and Main"} quotes={['"Apart from being a hazard to pedestrians, the pothole can cause damage to my car!" -Diane P.','"Construction crews have been out and about, but everyone has forgotten about this" -Anonymous']}/>
+                    <BulletinRow up={42} down={12} statement={"Neighbors want to Fix the Pothole on 5th and Main"} quotes={['\"Apart from being a hazard to pedestrians, the pothole can cause damage to my car!\" -Diane P.','\"Construction crews have been out and about, but everyone has forgotten about this\" -Anonymous']}/>
 
-                    <details className="mt-1.5 w-4/5 text-center bg-white open:ring-1 open:ring-black/5 p-6 rounded-lg" closed>
-                        <summary className="text-sm leading-6 text-gray-900 dark:text-slate-600 font-semibold select-none">
-                            <span name="eventCount" className="font-bold text-emerald-500">21</span> Neighbors want More Patrols in Neighborhoods
-                        </summary>
-                        <div className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-400">
-                            <p>The mug is round. The jar is round. They should call it Roundtine.</p>
-                        </div>
-                    </details>
+                    <BulletinRow up={21} down={2} statement={"Neighbors want More Patrols in Neighborhoods"} quotes={['\"I\'ve seen cars come through that aren\'t from our neighborhood\" -Timothy F.']} />
 
                     <details className="mt-1.5 w-4/5 text-center bg-white open:ring-1 open:ring-black/5 p-6 rounded-lg" closed>
                         <summary className="text-sm leading-6 text-gray-900 dark:text-slate-600 font-semibold select-none">
