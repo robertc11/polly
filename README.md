@@ -36,7 +36,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Color Palette
 
 Polly Logo - Slate 800, Be Vietnam Pro
+
 Normal Text - Slate 600
+
 Nav Links - Violet 400
 
 
