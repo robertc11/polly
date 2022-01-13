@@ -20,7 +20,7 @@ class Home extends React.Component{
 
     toggleMap(e){
         let el = e.currentTarget
-        let parent = el.parentElement
+        let parent = el.parentElement.parentElement
         let map = parent.children.namedItem('map')
         let mapClassList = map.classList
         if(mapClassList.contains('hidden')){
@@ -122,12 +122,30 @@ class Home extends React.Component{
                             <span className="font-bold text-emerald-500">42</span> Neighbors want to Fix the Pothole on 5th and Main
                         </summary>
                         <div className="mt-3 flex flex-col items-center justify-center text-sm leading-6 text-slate-500">
-                            <p>The mug is round. The jar is round. They should call it Roundtine.</p>
-                            <button className="mt-2 rounded-lg shadow px-2 py-1 hover:bg-sky-100" onClick={this.toggleMap}>
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                                </svg>
-                            </button>
+                            <div id="bulletinText" class="mb-3 leading-loose">
+                                <p>"Apart from being a hazard to pedestrians, the pothole can cause damage to my car!" -Diane P.</p>
+                                <p>"Construction crews have been out and about, but everyone has forgotten about this" -Anonymous</p>
+                            </div>
+                            
+                            <div id="bulletinButtons" class="flex items-center justify-center">
+                                <button className="mt-2 rounded-lg shadow px-2 py-1 hover:bg-sky-100 mx-1" onClick={this.toggleMap}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                                    </svg>
+                                </button>
+
+                                <button className="mt-2 rounded-lg shadow px-2 py-1 bg-emerald-100 hover:bg-sky-100 mx-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                                    </svg>
+                                </button>
+
+                                <button className="mt-2 rounded-lg shadow px-2 py-1 bg-red-100 hover:bg-sky-100 mx-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" />
+                                    </svg>
+                                </button>    
+                            </div>
                             
                             <iframe id="testMap" name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src="https://www.google.com/maps/embed/v1/place?q=%2033%C2%B006'06.4%22N%2096%C2%B040'28.2%22W%20&key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo"></iframe>
                         </div>
