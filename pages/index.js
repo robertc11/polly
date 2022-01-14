@@ -33,7 +33,7 @@ class Home extends React.Component{
 
                 <div id="mainBlock" className="rounded-lg flex flex-col justify-center items-center mx-auto shadow-lg bg-violet-100 w-2/3 mb-10 p-5 font-dongji">
                     <h1 className="mt-5 text-slate-600 text-lg"><span className="text-slate-800 font-bold text-2xl">Polly, </span>A new way to approach politics.</h1>
-                    <Link href="/"><a className="mt-5 p-2 bg-slate-800 text-violet-300 rounded-lg duration-200 hover:bg-white hover:text-violet-600">Open In Browser</a></Link>
+                    <Link href="/web"><a className="mt-5 p-2 bg-slate-800 text-violet-300 rounded-lg duration-200 hover:bg-white hover:text-violet-600">Open In Browser</a></Link>
                 </div>
 
 
@@ -108,9 +108,13 @@ class Home extends React.Component{
                 <div id="bulletinBlock" className="rounded-lg flex flex-col justify-center items-center mx-auto shadow-lg bg-violet-100 w-2/3 p-5 font-dongji mb-10">
                     <h1 className="text-2xl mb-3.5">Work together to <span className="text-violet-600 font-bold">improve</span> your community</h1>
 
-                    <BulletinRow up={42} down={12} statement={"Neighbors want to Fix the Pothole on 5th and Main"} quotes={['\"Apart from being a hazard to pedestrians, the pothole can cause damage to my car!\" -Diane P.','\"Construction crews have been out and about, but everyone has forgotten about this\" -Anonymous']} mapEnabled={true}/>
+                    <BulletinRow up={42} down={12} statement={"Neighbors want to Fix the Pothole on 5th and Main"} quotes={['\"Apart from being a hazard to pedestrians, the pothole can cause damage to my car!\" -Diane P.','\"Construction crews have been out and about, but everyone has forgotten about this\" -Anonymous']} mapEnabled={true}>
+                        <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src="https://www.google.com/maps/embed/v1/place?q=%2033%C2%B006'06.4%22N%2096%C2%B040'28.2%22W%20&key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo"></iframe>
+                    </BulletinRow>
 
-                    <BulletinRow up={21} down={2} statement={"Neighbors want More Patrols in Neighborhoods"} quotes={['\"I\'ve seen cars come through that aren\'t from our neighborhood\" -Timothy F.']} mapEnabled={true} />
+                    <BulletinRow up={21} down={2} statement={"Neighbors want More Patrols in Neighborhoods"} quotes={['\"I\'ve seen cars come through that aren\'t from our neighborhood\" -Timothy F.']} mapEnabled={true}>
+                        <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxSD1w2kXTIYRCZO9I1dKQjI&key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo"></iframe> 
+                    </BulletinRow>
 
                     <BulletinRow up={5} down={52} statement={"Neighbors want Higher Property Taxes"} quotes={['\"I have too much money; I wouldn\'t mind paying more :)\" -Angel M.', '\"This has to be a joke... right?\" -Kelly H.']} mapEnabled={false} />
 
