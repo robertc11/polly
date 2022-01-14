@@ -33,7 +33,7 @@ class BulletinRow extends React.Component{
         }
     }
 
-    handleUp(e){
+    handleUp(e){  // note to send update to db
         let el = e.currentTarget  // upvote button
         let el1 = el.parentElement.children.namedItem('downBtn')  // downvote button
 
@@ -54,7 +54,7 @@ class BulletinRow extends React.Component{
         }
     }
 
-    handleDown(e){
+    handleDown(e){  // note to send update to db
         let el = e.currentTarget  // downvote button
         let el1 = el.parentElement.children.namedItem('upBtn')  // upvote button
 
@@ -78,11 +78,11 @@ class BulletinRow extends React.Component{
     render(){
         const upvotes = this.state.upVotes
         const mapStylesEnabled = "mt-2 rounded-lg shadow px-2 py-1 hover:bg-sky-100 mx-1"
-        const mapStylesDisabled = "mt-2 rounded-lg shadow px-2 py-1 bg-slate-200 mx-1 select-none"
+        const mapStylesDisabled = "mt-2 rounded-lg px-2 py-1 bg-slate-200 mx-1 select-none pointer-events-none"
 
         return (
             <>
-                <details className="mt-1.5 w-4/5 text-center bg-white open:ring-1 open:ring-black/5 p-6 rounded-lg" closed>
+                <details className="shadow-sm mt-1.5 w-4/5 text-center bg-white hover:ring-2 hover:ring-sky-400 open:ring-1 open:ring-black/5 p-6 rounded-lg" closed>
                     <summary name="summary" className="text-sm leading-6 text-slate-600 font-semibold select-none">
                         <span name="eventCount" className="font-bold text-emerald-500">{upvotes}</span> {this.props.statement}
                     </summary>
@@ -113,7 +113,7 @@ class BulletinRow extends React.Component{
                             </button>    
                         </div>
                         
-                        <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src="https://www.google.com/maps/embed/v1/place?q=%2033%C2%B006'06.4%22N%2096%C2%B040'28.2%22W%20&key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo"></iframe>
+                        {this.props.children}
                     </div>
                 </details>
             </>
