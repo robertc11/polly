@@ -82,14 +82,17 @@ class BulletinRow extends React.Component{
 
         return (
             <>
-                <details className="shadow-sm mt-1.5 w-4/5 text-center bg-white hover:ring-2 hover:ring-sky-400 open:ring-1 open:ring-black/5 p-6 rounded-lg" closed>
+                <details className="shadow-sm mt-2 w-4/5 text-center bg-white hover:ring-2 hover:ring-sky-400 open:ring-1 open:ring-black/5 p-6 rounded-lg" closed>
                     <summary name="summary" className="text-sm leading-6 text-slate-600 font-semibold select-none">
                         <span name="eventCount" className="font-bold text-emerald-500">{upvotes}</span> {this.props.statement}
                     </summary>
                     <div className="mt-3 flex flex-col items-center justify-center text-sm leading-6 text-slate-500">
                         <div name="bulletinText" class="mb-3 leading-loose">
                             {this.props.quotes.map((quote) => (
-                                <p>{quote}</p>
+                                <div>
+                                    <span>"{quote.comment}"</span>
+                                    <span className="text-xs"> -{quote.poster}</span>
+                                </div>
                             ))}
                         </div>
                         

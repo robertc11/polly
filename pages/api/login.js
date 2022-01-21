@@ -9,7 +9,7 @@ export default withIronSessionApiRoute(async (req, res) => {
 
     try {
         if(username==="" || password===""){
-            throw "Please Fill in All Fields"
+            throw "Please fill in all fields!"
         }
 
         let resdb = "default"
