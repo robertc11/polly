@@ -22,7 +22,14 @@ export default withIronSessionApiRoute(async (req, res) => {
             throw resdb.error
         }
 
-        const user = { isLoggedIn: true, username: resdb.username, cityID: resdb.cityID, zipcode: resdb.zipcode};
+        const user = {
+            isLoggedIn: true,
+            username: resdb.username,
+            cityID: resdb.cityID,
+            zipcode: resdb.zipcode,
+            first: resdb.first,
+            last: resdb.last,
+        }
         req.session.user = user;
         await req.session.save();
         res.json(user);

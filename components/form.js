@@ -18,7 +18,7 @@ export default function Form({ screen, errorMessage, onSubmit }) {
           <h1 className="font-dongji mb-5 mx-auto text-3xl text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500 font-bold">LOGIN</h1>
 
           <label className="w-1/2 mx-auto">Username/Email:</label>
-          <input className={ errorMessage==="" ? "w-1/2 mx-auto border-2 border-slate-500 rounded mb-3" : "w-1/2 mx-autoborder-2 border-rose-500 rounded mb-3" } type="text" name="username" />
+          <input className={ errorMessage==="" ? "w-1/2 mx-auto border-2 border-slate-500 rounded mb-3" : "w-1/2 mx-auto border-2 border-rose-500 rounded mb-3" } type="text" name="username" />
           
 
           <label className="w-1/2 mx-auto">Password:</label>
@@ -33,7 +33,7 @@ export default function Form({ screen, errorMessage, onSubmit }) {
             Login
           </button>
 
-          {errorMessage && <p className="error mt-5 text-rose-500 font-bold">{errorMessage}</p>}
+          {errorMessage && <p className="mx-auto error mt-5 text-rose-500 font-bold">{errorMessage}</p>}
 
           <div className="text-center mt-3">
             <p>No Account? No Problem!</p>
@@ -49,7 +49,7 @@ export default function Form({ screen, errorMessage, onSubmit }) {
         
         <div className={ formScr===0 ? "flex flex-col justify-center items-center animate-fadedongji w-full" : "hidden flex flex-col justify-center items-center w-full" }>
           <h1 className="mt-10 mb-5 text-5xl text-transparent w-full text-center bg-clip-text bg-gradient-to-r from-violet-300 to-indigo-700 font-bold">Hello.</h1>
-          <h1 className="mb-5 text-xl peer">We need a few things from you...</h1>
+          <h1 className="mb-5 text-xl peer">Let's get started...</h1>
           <button className="text-slate-600 hover:animate-pulse peer-hover:animate-pulse" onClick={() => setFormScr(formScr+1)}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />

@@ -41,5 +41,12 @@ Normal Text - Slate 600
 
 Nav Links - Violet 400
 
+## To-Do
+
+- Expanded comment functionality
+- Post bulletin functionality
+- Admin create-cards functionality
+- Registration Functionality
+
 
 

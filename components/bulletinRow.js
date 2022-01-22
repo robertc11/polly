@@ -80,9 +80,12 @@ class BulletinRow extends React.Component{
         const mapStylesEnabled = "mt-2 rounded-lg shadow px-2 py-1 hover:bg-sky-100 mx-1"
         const mapStylesDisabled = "mt-2 rounded-lg px-2 py-1 bg-slate-200 mx-1 select-none pointer-events-none"
 
+        const narrow = "shadow-sm mt-2 w-4/5 text-center bg-white hover:ring-2 hover:ring-sky-400 open:ring-1 open:ring-black/5 p-6 rounded-lg"
+        const wide = "shadow border-2 border-violet-50 mt-2 w-11/12 text-center bg-white hover:ring-2 hover:ring-sky-400 open:ring-1 open:ring-black/5 p-6 rounded-lg"
+
         return (
             <>
-                <details className="shadow-sm mt-2 w-4/5 text-center bg-white hover:ring-2 hover:ring-sky-400 open:ring-1 open:ring-black/5 p-6 rounded-lg" closed>
+                <details className={this.props.width==='wide' ? wide : narrow} closed>
                     <summary name="summary" className="text-sm leading-6 text-slate-600 font-semibold select-none">
                         <span name="eventCount" className="font-bold text-emerald-500">{upvotes}</span> {this.props.statement}
                     </summary>
