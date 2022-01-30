@@ -10,7 +10,7 @@ import useUser from "../lib/useUser";
 import fetchJson, { FetchError } from "../lib/fetchJson"
 
 // Importing components
-import Form from "../components/form"
+import LoginForm from "../components/formlogin"
 import NavBar from "../components/navbar"
 import Footer from "../components/footer"
 
@@ -35,9 +35,8 @@ export default function Login() {
 
                 <NavBar />
                 
-                <div>
-                    <Form
-                        screen={"login"}
+                <div className="h-2/3 mt-20">
+                    <LoginForm
                         errorMessage={errorMsg}
                         onSubmit={async function handleSubmit(event) {
                             event.preventDefault()
@@ -64,14 +63,11 @@ export default function Login() {
                                 }
                             }
                         }}
-                        attempts={loginCount}
                     />
 
                     
                     
                 </div>
-                
-                <span className="absolute bottom-0 w-full mx-auto"><Footer /></span>
                
             </div>
 

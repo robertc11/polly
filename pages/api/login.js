@@ -15,7 +15,7 @@ export default withIronSessionApiRoute(async (req, res) => {
         let resdb = "default"
         
         console.log('doing validation')
-        resdb = await validateInfo(username, password)
+        resdb = await validateInfo(username.toLowerCase(), password)
         console.log('finished validation! THIS IS RESDB', resdb)
 
         if(!resdb.found){

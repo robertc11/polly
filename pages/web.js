@@ -10,6 +10,7 @@ import Footer from '../components/footer'
 import useUser from '../lib/useUser'
 import fetchJson from "../lib/fetchJson";
 import useBulletin from '../lib/useBulletin'
+//import useElections from '../lib/useElections'
 
 
 //next imports
@@ -18,16 +19,18 @@ import Head from 'next/head'
 import Router from "next/router";
 
 
+
 export default function webApp(){
+    
+    
     const { user, mutateUser } = useUser({
         redirectTo: "/login",
-    });
+    })
 
-    const { bulletins } = useBulletin(user)
+    const { bulletins } = useBulletin(user)  
 
-
-
-    const [screen, setScreen] = useState('hot')
+    const [screen, setScreen] = useState('elections')
+    
 
     if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
         return(
@@ -49,7 +52,7 @@ export default function webApp(){
                 <title>Polly-App</title>
             </Head>
 
-            <div className="w-full flex justify-between p-3 bg-gradient-to-r from-violet-500 to-indigo-500">
+            <div id="webnav" className="w-full flex justify-between p-3 bg-gradient-to-r from-violet-500 to-indigo-500">
                 <div className="flex items-center">
                     <h1 className="text-xl text-white font-bold ml-5">Hello, {user.first} {user.last}</h1>
                 </div>
@@ -71,6 +74,21 @@ export default function webApp(){
                     </Link>
                 </div>
             </div>
+            
+            {/* <br></br>
+            <p>{JSON.stringify(bulletins)}</p>
+            <br></br>
+            <p>{typeof bulletins}</p>
+            <br>
+            </br>
+            <p>{
+                console.log("IS IT ARR:", Array.isArray(bulletins), bulletins)   
+            }</p>
+
+            {bulletins !== undefined && (
+                <p>{bulletins[0].upvotes}</p>
+            )} */}
+
 
             <div id="pageWrapper" className="flex py-5 w-2/3 font-dongji h-auto mx-auto">
 
@@ -78,13 +96,12 @@ export default function webApp(){
                     <h1 className="text-lg text-slate-600">{user.cityID[3]}, {user.cityID[1]}</h1>
                     
                     <div className="flex flex-col items-baseline text-violet-500 text-sm">
-                        <button className="px-2 py-5 border-b-2 border-white h-1/4 duration-200 hover:text-violet-100 flex justify-center items-center" onClick={() => setScreen('hot')}>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
-                            </svg>
+                        <button className="px-2 py-5 border-b-2 border-white h-1/4 duration-200 hover:text-violet-100 flex justify-center items-center" onClick={() => setScreen('elections')}>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
 
-                            <h1 className="ml-2">Hot Topics</h1>
+                            <h1 className="ml-2">Elections</h1>
                         </button>
 
                         <button className="px-2 py-5 border-b-2 border-white h-1/4 duration-200 hover:text-violet-100 flex justify-center items-center" onClick={() => setScreen('bulletin')}>                        
@@ -123,7 +140,7 @@ export default function webApp(){
 
                     <div className="flex flex-col-reverse p-3 text-center">
                         <div className="flex justify-center items-center">
-                            <Logo />
+                            <h1 className="text-slate-800 font-bold text-2xl select-none">Polly</h1>
                             <h1 className="text-2xl text-black">｜</h1>
                             <h2 className="text-black">V. 1.0.1</h2>
                         </div>
@@ -131,41 +148,49 @@ export default function webApp(){
                 </div>
 
                 <div id="middlePanel" className="h-auto border-l-2 border-slate-400 w-4/6 flex flex-col items-center">
-                    { screen==="bulletin" ? (
+                    { screen==="elections" ? (
                         <>
                             <div className="flex items-center relative w-full">
-                                <h1 className="text-slate-700 text-center w-full text-4xl font-bold mt-3 mb-5">Community Bulletin</h1>
-                                <div className="absolute p-5 rounded-full bg-emerald-300 shadow text-white right-4 hover:bg-emerald-500">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                    </svg>
-                                </div>
+                                <h1 className="text-slate-700 text-center w-full text-4xl font-bold mt-3 mb-5">Upcoming Elections</h1>
                             </div>
                         
                             <div className="w-full">
-                                {JSON.stringify(bulletins)==='[]' ? (
-                                    <div className="flex flex-col justify-center items-center mx-auto p-5 text-slate-600 font-dongji">
-                                        <h1>It's lonely in here <span className="text-2xl">😔</span></h1>
-                                        <h2>Add a post for your community to see</h2>
-                                    </div>
-                                ) : (
-                                    <div className="flex flex-col justify-center items-center mx-auto p-5 font-dongji">
-                                        {bulletins.map((thisBulletin) => (
-                                            <BulletinRow width={'wide'} up={thisBulletin.upvotes} down={thisBulletin.downvotes} statement={thisBulletin.statement} quotes={thisBulletin.comments} mapEnabled={thisBulletin.map} className="w-full">
-                                                <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink}></iframe> 
-                                            </BulletinRow>
-                                        ))}
-                                    </div>    
-                                )}       
+                                
                             </div>
-                        </>
-                    ) : screen==="hot" ? (
-                        <div>
-                            <h1 className="text-slate-700 text-4xl font-bold mt-3">Hot and Trending</h1>
-                        </div>
+                        </>    
+                    ) : screen==="bulletin" ? (
+                        bulletins !== undefined && (
+                            <>
+                                <div className="flex items-center relative w-full">
+                                    <h1 className="text-slate-700 text-center w-full text-4xl font-bold mt-3 mb-5">Community Bulletin</h1>
+                                    <div className="absolute p-5 rounded-full bg-emerald-300 shadow text-white right-4 hover:bg-emerald-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            
+                                <div className="w-full">
+                                    {JSON.stringify(bulletins)==='[]' ? (
+                                        <div className="flex flex-col justify-center items-center mx-auto p-5 text-slate-600 font-dongji">
+                                            <h1>It's lonely in here <span className="text-2xl">😔</span></h1>
+                                            <h2>Add a post for your community to see</h2>
+                                        </div>
+                                    ) : (
+                                        <div className="flex flex-col justify-center items-center mx-auto p-5 font-dongji">
+                                            {bulletins.map((thisBulletin) => (
+                                                <BulletinRow width={'wide'} up={thisBulletin.upvotes} down={thisBulletin.downvotes} statement={thisBulletin.statement} quotes={thisBulletin.comments} mapEnabled={thisBulletin.map} className="w-full" key={thisBulletin.uniqueID}>
+                                                    <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink}></iframe> 
+                                                </BulletinRow>
+                                            ))}
+                                        </div>    
+                                    )}       
+                                </div>
+                            </>    
+                        )
                     ) : screen==="cards" ? (
                         <div>
-                            <h1 className="text-slate-700 text-4xl font-bold mt-3">Candidate Info Cards</h1>
+                            <h1 className="text-slate-700 text-4xl font-bold mt-3">Candidate Cards</h1>
                         </div>
                     ) : (
                         <p>404 Page Not Found</p>

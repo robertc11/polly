@@ -37,9 +37,7 @@ async function bulletinRoute(req,res){
                 }
             }
         ]).toArray()
-        
-        await data.forEach(console.dir)
-        
+                
         res.json(data)
     }catch(err){
         console.log("SHIT")

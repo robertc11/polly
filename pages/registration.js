@@ -9,7 +9,7 @@ import Link from 'next/link'
 import Footer from '../components/footer'
 import NavBar from '../components/navbar'
 import BlockY from '../components/blockY'
-import Form from '../components/form'
+import RegistrationForm from '../components/formregister'
 
 
 export default function register(){
@@ -24,8 +24,7 @@ export default function register(){
             <NavBar />
 
             <BlockY>
-                <Form
-                    screen={"register"}
+                <RegistrationForm
                     errorMessage={errorMsg}
                     onClick={ async function handleSubmit(event){
                         event.preventDefault()
@@ -36,7 +35,7 @@ export default function register(){
                     }}
                 >
 
-                </Form>
+                </RegistrationForm>
             </BlockY>
             
         </>

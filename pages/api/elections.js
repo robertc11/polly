@@ -1,0 +1,1 @@
+// template file - refer to bulletin.js
