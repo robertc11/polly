@@ -47,6 +47,12 @@ Nav Links - Violet 400
 - Post bulletin functionality
 - Admin create-cards functionality
 - Registration Functionality
+- Case insensitive usernames
+- Load bulletins sorted by popularity
+- Add bulletin sorting features
 
+## Libraries
+
+SWR
 
 
