@@ -105,22 +105,57 @@ class politicalDataTool extends React.Component {
             alert(JSON.stringify(dataResult2))
            
 
-        const represult = await getRepresentativeByAddress (body.streetname + '%20'+ body.streetname1 + '%20'+ body.streetname2  + '%20' + body.city + '%20'+ body.state + '%20' + body.zipcode)        
+        const represult = await getRepresentativeByAddress (body.streetname + '%20'+ body.streetname1 + '%20'+ body.streetname2  + '%20' + body.city + '%20'+ body.state + '%20' + body.zipcode)     
         alert(JSON.stringify(represult))
         var repObj = (JSON.stringify(represult))
-        var repJSON = JSON.parse(repObj)         
-        this.setState( {officials: repJSON.officials[1].name})
+        var repJSON = JSON.parse(repObj)
+
+        const officialsResultArray = []
+        //for (var i in repJSON.officials) {
+        for (let i = 0; i < repJSON.officials.length; i++) {
+        officialsResultArray.push([repJSON.officials[i].name, repJSON.officials[i].phones, repJSON.officials[i].emails, repJSON.officials[i].urls])        
+
+        //console.log("NNRAY ###:",  officialsNames)
+        }
+        //}
+
+        const divisionsResultArray = []
+        for (let i = 0; i < repJSON.divisions.length; i++) {
+            divisionsResultArray.push([repJSON.divisions[i][0], repJSON.divisions[i].name, repJSON.divisions[i].officeIndices])
+        }
+        
+
+        
+        // const officialsNames = [];
+        // for (let i = 0; i < repJSON.length; i++) {
+        // let officialsNamess = repJSON.officials[i].name
+        // console.log("namessss: $ ", repJSON.officials[i].name)
+        // console.log("GOT TO FOR LOOP :)")
+        // officialsNames.push({officialsNamess})   
+        // }
+   
+        
+        this.setState( {officials: repJSON.officials[42].name})
         this.setState( {address: repJSON.officials[1].address[0].line1, city: repJSON.officials[1].address[0].city, state: repJSON.officials[1].address[0].state, zip: repJSON.officials[1].address[0].zip})
-        this.setState( {party: repJSON.officials[1].party})
+        this.setState( {party: repJSON.officials[42].party})
         
         //address: repJSON.officials[1].address, party: repJSON.officials[1].party
         console.log("GET REPS API CALL", repJSON) //why do these console logs not work
         console.log("one official: ", repJSON.officials[1])
         console.log("party: ", repJSON.officials[1].party)
+        console.log("RAINEY party: ", repJSON.officials[42].party)
+        console.log("RAINEY NAME: ", repJSON.officials[42].name)
         console.log("address: ", repJSON.officials[1].address[0].line1) //I am having trouble getting the data I need
         console.log("this.state.officials", this.state.officials)
         console.log("this.state.address", this.state.address)
         console.log("this.state.party", this.state.party)
+
+        console.log("officialsResultArray #### ", officialsResultArray)
+        console.log("divisionsResultArray ####", divisionsResultArray)
+        console.log("index 2 divisions name ####", repJSON.divisions)
+
+       
+
             }
             
             render () {
@@ -147,10 +182,9 @@ class politicalDataTool extends React.Component {
                 <Card style={{ width: '18rem', align: 'right' }}>
                   <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
                   <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
+                    <Card.Title>Polly Card</Card.Title>
                     <Card.Text>
-                      Some quick example text to build on the card title and make up the bulk of
-                      the card's content.
+                     Heres is a paper tiger pollycard
                     </Card.Text>
                   </Card.Body>
                   <ListGroup className="list-group-flush">
@@ -245,6 +279,7 @@ class politicalDataTool extends React.Component {
                                     BOOYAH PANCAKES :O
                                 </button>
                             </form>
+                            <Footer />
                                 
                                
                 
@@ -263,14 +298,17 @@ class politicalDataTool extends React.Component {
                       </div>
                 
                     
-                    {/*<Footer />*/}
+                    
                 </>
-                
+               
                 )}
+               
 
 
 
             }
+
+          
             
     
 
