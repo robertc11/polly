@@ -116,20 +116,36 @@ class politicalDataTool extends React.Component {
         }
     
         
-          //Trying to iterate through the division JSON object 
+          //This iterates through the division object and pushed into new array 'divisionsResultArray'
         const divisionsResultArray = []
-            for (let i = 0; i < repJSON.divisions.length; i++) {
+            /* for (let i = 0; i < repJSON.divisions.length; i++) {
               //divisionsResultArray.push([repJSON.divisions[i][0], repJSON.divisions[i].name, repJSON.divisions[i].officeIndices])
-              divisionsResultArray.push(repJSON.divisions[i])
+              divisionsResultArray.push(JSON.parse(repJSON.divisions)[i])
+        } */
+
+        //
+        for(const divis in repJSON.divisions)
+        {
+          //console.log(repJSON.divisions[divis].name);
+          //diviP = JSON.parse(divis)
+          //console.log(diviP)
+          let diviString = (JSON.stringify(divis))
+          console.log("divi string: ", diviString)
+          divisionsResultArray.push([diviString, repJSON.divisions[divis].name, repJSON.divisions[divis].officeIndices])
+          //divisionsResultArray.push(repJSON.divisions[divis])
+          //divisionsResultArray.push(JSON.parse(repJSON.divisions[divis][i]))
         }
         
+
+
+
           //This was me trying to push the divisions object into and array to itereate through it - not having any luck
-          const divisionsCleanData = []
-             for (let i = 0; i < divisionsResultArray.length; i++) {
-                divisionsCleanData.push(divisionsResultArray[i])
+          // const divisionsCleanData = []
+          //    for (let i = 0; i < divisionsResultArray.length; i++) {
+          //       divisionsCleanData.push(divisionsResultArray[i])
               
-          }
-          console.log("divisionsCleanData array", divisionsCleanData)
+          // }
+          // console.log("divisionsCleanData array", divisionsCleanData)
 
 
           // This fetches 'offices' JSON object and push into nested array
@@ -158,14 +174,9 @@ class politicalDataTool extends React.Component {
 
 
    
-<<<<<<< HEAD
-        
-        this.setState( {officials: repJSON.officials[1].name})
-=======
    
         //This is where I set the states for polly cards
         this.setState( {officials: repJSON.officials[42].name})
->>>>>>> 534a5f70cd327fea2f943fc2c0a46bf649780ddf
         this.setState( {address: repJSON.officials[1].address[0].line1, city: repJSON.officials[1].address[0].city, state: repJSON.officials[1].address[0].state, zip: repJSON.officials[1].address[0].zip})
         this.setState( {party: repJSON.officials[42].party})
         
@@ -311,14 +322,9 @@ class politicalDataTool extends React.Component {
                                 <button type="submit" name="btn" value="submit2" style={{border: '2px solid purple'}}>
                                     BOOYAH PANCAKES :O
                                 </button>
-<<<<<<< HEAD
-                            </form>
-                            {/*<Footer />*/}
-=======
                                     </form>
                                     {/* <span className="absolute bottom-0 w-full mx-auto"><Footer /></span> */}
                             {/* <Footer /> */}
->>>>>>> 534a5f70cd327fea2f943fc2c0a46bf649780ddf
                                 
                                
                 
