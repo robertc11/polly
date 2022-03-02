@@ -19,6 +19,7 @@ import { ListGroup } from 'react-bootstrap';
 import { ListGroupItem } from 'react-bootstrap';
 
 
+//Need to learn more html and css
 var stylesrob = {
     base:{
         height:"900%",
@@ -31,6 +32,7 @@ var stylesrob = {
 
 
 
+//main class with fetch and parse functions
 class politicalDataTool extends React.Component {
     constructor (props) {
         super (props)
@@ -67,11 +69,13 @@ class politicalDataTool extends React.Component {
 
         }
 
+        //I am still trying to understand divisions and find list with all of them on the net
         const dataResultNew = await getRepresentativeByDivision(body2.streetnamenew + '%2F'+ body2.streetname1new + '%3A'+ body2.streetname2new  + '%2F' + body2.citynew + '%3A'+ body2.statenew)
                 console.log("INFO: ###GET VOTER INFO FORM2", dataResultNew)
     }   
     
     
+    //function to handle the form submit
       handleSubmit = async (e) => {
         console.log("GOT HERE")
         
@@ -89,6 +93,7 @@ class politicalDataTool extends React.Component {
 
         }    
 
+        //get voter info API          
         const dataResult = await getVoterInfo(body.streetname + '%20'+ body.streetname1 + '%20'+ body.streetname2  + '%20' + body.city + '%20'+ body.state + '%20' + body.zipcode)    
         alert(JSON.stringify(dataResult))
         console.log("GET VOTER INFO API CALL", dataResult)         
@@ -96,13 +101,13 @@ class politicalDataTool extends React.Component {
         console.log("GET ELECTIONS API CALL", dataResult2) 
             alert(JSON.stringify(dataResult2))
            
-
+        //funtion that call getRepresentativeByAddress API in civic file created by mr. Yang
         const represult = await getRepresentativeByAddress (body.streetname + '%20'+ body.streetname1 + '%20'+ body.streetname2  + '%20' + body.city + '%20'+ body.state + '%20' + body.zipcode)     
         alert(JSON.stringify(represult))
         var repObj = (JSON.stringify(represult))
         var repJSON = JSON.parse(repObj)
           
-
+        //Nested array with all officials data info  
         const officialsResultArray = []     
         for (let i = 0; i < repJSON.officials.length; i++) {
         officialsResultArray.push([repJSON.officials[i].name, repJSON.officials[i].phones, repJSON.officials[i].emails, repJSON.officials[i].urls])    
@@ -110,13 +115,15 @@ class politicalDataTool extends React.Component {
      
         }
     
-
+        
+          //Trying to iterate through the division JSON object 
         const divisionsResultArray = []
             for (let i = 0; i < repJSON.divisions.length; i++) {
               //divisionsResultArray.push([repJSON.divisions[i][0], repJSON.divisions[i].name, repJSON.divisions[i].officeIndices])
               divisionsResultArray.push(repJSON.divisions[i])
         }
         
+          //This was me trying to push the divisions object into and array to itereate through it - not having any luck
           const divisionsCleanData = []
              for (let i = 0; i < divisionsResultArray.length; i++) {
                 divisionsCleanData.push(divisionsResultArray[i])
@@ -137,29 +144,28 @@ class politicalDataTool extends React.Component {
 
         
           // This is me working on setting maps
-            const myMap = new Map()
+            const officesMap = new Map()
             const key = {}
             const value    = {}         
           
           for (let j = 0; j < repJSON.offices.length; j++) {
               
-              myMap.set({ key1: repJSON.offices[j].officialIndices }, { key2: repJSON.offices[j].name })
+              officesMap.set({ key1: repJSON.offices[j].officialIndices }, { key2: repJSON.offices[j].name })
               //myMap.set(value, { key2: repJSON.offices[j].officialIndices })
           }           
           
-          console.log("MAP MOB++++++++++++++++", myMap)
-
-          
+          console.log("MAP MOB++++++++++++++++", officesMap)  
 
 
    
    
-        
+        //This is where I set the states for polly cards
         this.setState( {officials: repJSON.officials[42].name})
         this.setState( {address: repJSON.officials[1].address[0].line1, city: repJSON.officials[1].address[0].city, state: repJSON.officials[1].address[0].state, zip: repJSON.officials[1].address[0].zip})
         this.setState( {party: repJSON.officials[42].party})
         
         
+          //  ------------- {DEBUG LOGS} --------------------------
         console.log("GET REPS API CALL", repJSON) 
         console.log("one official: ", repJSON.officials[1])
         console.log("party: ", repJSON.officials[1].party)
@@ -176,7 +182,9 @@ class politicalDataTool extends React.Component {
 
        
 
-            }
+    }
+    
+    //This is where the front end starts
             
             render () {
 
@@ -327,9 +335,7 @@ class politicalDataTool extends React.Component {
 
 
 
-            }
-
-          
+            }      
             
     
 
