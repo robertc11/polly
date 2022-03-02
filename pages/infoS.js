@@ -135,7 +135,7 @@ class politicalDataTool extends React.Component {
         // }
    
         
-        this.setState( {officials: repJSON.officials[42].name})
+        this.setState( {officials: repJSON.officials[1].name})
         this.setState( {address: repJSON.officials[1].address[0].line1, city: repJSON.officials[1].address[0].city, state: repJSON.officials[1].address[0].state, zip: repJSON.officials[1].address[0].zip})
         this.setState( {party: repJSON.officials[42].party})
         
@@ -279,7 +279,7 @@ class politicalDataTool extends React.Component {
                                     BOOYAH PANCAKES :O
                                 </button>
                             </form>
-                            <Footer />
+                            {/*<Footer />*/}
                                 
                                
                 
