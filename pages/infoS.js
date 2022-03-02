@@ -46,10 +46,8 @@ class politicalDataTool extends React.Component {
 
 
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleSubmit2 = this.handleSubmit.bind(this)
-        // this.toggleMap = this.toggleMap.bind(this)
-        // this.handleDown = this.handleDown.bind(this)
-        // this.handleUp = this.handleUp.bind(this)
+        this.handleSubmit2 = this.handleSubmit2.bind(this)
+     
 
     }
 
@@ -58,15 +56,14 @@ class politicalDataTool extends React.Component {
         e.preventDefault()
 
         
-        const body2 = {
-            //address: e.currentTarget.address.value,
+        const body2 = {           
             streetnamenew: e.currentTarget.streetnamenew.value,
             streetname1new: e.currentTarget.streetname1new.value,
             streetname2new: e.currentTarget.streetname2new.value,
             
             citynew: e.currentTarget.citynew.value,
             statenew: e.currentTarget.statenew.value,
-            zipcodenew: e.currentTarget.zipcodenew.value            
+            zipcodenew: e.currentTarget.zipcodenew.value         
 
         }
 
@@ -78,12 +75,9 @@ class politicalDataTool extends React.Component {
       handleSubmit = async (e) => {
         console.log("GOT HERE")
         
-        e.preventDefault()
-        // e.toString()
-        // .toLowerCase()
+        e.preventDefault()       
 
         const body = {
-            //address: e.currentTarget.address.value,
             streetname: e.currentTarget.streetname.value,
             streetname1: e.currentTarget.streetname1.value,
             streetname2: e.currentTarget.streetname2.value,
@@ -93,15 +87,13 @@ class politicalDataTool extends React.Component {
             zipcode: e.currentTarget.zipcode.value
             
 
-        }
-        //console.log("BODY", e.currentTarget.address.value);
-        //alert(body.address)
+        }    
 
         const dataResult = await getVoterInfo(body.streetname + '%20'+ body.streetname1 + '%20'+ body.streetname2  + '%20' + body.city + '%20'+ body.state + '%20' + body.zipcode)    
         alert(JSON.stringify(dataResult))
-        console.log("GET VOTER INFO API CALL", dataResult) //why do these console logs not work        
+        console.log("GET VOTER INFO API CALL", dataResult)         
         const dataResult2 = await getElections () 
-        console.log("GET ELECTIONS API CALL", dataResult2) //why do these console logs not work
+        console.log("GET ELECTIONS API CALL", dataResult2) 
             alert(JSON.stringify(dataResult2))
            
 
@@ -110,42 +102,49 @@ class politicalDataTool extends React.Component {
         var repObj = (JSON.stringify(represult))
         var repJSON = JSON.parse(repObj)
 
-        const officialsResultArray = []
-        //for (var i in repJSON.officials) {
+        const officialsResultArray = []     
         for (let i = 0; i < repJSON.officials.length; i++) {
         officialsResultArray.push([repJSON.officials[i].name, repJSON.officials[i].phones, repJSON.officials[i].emails, repJSON.officials[i].urls])        
 
-        //console.log("NNRAY ###:",  officialsNames)
+     
         }
-        //}
+    
 
         const divisionsResultArray = []
-        for (let i = 0; i < repJSON.divisions.length; i++) {
-            divisionsResultArray.push([repJSON.divisions[i][0], repJSON.divisions[i].name, repJSON.divisions[i].officeIndices])
+            for (let i = 0; i < repJSON.divisions.length; i++) {
+              //divisionsResultArray.push([repJSON.divisions[i][0], repJSON.divisions[i].name, repJSON.divisions[i].officeIndices])
+              divisionsResultArray.push(repJSON.divisions[i])
         }
         
+          const divisionsCleanData = []
+             for (let i = 0; i < divisionsResultArray.length; i++) {
+                divisionsCleanData.push(divisionsResultArray[i])
+              
+          }
+          console.log("divisionsCleanData array", divisionsCleanData)
 
-        
-        // const officialsNames = [];
-        // for (let i = 0; i < repJSON.length; i++) {
-        // let officialsNamess = repJSON.officials[i].name
-        // console.log("namessss: $ ", repJSON.officials[i].name)
-        // console.log("GOT TO FOR LOOP :)")
-        // officialsNames.push({officialsNamess})   
-        // }
+
+          // This fetches 'offices' JSON object and push into nested array
+          const officesDataResult = []
+          for (let i = 0; i < repJSON.offices.length; i++) {
+              officesDataResult.push([repJSON.offices[i].name, repJSON.offices[i].divisionId, repJSON.offices[i].levels, repJSON.offices[i].roles, repJSON.offices[i].officialIndices])
+          }
+          console.log("officesDataResult array &&&&&" , officesDataResult)
+
+   
    
         
         this.setState( {officials: repJSON.officials[42].name})
         this.setState( {address: repJSON.officials[1].address[0].line1, city: repJSON.officials[1].address[0].city, state: repJSON.officials[1].address[0].state, zip: repJSON.officials[1].address[0].zip})
         this.setState( {party: repJSON.officials[42].party})
         
-        //address: repJSON.officials[1].address, party: repJSON.officials[1].party
-        console.log("GET REPS API CALL", repJSON) //why do these console logs not work
+        
+        console.log("GET REPS API CALL", repJSON) 
         console.log("one official: ", repJSON.officials[1])
         console.log("party: ", repJSON.officials[1].party)
         console.log("RAINEY party: ", repJSON.officials[42].party)
         console.log("RAINEY NAME: ", repJSON.officials[42].name)
-        console.log("address: ", repJSON.officials[1].address[0].line1) //I am having trouble getting the data I need
+        console.log("address: ", repJSON.officials[1].address[0].line1) 
         console.log("this.state.officials", this.state.officials)
         console.log("this.state.address", this.state.address)
         console.log("this.state.party", this.state.party)
@@ -278,8 +277,9 @@ class politicalDataTool extends React.Component {
                                 <button type="submit" name="btn" value="submit2" style={{border: '2px solid purple'}}>
                                     BOOYAH PANCAKES :O
                                 </button>
-                            </form>
-                            <Footer />
+                                    </form>
+                                    {/* <span className="absolute bottom-0 w-full mx-auto"><Footer /></span> */}
+                            {/* <Footer /> */}
                                 
                                
                 
