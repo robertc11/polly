@@ -101,10 +101,11 @@ class politicalDataTool extends React.Component {
         alert(JSON.stringify(represult))
         var repObj = (JSON.stringify(represult))
         var repJSON = JSON.parse(repObj)
+          
 
         const officialsResultArray = []     
         for (let i = 0; i < repJSON.officials.length; i++) {
-        officialsResultArray.push([repJSON.officials[i].name, repJSON.officials[i].phones, repJSON.officials[i].emails, repJSON.officials[i].urls])        
+        officialsResultArray.push([repJSON.officials[i].name, repJSON.officials[i].phones, repJSON.officials[i].emails, repJSON.officials[i].urls])    
 
      
         }
@@ -128,8 +129,28 @@ class politicalDataTool extends React.Component {
           const officesDataResult = []
           for (let i = 0; i < repJSON.offices.length; i++) {
               officesDataResult.push([repJSON.offices[i].name, repJSON.offices[i].divisionId, repJSON.offices[i].levels, repJSON.offices[i].roles, repJSON.offices[i].officialIndices])
+
+              
           }
-          console.log("officesDataResult array &&&&&" , officesDataResult)
+          console.log("officesDataResult array &&&&&", officesDataResult)
+          
+
+        
+          // This is me working on setting maps
+            const myMap = new Map()
+            const key = {}
+            const value    = {}         
+          
+          for (let j = 0; j < repJSON.offices.length; j++) {
+              
+              myMap.set({ key1: repJSON.offices[j].officialIndices }, { key2: repJSON.offices[j].name })
+              //myMap.set(value, { key2: repJSON.offices[j].officialIndices })
+          }           
+          
+          console.log("MAP MOB++++++++++++++++", myMap)
+
+          
+
 
    
    
