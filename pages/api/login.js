@@ -1,6 +1,6 @@
 import { withIronSessionApiRoute } from "iron-session/next"
 import { sessionOptions } from "../../lib/session"
-import { validateInfo } from '../../lib/validateCredentials'
+import { validateInfo } from '../../lib/database/dbusers'
 
 
 export default withIronSessionApiRoute(async (req, res) => {
@@ -24,6 +24,7 @@ export default withIronSessionApiRoute(async (req, res) => {
 
         const user = {
             isLoggedIn: true,
+            uid: resdb.uid,
             username: resdb.username,
             cityID: resdb.cityID,
             zipcode: resdb.zipcode,

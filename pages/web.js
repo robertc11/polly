@@ -2,16 +2,14 @@
 import React, { useState } from 'react'
 
 // component imports
-import BulletinRow from '../components/bulletinRow'
 import Logo from '../components/logo'
-import Footer from '../components/footer'
+import BulletinDash from '../components/bulletinDash'
+import ElectionDash from '../components/electionDash'
 
 // Lib imports (data fetching)
 import useUser from '../lib/useUser'
 import fetchJson from "../lib/fetchJson";
 import useBulletin from '../lib/useBulletin'
-//import useElections from '../lib/useElections'
-
 
 //next imports
 import Link from 'next/link'
@@ -21,13 +19,11 @@ import Router from "next/router";
 
 
 export default function webApp(){
-    
-    
     const { user, mutateUser } = useUser({
         redirectTo: "/login",
     })
 
-    const { bulletins } = useBulletin(user)  
+    const { bulletins } = useBulletin(user)
 
     const [screen, setScreen] = useState('elections')
     
@@ -60,7 +56,7 @@ export default function webApp(){
                     <Link href="/"><a><Logo theme={"light"} /></a></Link>
                     <h1 className="text-2xl text-white">｜</h1>
                     <Link href="/login">
-                        <a className="font-bold text-white mr-5"
+                        <a className="font-bold text-white mr-5 text-lg"
                             onClick={async (e) => {
                                 e.preventDefault()
                                 mutateUser(
@@ -74,26 +70,13 @@ export default function webApp(){
                     </Link>
                 </div>
             </div>
-            
-            {/* <br></br>
-            <p>{JSON.stringify(bulletins)}</p>
-            <br></br>
-            <p>{typeof bulletins}</p>
-            <br>
-            </br>
-            <p>{
-                console.log("IS IT ARR:", Array.isArray(bulletins), bulletins)   
-            }</p>
 
-            {bulletins !== undefined && (
-                <p>{bulletins[0].upvotes}</p>
-            )} */}
-
+            {/* <p>{JSON.stringify(bulletins)}</p> */}
 
             <div id="pageWrapper" className="flex py-5 w-2/3 font-dongji h-auto mx-auto">
 
                 <div id="leftPanel" className="overflow-auto h-screen w-1/6 flex flex-col items-center">
-                    <h1 className="text-lg text-slate-600">{user.cityID[3]}, {user.cityID[1]}</h1>
+                    <h1 className="text-lg font-semibold text-black">{user.cityID[3]}, {user.cityID[1]}</h1>
                     
                     <div className="flex flex-col items-baseline text-violet-500 text-sm">
                         <button className="px-2 py-5 border-b-2 border-white h-1/4 duration-200 hover:text-violet-100 flex justify-center items-center" onClick={() => setScreen('elections')}>
@@ -147,47 +130,24 @@ export default function webApp(){
                     </div>
                 </div>
 
-                <div id="middlePanel" className="h-auto border-l-2 border-slate-400 w-4/6 flex flex-col items-center">
+                <div id="middlePanel" className="h-auto border-l-[3px] border-slate-300 w-4/6 flex flex-col items-center">
                     { screen==="elections" ? (
+                        // <ElectionDash
+                        //     uid={user.uid}
+                        //     username={user.username}
+                        //     cityid={user.cityID}
+                        //     login={user.isLoggedIn}
+                        // />
                         <>
-                            <div className="flex items-center relative w-full">
-                                <h1 className="text-slate-700 text-center w-full text-4xl font-bold mt-3 mb-5">Upcoming Elections</h1>
-                            </div>
-                        
-                            <div className="w-full">
-                                
-                            </div>
-                        </>    
+                        </>
                     ) : screen==="bulletin" ? (
-                        bulletins !== undefined && (
-                            <>
-                                <div className="flex items-center relative w-full">
-                                    <h1 className="text-slate-700 text-center w-full text-4xl font-bold mt-3 mb-5">Community Bulletin</h1>
-                                    <div className="absolute p-5 rounded-full bg-emerald-300 shadow text-white right-4 hover:bg-emerald-500">
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            
-                                <div className="w-full">
-                                    {JSON.stringify(bulletins)==='[]' ? (
-                                        <div className="flex flex-col justify-center items-center mx-auto p-5 text-slate-600 font-dongji">
-                                            <h1>It's lonely in here <span className="text-2xl">😔</span></h1>
-                                            <h2>Add a post for your community to see</h2>
-                                        </div>
-                                    ) : (
-                                        <div className="flex flex-col justify-center items-center mx-auto p-5 font-dongji">
-                                            {bulletins.map((thisBulletin) => (
-                                                <BulletinRow width={'wide'} up={thisBulletin.upvotes} down={thisBulletin.downvotes} statement={thisBulletin.statement} quotes={thisBulletin.comments} mapEnabled={thisBulletin.map} className="w-full" key={thisBulletin.uniqueID}>
-                                                    <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink}></iframe> 
-                                                </BulletinRow>
-                                            ))}
-                                        </div>    
-                                    )}       
-                                </div>
-                            </>    
-                        )
+                        <BulletinDash
+                            uid={user.uid}
+                            username={user.username}
+                            cityid={user.cityID}
+                            login={user.isLoggedIn}
+                            bulletins={{bulletins}}
+                        />
                     ) : screen==="cards" ? (
                         <div>
                             <h1 className="text-slate-700 text-4xl font-bold mt-3">Candidate Cards</h1>
@@ -204,7 +164,7 @@ export default function webApp(){
                 </div>
             </div>
             
-            <Footer />
+            {/* <Footer /> */}
             
         </>
     )

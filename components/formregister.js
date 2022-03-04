@@ -7,17 +7,25 @@ import useValidateUsername from '../lib/useValidateUsername'
 
 // Next Imports
 import Head from 'next/head'
+import Image from 'next/image'
+
+// Img Imports
+import googleLogo from '../public/powered_by_google_on_white.png'
 
 
 export default function RegistrationForm({ errorMessage, onSubmit }) {
-  const [loading, setLoading] = useState("hidden animate-spin -ml-1 mr-3 h-5 w-5 text-white")
-
   const [formScr, setFormScr] = useState(0)
 
   // google maps autocomplete states
   const [selectedPrediction, setSelectedPrediction] = useState(null)
   const [searchValue, setSearchValue] = useState('')
   const predictions = usePlacesAutocomplete(searchValue)
+
+  const handleSearch = (e, value) => {
+    e.preventDefault
+    setSelectedPrediction(null)
+    setSearchValue(value) 
+  }
   
   const handlePredictionSelection = (e, prediction) => {
     e.preventDefault()
@@ -92,10 +100,10 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
           <div className="w-1/2 mx-auto relative mb-3">
             <label className="w-full">Street Address:</label>
             <div className="group" tabIndex={0}>
-              <input className="rounded border-2 border-violet-300 w-full peer p-1" type="text" name="street-address" placeholder=" 550 S. Watters Rd" value={selectedPrediction===null?searchValue:selectedPrediction.structured_formatting.main_text} onChange={e => setSearchValue(e.target.value)} autoComplete="off" required />
-              <ul className="hidden rounded-b-md inset-x-0 border-slate-200 text-black bg-white absolute peer-focus:block group-hover:block">
+              <input className="rounded border-2 border-violet-300 w-full peer p-1" type="text" name="streetaddress" placeholder=" 550 S. Watters Rd" value={selectedPrediction===null?searchValue:selectedPrediction.structured_formatting.main_text} onChange={(e) => handleSearch(e, e.target.value)} autoComplete="off" required />
+              <ul className="hidden rounded-b-md inset-x-0 border-b-2 border-slate-500 text-black bg-white absolute peer-focus:block group-hover:block">
                 {predictions?.map(prediction => (
-                  <li className="border-x-[1px] border-b-[1px] border-slate-400 p-1 hover:bg-sky-100 hover:block focus:block active:block" key={prediction?.place_id}>
+                  <li className="p-1 border-x-2 border-slate-500 hover:bg-sky-100 hover:block focus:block active:block" key={prediction?.place_id}>
                     <button
                       className="w-full text-left hover:block focus:block active:block"
                       onClick={(e) => handlePredictionSelection(e, prediction)}
@@ -106,6 +114,10 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
                     </button>
                   </li>
                 ))}
+
+                <div className="flex flex-row-reverse relative border-x-2 border-slate-500 w-full py-1 pr-3 ">
+                  <Image src={googleLogo} />  
+                </div>
               </ul>  
             </div>
             
@@ -154,24 +166,25 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
           <input className={(isUsernameValid??true) ? "rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1":"rounded border-2 border-violet-300 w-1/2 mx-auto p-1"} type="text" name="username" placeholder=" kittenlover21" value={usernameValue} onChange={e => setUsernameValue(e.target.value)} autoComplete="off" required />
           <p className={(isUsernameValid??true) ? "hidden" : "w-1/2 mx-auto text-sm text-pink-600 mb-3"}>This username is already taken!</p>
 
-          <label className="w-1/2 mx-auto">Password:</label>
-          <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="password" name="password" placeholder=" your password here" value={pass1} onChange={e => setPass1(e.target.value)} required />
+          <div className="w-1/2 mx-auto">
+            <label className="w-full">Password:</label>          
+            <input className="rounded border-2 border-violet-300 w-full mb-3 invalid:mb-0 invalid:border-2 invalid:border-pink-600 peer p-1" type="password" name="password" placeholder=" your password here" pattern="(?=.*\d)(?=.*[a-z]).{8,}" value={pass1} onChange={e => setPass1(e.target.value)} required />
+            <p className="hidden peer-invalid:block text-pink-600 text-sm w-full mb-3">Passwords must be at least 8 characters and at least one digit!</p>
+          </div>
+          
 
           <label className="w-1/2 mx-auto">Confirm Password:</label> 
           <input className={isPassValid?"rounded border-2 border-violet-300 w-1/2 mx-auto mb-5 p-1":"rounded border-2 border-violet-300 w-1/2 mx-auto p-1"} type="password" name="passwordconfirm" placeholder=" confirm your password" value={pass2} onChange={e => setPass2(e.target.value)} required />
           <p className={isPassValid? "hidden":"text-sm w-1/2 mx-auto mb-5 text-pink-600"}>Passwords do not match.</p>
-          <button onClick={() => {
-              setLoading("animate-spin -ml-1 mr-3 h-5 w-5 text-white")
-            }}
+          
+          <button
             className="mx-auto w-1/6 duration-200 bg-emerald-400 text-white py-1 border-2 border-emerald-400 rounded-lg hover:bg-white hover:text-black hover:border-2 hover:border-black flex justify-center items-center" 
             type="submit"
           >
-            <svg className={ errorMessage==="" ? loading : "hidden animate-spin -ml-1 mr-3 h-5 w-5 text-white" } xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
             Create Account
           </button>
+
+          {errorMessage && <p className="mx-auto error mt-5 text-rose-500 font-bold">{errorMessage}</p>}
 
           <button className="text-slate-600 hover:animate-pulse mx-auto p-4" onClick={() => setFormScr(formScr-1)}>
             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">

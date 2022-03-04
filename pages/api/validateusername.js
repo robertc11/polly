@@ -1,4 +1,4 @@
-import { validateUsername } from "../../lib/validateUsername"
+import { validateUsername } from "../../lib/database/dbusers"
 
 export default async function handler(req,res){
     const { usernameInput } = await req.body
