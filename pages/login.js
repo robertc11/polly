@@ -31,9 +31,7 @@ export default function Login() {
                 <title>Login</title>
             </Head>
 
-            <div className="h-screen">
-
-                <NavBar />
+            <div className="h-full">
                 
                 <div className="h-2/3 mt-20">
                     <LoginForm

@@ -48,6 +48,7 @@ export default function BulletinDash(props){
                     city: user.cityID[3],
                     timestamp: getCurrentUnix(),
                     body: body,
+                    user: user,
                 }
                 const result = await fetch("/api/createpost", {
                     method: "POST",
@@ -96,9 +97,9 @@ export default function BulletinDash(props){
                         ) : (
                             <div className="flex flex-col justify-center items-center mx-auto p-5 font-dongji">
                                 {bulletins.map((thisBulletin) => (
-                                    <React.Fragment key={thisBulletin.dongjikey}>
+                                    <React.Fragment key={[thisBulletin._id,thisBulletin.upvotes,thisBulletin.downvotes]}>
                                         <BulletinRow
-                                            key={thisBulletin.dongjikey}
+                                            key = {[thisBulletin._id,thisBulletin.upvotes,thisBulletin.downvotes]}
                                             width={'wide'}
                                             up={thisBulletin.upvotes}
                                             down={thisBulletin.downvotes}
@@ -114,6 +115,7 @@ export default function BulletinDash(props){
                                             open={opened.has(thisBulletin._id)?opened.get(thisBulletin._id):false}
                                         >
                                             <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink} key={thisBulletin.mapLink}></iframe> 
+                                            <p>{thisBulletin.dongjikey}</p>
                                         </BulletinRow>
                                     </React.Fragment>
                                 ))}

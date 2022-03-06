@@ -71,7 +71,7 @@ export default function webApp(){
                 </div>
             </div>
 
-            {/* <p>{JSON.stringify(bulletins)}</p> */}
+            <p>{JSON.stringify(bulletins)}</p>
 
             <div id="pageWrapper" className="flex py-5 w-2/3 font-dongji h-auto mx-auto">
 
@@ -132,14 +132,12 @@ export default function webApp(){
 
                 <div id="middlePanel" className="h-auto border-l-[3px] border-slate-300 w-4/6 flex flex-col items-center">
                     { screen==="elections" ? (
-                        // <ElectionDash
-                        //     uid={user.uid}
-                        //     username={user.username}
-                        //     cityid={user.cityID}
-                        //     login={user.isLoggedIn}
-                        // />
-                        <>
-                        </>
+                        <ElectionDash
+                            uid={user.uid}
+                            username={user.username}
+                            cityid={user.cityID}
+                            login={user.isLoggedIn}
+                        />
                     ) : screen==="bulletin" ? (
                         <BulletinDash
                             uid={user.uid}
@@ -158,9 +156,9 @@ export default function webApp(){
                 </div>
 
                 <div id="rightPanel" className="w-1/6 h-auto bg-blue-500 text-white flex flex-col items-center justify-center">
-                    <h1 className="rotate-90 text-2xl mb-5">YOUR</h1>
+                    {/* <h1 className="rotate-90 text-2xl mb-5">YOUR</h1>
                     <h1 className="rotate-90 text-2xl mt-2 mb-5">AD</h1>
-                    <h1 className="rotate-90 text-2xl mt-2">HERE</h1>
+                    <h1 className="rotate-90 text-2xl mt-2">HERE</h1> */}
                 </div>
             </div>
             

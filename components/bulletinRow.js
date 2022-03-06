@@ -38,7 +38,6 @@ export default function BulletinRow(props){
 
     const handleUp = (e) => {
         e.preventDefault()
-        setChanged(true)
         if(selected[0]){  // undo the upvote
             setUpVotes(upVotes-1)
             setSelected([false, false])
@@ -49,11 +48,11 @@ export default function BulletinRow(props){
             setUpVotes(upVotes+1)
             setSelected([true, false])
         }
+        setChanged(true)
     }
 
     const handleDown = (e) => {
         e.preventDefault()
-        setChanged(true)
         if(selected[1]){  // undo the downvote
             setDownVotes(downVotes-1)
             setSelected([false, false])
@@ -64,6 +63,7 @@ export default function BulletinRow(props){
             setDownVotes(downVotes+1)
             setSelected([false, true])
         }
+        setChanged(true)
     }
 
     const bulletinUpdates = useUpdatesBulletin(props.postid,props.uid,upVotes-props.up,downVotes-props.down,selected[0],selected[1],changed)
