@@ -9,7 +9,6 @@ import Image from 'next/image'
 // Component Imports
 import NavBar from '../components/navbar'
 import Footer from '../components/footer'
-import BulletinRow from '../components/bulletinRow'
 
 // Content Imports
 import abbott from '../public/abbott.png'
