@@ -44,7 +44,7 @@ export default function register(){
                             city: event.currentTarget.city.value,
                             state: event.currentTarget.state.value,
                             zip: event.currentTarget.zipcode.value,
-                            username: event.currentTarget.username.value,
+                            username: event.currentTarget.username.value.toLowerCase(),
                             password: event.currentTarget.password.value,
                         }
 

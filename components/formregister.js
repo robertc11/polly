@@ -130,11 +130,11 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
           </h3> */}
 
           <label className="w-1/2 mx-auto">City:</label>
-          <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="city" placeholder=" Allen" defaultValue={selectedPrediction?.structured_formatting?.secondary_text.split(',')[0].trim() || ""} required />
+          <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="city" placeholder=" Allen" defaultValue={selectedPrediction?.structured_formatting?.secondary_text.split(',')[0].trim() || ""} autoComplete="off" required />
           
 
           <label className="w-1/2 mx-auto">State:</label>
-          <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="state" placeholder=" TX/Texas" defaultValue={selectedPrediction?.structured_formatting?.secondary_text.split(',')[1].trim() || ""} required />
+          <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="state" placeholder=" TX/Texas" defaultValue={selectedPrediction?.structured_formatting?.secondary_text.split(',')[1].trim() || ""} autoComplete="off" required />
           
 
           <label className="w-1/2 mx-auto">Postal Code:</label>

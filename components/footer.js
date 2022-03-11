@@ -16,7 +16,7 @@ export default function Footer(){
                         <h1 className="text-lg font-bold mb-2">Navigation</h1>
                         <Link href="/"><a className="mb-1">Home</a></Link>
                         <Link href="/"><a className="mb-1">Support</a></Link>
-                        <Link href="/"><a className="mb-1">Download</a></Link>
+                        <Link href="/mobilelanding"><a className="mb-1">Download</a></Link>
                         <Link href="/login"><a className="mb-1">Web App</a></Link>
                     </div>
 
