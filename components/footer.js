@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Icon from './icon'
 import Logo from './logo'
 
 export default function Footer(){
@@ -6,7 +7,8 @@ export default function Footer(){
         <footer className="flex justify-center items-center relative bottom-0 w-full py-36 bg-slate-600 text-white">
             <div id="footerWrapper" className="font-bold p-1 flex justify-evenly items-center w-2/3  mx-auto relative rounded-t-md">
                 <div id="leftbar" className="flex flex-col justify-center items-center w-1/2">
-                    <Logo theme="light" />
+                    <Icon size={120} />
+                    <span className="-mt-8"><Logo theme="light" /></span>
                 </div>
 
                 <div id="rightbar" className="flex flex-wrap justify-evenly items-baseline w-1/2 text-left font-light">

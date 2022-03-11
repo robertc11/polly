@@ -1,22 +1,24 @@
 import { createUser } from '../../lib/database/dbusers'
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10
+
 export default async function handler(req,res){
     const { firstname,lastname,email,phone,street,city,state,zip,username,password } = await req.body
     console.log('createuser.js', username, password)
 
-    try{
-        console.log('preapring to create user!')
-        const resdb = await createUser(firstname,lastname,email,phone,street,city,state,zip,username,password)
+    console.log('preapring to create user!')
 
+    await bcrypt.hash(password,saltRounds, async (err,hash) => {
+        if(err){
+            res.status(500).json({message:err})
+        }
+        const resdb = await createUser(firstname,lastname,email,phone,street,city,state,zip,username,hash)
         console.log('createuser api:', resdb)
 
         if(!resdb.success){
-            throw resdb.error
+            res.status(500).json({message:resdb.error})
         }
-
         res.json(resdb)
-    }catch(error){
-        console.log('createuser error!', error)
-        res.status(500).json({ message: error })
-    }
+    })
 }
