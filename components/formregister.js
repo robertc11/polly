@@ -8,6 +8,7 @@ import useValidateUsername from '../lib/useValidateUsername'
 // Next Imports
 import Head from 'next/head'
 import Image from 'next/image'
+import Script from 'next/script'
 
 // Img Imports
 import googleLogo from '../public/powered_by_google_on_white.png'
@@ -45,10 +46,9 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
   return(
     <>
       <Head>
-        <script
-          type="text/javascript"
+        <Script
           src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo&language=en&libraries=places"
-        ></script>
+        ></Script>
       </Head>
 
       <form onSubmit={ onSubmit } className="w-full p-5 flex flex-col justify-center items-center font-kelly text-slate-600">
