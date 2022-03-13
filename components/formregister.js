@@ -45,11 +45,9 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
 
   return(
     <>
-      <Head>
-        <Script
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo&language=en&libraries=places"
-        ></Script>
-      </Head>
+      <Script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo&language=en&libraries=places"
+      ></Script>
 
       <form onSubmit={ onSubmit } className="w-full p-5 flex flex-col justify-center items-center font-kelly text-slate-600">
         
