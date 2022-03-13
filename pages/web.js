@@ -132,12 +132,15 @@ export default function webApp(){
 
                 <div id="middlePanel" className="h-auto border-l-[3px] border-slate-300 w-4/6 flex flex-col items-center">
                     { screen==="elections" ? (
-                        <ElectionDash
-                            uid={user.uid}
-                            username={user.username}
-                            cityid={user.cityID}
-                            login={user.isLoggedIn}
-                        />
+                        <div>
+                            <h1 className="text-slate-700 text-4xl font-bold mt-3">Elections</h1>
+                        </div>
+                        // <ElectionDash
+                        //     uid={user.uid}
+                        //     username={user.username}
+                        //     cityid={user.cityID}
+                        //     login={user.isLoggedIn}
+                        // />
                     ) : screen==="bulletin" ? (
                         <BulletinDash
                             uid={user.uid}
