@@ -18,7 +18,7 @@ import RegistrationForm from '../components/formregister'
 
 
 
-export default function register(){
+export default function Register(){
     const [errorMsg, setErrorMsg] = useState("");
 
     return(

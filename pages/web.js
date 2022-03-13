@@ -18,7 +18,7 @@ import Router from "next/router";
 
 
 
-export default function webApp(){
+export default function WebApp(){
     const { user, mutateUser } = useUser({
         redirectTo: "/login",
     })
