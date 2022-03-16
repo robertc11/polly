@@ -11,18 +11,18 @@ export const googleAutocomplete = async text => {
         }
 
         try{
-            console.log('text going to google!', text)
+            console.log('> googleAutocomplete.js: Text going to google: ', text)
             var service = new window.google.maps.places.AutocompleteService()
             service.getPlacePredictions(
                 {input: text, componentRestrictions: {country: "US"} },
                 function(predictions, status){
-                    console.log('this is google result', predictions)
+                    console.log('> googleAutocomplete.js: This is google result:', predictions)
                     resolve(predictions)
                 }
             )
-            console.log("resolved")
+            console.log("> googleAutocomplete.js: Resolved")
         }catch(e){
-            console.log("ISSUE in google auto")
+            console.log("> googleAutocomplete.js: ERROR")
             reject(e)
         }
     })

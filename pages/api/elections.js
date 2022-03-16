@@ -9,7 +9,7 @@ export default withIronSessionApiRoute(electionsRoute, sessionOptions)
 
 async function electionsRoute(req,res){
     const user = req.session.user
-    console.log("USER'S CITYID", user.cityID)
+    console.log("> elections.js: USER'S CITYID:", user.cityID)
     const queryCity = {"cityID": user.cityID}
     const queryCounty = {"cityID": [user.cityID[0], user.cityID[1], user.cityID[2], null]}
     const queryState = {"cityID": [user.cityID[0], user.cityID[1], null, null]}
@@ -17,14 +17,14 @@ async function electionsRoute(req,res){
 
     if(!user || user.isLoggedIn === false) {
         res.status(401).end();
-        console.log("ERRROR")
+        console.log("> elections.js: ERROR")
         return;
     }
 
     try{
         await client.connect()
         await client.db("admin").command({ ping: 1 })
-        console.log('bulletin.js: connected to database!')
+        console.log('> elections.js: connected to database!')
 
         // perform db search here
         const bulletinDatabase = client.db('events')
@@ -42,11 +42,11 @@ async function electionsRoute(req,res){
 
         res.json(data)
     }catch(err){
-        console.log("SHIT it aint work")
+        console.log("> elections.js: ERROR")
         res.status(500).json({message:err})
     }finally{
         await client.close()
-        console.log('MONGODB Connection CLOSED')
+        console.log('> elections.js: MONGODB Connection CLOSED')
     }
 
 }

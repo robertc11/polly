@@ -6,16 +6,16 @@ const bcrypt = require('bcrypt');
 
 export default withIronSessionApiRoute(async (req, res) => {
     const { username, password } = await req.body
-    console.log('login.js', username, password)
+    console.log('> login.js:', username, password)
 
     try {
         if(username==="" || password===""){
             throw "Please fill in all fields!"
         }
 
-        console.log('doing validation')
+        console.log('> login.js: Performing validation...')
         const resdb = await validateInfo(username.toLowerCase())
-        console.log('finished validation! THIS IS RESDB', resdb)
+        console.log('> login.js: Validation result:', resdb)
 
         if(!resdb.found){
             throw resdb.error
@@ -24,6 +24,7 @@ export default withIronSessionApiRoute(async (req, res) => {
         await bcrypt.compare(password,resdb.password, async (err,result) => {
             if(err){
                 console.log(err)
+                res.status(500).json({ message: "Authentication Error" })
             }
             if(result){
                 const user = {
@@ -43,7 +44,7 @@ export default withIronSessionApiRoute(async (req, res) => {
             }
         })
     }catch(error){
-        console.log('kelly titty', error)
+        console.log('> login.js: ERROR:', error)
         let errMsg = error.message===undefined ? error : error.message
         res.status(500).json({ message: errMsg })
     }

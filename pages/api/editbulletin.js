@@ -15,7 +15,7 @@ export default async function handler(req,res){
 
     try{
         const resdb = await setVotes(postid,uid,chosenVote,upDelta,downDelta)
-        console.log('db ops',resdb.success)
+        console.log('> editbulletin.js',resdb.success)
         if(!resdb.success){
             throw "database error!"
         }
