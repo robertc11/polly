@@ -113,6 +113,7 @@ export default function BulletinDash(props){
                                             uid={user.uid}
                                             handleOpen={(a,b) => handleOpen(a,b)}
                                             open={opened.has(thisBulletin._id)?opened.get(thisBulletin._id):false}
+                                            isAuthor={thisBulletin.author.authorID == user.uid}
                                         >
                                             <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink} key={thisBulletin.mapLink}></iframe> 
                                             <p>{thisBulletin.dongjikey}</p>
