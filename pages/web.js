@@ -71,7 +71,7 @@ export default function WebApp(){
                 </div>
             </div>
 
-            {/* <p>{JSON.stringify(bulletins)}</p> */}
+            <p>{JSON.stringify(bulletins)}</p>
 
             <div id="pageWrapper" className="flex py-5 w-2/3 font-dongji h-auto mx-auto">
 
