@@ -3,6 +3,8 @@
 
 import { useState, useEffect, useRef } from 'react'
 import useUpdatesBulletin from '../lib/useUpdates'
+import Swal from 'sweetalert2'
+
 
 export default function BulletinRow(props){
     const targetBox = useRef()
@@ -66,7 +68,51 @@ export default function BulletinRow(props){
         setChanged(true)
     }
 
-    const bulletinUpdates = useUpdatesBulletin(props.postid,props.uid,upVotes-props.up,downVotes-props.down,selected[0],selected[1],changed)
+    const handleDelete = () => {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Are you sure?',
+            text: 'This action cannot be undone.',
+            backdrop: true,
+            showConfirmButton: false,
+            showDenyButton: true,
+            showCancelButton: true,
+            denyButtonText: 'Delete',
+            preDeny: () => {
+                //delete the post here and return status
+                const body = {
+                    postID: props.postid,
+                }
+                return fetch('/api/deletepost', {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify(body),
+                }).then((res) => {
+                    console.log('response',res)
+                    return res.json()
+                }).catch((err) => {
+                    console.log(err)
+                })
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            console.log('result2',result)
+            if (result.isDenied && result.value.success === false) {
+                Swal.fire('Oops!',`An error occurred: ${result.value.msg}`,'error')
+            }else if(result.isDenied && result.value.success){
+                Swal.fire('Success!','Your post was deleted','success')
+            }
+        })
+    }
+
+    const bulletinUpdates = useUpdatesBulletin(
+                                    props.postid,props.uid,
+                                    upVotes-props.up,
+                                    downVotes-props.down,
+                                    selected[0],
+                                    selected[1],
+                                    changed,
+                                    1000)
 
 
     const mapStylesEnabled = "mt-2 rounded-lg shadow px-2 py-1 hover:bg-sky-100 mx-1"
@@ -125,15 +171,18 @@ export default function BulletinRow(props){
                     {props.children}
 
                     <div className={props.isAuthor? 'absolute bottom-0 left-0 flex' : 'hidden'}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                        </svg>
-
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                        </svg>    
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                            </svg>    
+                        </button>
+                        
+                        <button onClick={() => handleDelete()}>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>     
+                        </button>       
                     </div>
-                    
 
                     <p className="text-right w-full">{props.timestamp}</p>
                 </div>
