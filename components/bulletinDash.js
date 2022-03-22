@@ -5,34 +5,30 @@ import React, { useState } from 'react'
 import CreatePostForm from './createPostForm'
 import fetchJson from '../lib/fetchJson'
 
-
-
 export default function BulletinDash(props){
-    const user = {
-        uid: props.uid,
-        username: props.username,
-        cityID: props.cityid,
-        isLoggedIn: props.login,
-    }
 
     const [opened,setOpened] = useState(new Map())
+    const [ popup, setPopup ] = useState(false)
+    const [ error, setError ] = useState('')
+
+    const { bulletins, getNewBulletins} = props
 
     const handleOpen = (postid,value) => {
         setOpened(opened.set(postid,value))
         console.log('opened is changed!',opened)
     }
 
-    const [ popup, setPopup ] = useState(false)
-
     const openPopup = () => {
         setPopup(true)
     }
-
-    const [ error, setError ] = useState('')
-
-    // const { bulletins } = useBulletin(user)
-    const { bulletins } = props.bulletins
-
+ 
+    const user = {
+        uid: props.uid,
+        username: props.username,
+        cityID: props.cityid,
+        isLoggedIn: props.login,
+    }
+    
     return (
         <>
             {bulletins !== undefined && (
@@ -74,6 +70,7 @@ export default function BulletinDash(props){
                                             handleOpen={(a,b) => handleOpen(a,b)}
                                             open={opened.has(thisBulletin._id)?opened.get(thisBulletin._id):false}
                                             isAuthor={thisBulletin.author.authorID == user.uid}
+                                            getNewBulletins={getNewBulletins}
                                         >
                                             <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink} key={thisBulletin.mapLink}></iframe> 
                                         </BulletinRow>
@@ -128,6 +125,7 @@ export default function BulletinDash(props){
                                 icon: 'success',
                                 title: 'Post Successfully Created'
                             })
+                            getNewBulletins()
                         }else{
                             setError(res.msg)
                         }
