@@ -1,0 +1,9 @@
+USER=root
+POLLYWORLD=/usr/local/booyahLab/polly-yang
+HOME=/root
+LOGNAME=root
+PATH=/root/.nvm/versions/node/v16.13.2/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/booyahLab/polly-yang:/usr/local/games:/snap/bin
+LANG=C.UTF-8
+SHELL=/bin/sh
+SUDO_USER=ubuntu
+PWD=/root
