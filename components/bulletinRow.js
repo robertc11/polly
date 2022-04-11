@@ -112,7 +112,7 @@ export default function BulletinRow(props){
                                     selected[0],
                                     selected[1],
                                     changed,
-                                    1000)
+                                    2000)
 
 
     const mapStylesEnabled = "mt-2 rounded-lg shadow px-2 py-1 hover:bg-sky-100 mx-1"

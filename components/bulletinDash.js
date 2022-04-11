@@ -2,9 +2,8 @@ import BulletinRow from '../components/bulletinRow'
 import { getCurrentUnix, unixToReg } from '../lib/timestamp'
 import Swal from 'sweetalert2'
 import React, { useState } from 'react'
-import CreatePostForm from './createPostForm'
 import fetchJson from '../lib/fetchJson'
-
+import Router from 'next/router'
 
 
 export default function BulletinDash(props){
@@ -21,15 +20,7 @@ export default function BulletinDash(props){
         setOpened(opened.set(postid,value))
         console.log('opened is changed!',opened)
     }
-
-    const [ popup, setPopup ] = useState(false)
-
-    const openPopup = () => {
-        setPopup(true)
-    }
-
-    const [ error, setError ] = useState('')
-
+    
     // const { bulletins } = useBulletin(user)
     const { bulletins } = props.bulletins
 
@@ -39,7 +30,7 @@ export default function BulletinDash(props){
                 <>
                     <div className="flex items-center relative w-full">
                         <h1 className="text-slate-700 text-center w-full text-4xl font-bold mt-3 mb-5">Community Bulletin</h1>
-                        <button onClick={() => openPopup()} className="absolute p-5 rounded-full bg-emerald-300 shadow text-white right-4 hover:bg-emerald-500">
+                        <button onClick={() => Router.push("/createPostPage")} className="absolute p-5 rounded-full bg-emerald-300 shadow text-white right-4 hover:bg-emerald-500">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                             </svg>    
@@ -86,62 +77,6 @@ export default function BulletinDash(props){
                 </>
             )}
 
-            <CreatePostForm
-                errormsg={error}
-                view={popup}
-                onSubmit={async (e) => {
-                    e.preventDefault()
-                    
-                    const body = {
-                        upvotes: 1,
-                        downvotes: 0,
-                        statement: e.currentTarget.title.value,
-                        map: false,
-                        mapLink: "",
-                        city: user.cityID[3],
-                        timestamp: getCurrentUnix(),
-                        body: e.currentTarget.textContent.value,
-                        user: user,
-                    }
-
-                    try{
-                        const res = await fetchJson('/api/createpost', {
-                            method: 'POST',
-                            headers: {"Content-Type": "application/json"},
-                            body: JSON.stringify(body)
-                        })
-                        console.log('> bulletinDash.js: This is Res:', res)
-                        if(res.success){
-                            const Toast = Swal.mixin({
-                                toast: true,
-                                position: 'top-end',
-                                showConfirmButton: false,
-                                timer: 3000,
-                                timerProgressBar: true,
-                                didOpen: (toast) => {
-                                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                                }
-                            })
-                            setPopup(false)
-                            Toast.fire({
-                                icon: 'success',
-                                title: 'Post Successfully Created'
-                            })
-                        }else{
-                            setError(res.msg)
-                        }
-                    }catch(error){
-                        console.log('> bulletinDash.js: ERR Creating Post:',error)
-                        setError(error.message)
-                    }
-                    
-
-                }}
-                onClose={ () => {
-                    setPopup(false)
-                }}
-            />
         </>
     )
 }
