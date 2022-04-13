@@ -1,5 +1,5 @@
 // React imports
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // component imports
 import Logo from '../components/logo'
@@ -23,10 +23,22 @@ export default function WebApp(){
         redirectTo: "/login",
     })
 
-    const { bulletins } = useBulletin(user)
 
     const [screen, setScreen] = useState('elections')
-    
+    const [bulletins, setBulletins] = useState(undefined)
+
+    useEffect(() => {
+        const initBulletins = async () => {
+            const bs = await fetchJson("/api/bulletin", {method: "GET"})
+            setBulletins(bs)
+        }
+        initBulletins()
+    }, [])
+
+    const  getNewBulletins = async () => {
+        const newBulletins = await fetchJson("api/bulletin", {method: "GET"})
+        setBulletins(newBulletins)
+    }
 
     if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
         return(
@@ -147,7 +159,8 @@ export default function WebApp(){
                             username={user.username}
                             cityid={user.cityID}
                             login={user.isLoggedIn}
-                            bulletins={{bulletins}}
+                            bulletins={bulletins}
+                            getNewBulletins={getNewBulletins}
                         />
                     ) : screen==="cards" ? (
                         <div>

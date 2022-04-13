@@ -7,14 +7,12 @@ import Router from 'next/router'
 
 
 export default function BulletinDash(props){
-    const user = {
-        uid: props.uid,
-        username: props.username,
-        cityID: props.cityid,
-        isLoggedIn: props.login,
-    }
 
     const [opened,setOpened] = useState(new Map())
+    const [ popup, setPopup ] = useState(false)
+    const [ error, setError ] = useState('')
+
+    const { bulletins, getNewBulletins} = props
 
     const handleOpen = (postid,value) => {
         setOpened(opened.set(postid,value))
@@ -23,6 +21,7 @@ export default function BulletinDash(props){
     
     // const { bulletins } = useBulletin(user)
     const { bulletins } = props.bulletins
+
 
     return (
         <>
@@ -65,6 +64,7 @@ export default function BulletinDash(props){
                                             handleOpen={(a,b) => handleOpen(a,b)}
                                             open={opened.has(thisBulletin._id)?opened.get(thisBulletin._id):false}
                                             isAuthor={thisBulletin.author.authorID == user.uid}
+                                            getNewBulletins={getNewBulletins}
                                         >
                                             <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink} key={thisBulletin.mapLink}></iframe> 
                                         </BulletinRow>
@@ -76,6 +76,7 @@ export default function BulletinDash(props){
                     {/* <p>{console.log('opened is reset!',opened)}</p> */}
                 </>
             )}
+
 
         </>
     )

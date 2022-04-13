@@ -12,6 +12,7 @@ export default function BulletinRow(props){
     const [downVotes, setDownVotes] = useState(props.down)
     const [selected, setSelected] = useState(props.action)
     const [changed, setChanged] = useState(false)
+    const { getNewBulletins } = props
 
     useEffect(() => {
         targetBox.current.addEventListener('toggle', (e) => {
@@ -101,6 +102,7 @@ export default function BulletinRow(props){
                 Swal.fire('Oops!',`An error occurred: ${result.value.msg}`,'error')
             }else if(result.isDenied && result.value.success){
                 Swal.fire('Success!','Your post was deleted','success')
+                getNewBulletins()
             }
         })
     }
