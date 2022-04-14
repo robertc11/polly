@@ -1,6 +1,19 @@
 import { createBulletin } from "../../../lib/database/dbbulletins"
+import { sessionOptions } from "../../../lib/session";
+import { withIronSessionApiRoute } from "iron-session/next";
 
-export default async function handler(req,res){
+export default withIronSessionApiRoute(handler, sessionOptions)
+
+async function handler(req,res){
+    const usr = req.session.user
+
+    if(!usr || usr.isLoggedIn === false) {
+        res.status(401).end();
+        console.log("> createpost.js: ERROR: User not logged in!")
+        return
+    }
+
+
     const {upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user} = await req.body
     console.log('> createPost.js: Recieved Info:',upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user)
     try{

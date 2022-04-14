@@ -1,6 +1,18 @@
 import { removeBulletin } from "../../../lib/database/dbbulletins"
+import { sessionOptions } from "../../../lib/session";
+import { withIronSessionApiRoute } from "iron-session/next";
 
-export default async function handler(req,res){
+export default withIronSessionApiRoute(handler, sessionOptions)
+
+async function handler(req,res){
+    const user = req.session.user
+
+    if(!user || user.isLoggedIn === false) {
+        res.status(401).end();
+        console.log("> deletepost.js: ERROR: User not logged in!")
+        return
+    }
+    
     const { postID } = await req.body
     console.log('> deletepost.js:',postID)
 
