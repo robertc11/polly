@@ -8,6 +8,7 @@ import Router from 'next/router'
 import { getCurrentUnix } from '../lib/timestamp'
 import fetchJson from '../lib/fetchJson'
 import Script from 'next/script'
+import Head from 'next/head'
 
 export default function CreatePostPage(){
     const { user, mutateUser } = useUser({  // only logged in users can create posts
@@ -56,14 +57,14 @@ export default function CreatePostPage(){
         console.log("processing data and submitting!", body)
 
         try{
-            const res = await fetchJson('api/createpost', {
+            const res = await fetchJson('api/posts/createpost', {
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
             })
 
             if(res.success){
-                Router.push('/web')
+                Router.push('/web?page=bulletins')
             }
             else{
                 setError(res.msg)
@@ -86,6 +87,10 @@ export default function CreatePostPage(){
                 src={"https://cdn.jsdelivr.net/openlocationcode/latest/openlocationcode.min.js"}
             >    
             </Script>
+
+            <Head>
+                <title>New Post</title>
+            </Head>
 
             <h1 className="mt-10 text-center font-dongji text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500">Your Shiny New Post</h1>
             <form onSubmit={handleSubmit} className="flex flex-col">
@@ -133,7 +138,7 @@ export default function CreatePostPage(){
 
                 <div className="w-full flex items-center justify-center mt-3 mb-10 text-slate-600">
                     <button type="submit" className="w-1/6 mt-3 px-1 py-2 bg-emerald-300 rounded-md mr-1">Create!</button>
-                    <button type="button" className="w-1/6 mt-3 px-1 py-2 bg-slate-300 rounded-md ml-1" onClick={() => Router.push("/web")}>Cancel</button>                           
+                    <button type="button" className="w-1/6 mt-3 px-1 py-2 bg-slate-300 rounded-md ml-1" onClick={() => Router.push("/web?page=bulletins")}>Cancel</button>                           
                 </div>
             </form>
             

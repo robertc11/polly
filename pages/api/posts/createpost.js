@@ -1,4 +1,4 @@
-import { createBulletin } from "../../lib/database/dbbulletins"
+import { createBulletin } from "../../../lib/database/dbbulletins"
 
 export default async function handler(req,res){
     const {upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user} = await req.body

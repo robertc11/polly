@@ -83,7 +83,7 @@ export default function BulletinRow(props){
                 const body = {
                     postID: props.postid,
                 }
-                return fetch('/api/deletepost', {
+                return fetch('/api/posts/deletepost', {
                     method: "POST",
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify(body),

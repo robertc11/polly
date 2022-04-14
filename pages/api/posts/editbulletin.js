@@ -1,4 +1,4 @@
-import { setVotes } from "../../lib/database/dbbulletins"
+import { setVotes } from "../../../lib/database/dbbulletins"
 
 export default async function handler(req,res){
     const { upDelta, downDelta, upvoteSelected, downvoteSelected, postid, uid } = await req.body

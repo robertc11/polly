@@ -1,5 +1,7 @@
 // React imports
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import useSWRInfinite from 'swr/infinite'
+
 
 // component imports
 import Logo from '../components/logo'
@@ -8,24 +10,76 @@ import ElectionDash from '../components/electionDash'
 
 // Lib imports (data fetching)
 import useUser from '../lib/useUser'
-import fetchJson from "../lib/fetchJson";
+import fetchJson from "../lib/fetchJson"
 import useBulletin from '../lib/useBulletin'
+import useOnScreen from '../lib/useOnScreen'
 
 //next imports
 import Link from 'next/link'
 import Head from 'next/head'
-import Router from "next/router";
+import Router from "next/router"
+import { useRouter } from "next/router"
+
+
+
+const PAGE_SIZE = 10
+
+const getKey = (pageIndex, previousPageData, pageSize) => {
+    if(previousPageData && !previousPageData.length) return null
+
+    return `/api/posts/bulletin?per_page=${pageSize}&page=${pageIndex+1}`
+}
+
+const fetcher = url => fetch(url).then(r => r.json())
+
 
 
 
 export default function WebApp(){
+    // get a specified page from the url /web?page=XXX
+    const router = useRouter()
+    const { page } = router.query
+
+    // setting up the infinite scroll
+    const ref = useRef()
+    const isVisible = useOnScreen(ref)
+
     const { user, mutateUser } = useUser({
         redirectTo: "/login",
     })
 
-    const { bulletins } = useBulletin(user)
+    const {data, error, mutate, size, setSize, isValidating} = useSWRInfinite(
+        (...args) => getKey(...args, PAGE_SIZE),
+        fetcher,
+        {
+            // refreshInterval: 5000,
+            revalidateIfStale: false,
+        }
+    )
 
+
+    const bulletins = data ? [].concat(...data) : []
+    const isLoadingInitialData = !data && !error
+    const isLoadingMore = isLoadingInitialData || (size>0 && data && typeof data[size-1]==='undefined')
+    const isEmpty = data?.[0]?.length === 0
+    const isReachingEnd = size === PAGE_SIZE
+    const isRefreshing = isValidating && data && data.length === size
+
+    useEffect(() => {
+        if(isVisible && !isReachingEnd && !isRefreshing){
+            setSize(size+1)
+        }
+    }, [isVisible, isRefreshing])
+
+
+
+    // state to keep track of which screen is open and useEffect hook to set it to the url passed page param
     const [screen, setScreen] = useState('elections')
+    useEffect(() => {
+        console.log('YOOOHOO',page)
+        if(!page) return
+        setScreen(page)
+    }, [page])
     
 
     if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
@@ -71,7 +125,8 @@ export default function WebApp(){
                 </div>
             </div>
 
-            <p>{JSON.stringify(bulletins)}</p>
+            {/* <p>{JSON.stringify(bulletins)}</p> */}
+            {/* <p>{page}</p> */}
 
             <div id="pageWrapper" className="flex py-5 w-2/3 font-dongji h-auto mx-auto">
 
@@ -87,7 +142,7 @@ export default function WebApp(){
                             <h1 className="ml-2">Elections</h1>
                         </button>
 
-                        <button className="px-2 py-5 border-b-2 border-white h-1/4 duration-200 hover:text-violet-100 flex justify-center items-center" onClick={() => setScreen('bulletin')}>                        
+                        <button className="px-2 py-5 border-b-2 border-white h-1/4 duration-200 hover:text-violet-100 flex justify-center items-center" onClick={() => setScreen('bulletins')}>                        
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                             </svg>
@@ -141,14 +196,19 @@ export default function WebApp(){
                         //     cityid={user.cityID}
                         //     login={user.isLoggedIn}
                         // />
-                    ) : screen==="bulletin" ? (
-                        <BulletinDash
-                            uid={user.uid}
-                            username={user.username}
-                            cityid={user.cityID}
-                            login={user.isLoggedIn}
-                            bulletins={{bulletins}}
-                        />
+                    ) : screen==="bulletins" ? (
+                        <div className="w-full">
+                            <BulletinDash
+                                uid={user.uid}
+                                username={user.username}
+                                cityid={user.cityID}
+                                login={user.isLoggedIn}
+                                bulletins={{bulletins}}
+                            />
+                            <div className="w-full text-bold text-center invisible" ref={ref}>
+                                {isLoadingMore ? 'loading...' : isReachingEnd ? 'no more posts' : ''}
+                            </div>
+                        </div>
                     ) : screen==="cards" ? (
                         <div>
                             <h1 className="text-slate-700 text-4xl font-bold mt-3">Candidate Cards</h1>

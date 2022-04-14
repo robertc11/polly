@@ -1,10 +1,7 @@
 import BulletinRow from '../components/bulletinRow'
 import { getCurrentUnix, unixToReg } from '../lib/timestamp'
-import Swal from 'sweetalert2'
 import React, { useState } from 'react'
-import fetchJson from '../lib/fetchJson'
 import Router from 'next/router'
-
 
 export default function BulletinDash(props){
     const user = {

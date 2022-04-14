@@ -1,4 +1,4 @@
-import { removeBulletin } from "../../lib/database/dbbulletins"
+import { removeBulletin } from "../../../lib/database/dbbulletins"
 
 export default async function handler(req,res){
     const { postID } = await req.body
