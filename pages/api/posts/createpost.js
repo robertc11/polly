@@ -1,4 +1,4 @@
-import { createBulletin } from "../../../lib/database/dbbulletins"
+import { runner } from "../../../lib/database/dbbulletins"
 import { sessionOptions } from "../../../lib/session";
 import { withIronSessionApiRoute } from "iron-session/next";
 
@@ -17,7 +17,7 @@ async function handler(req,res){
     const {upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user} = await req.body
     console.log('> createPost.js: Recieved Info:',upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user)
     try{
-        const resdb = await createBulletin(upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user)
+        const resdb = await runner('createBulletin', [ upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user ])
         
         if(!resdb.success){
             throw resdb.msg

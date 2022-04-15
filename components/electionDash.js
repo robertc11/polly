@@ -1,5 +1,6 @@
-import useElections from "../lib/useElections"
+//import useElections from "../lib/useElections"
 import Link from "next/link"
+import {getElections} from '../lib/civic'
 
 
 export default function ElectionDash(props){
@@ -11,11 +12,13 @@ export default function ElectionDash(props){
         isLoggedIn: props.login,
     }
 
-    const { elections } = useElections(user)
-
     return (
         <>
-            {elections !== undefined && (
+            <div className="flex items-center relative w-full">
+                <h1 className="text-slate-700 text-center w-full text-4xl font-bold mt-3 mb-5">Upcoming Elections</h1>
+            </div>
+            <p>{user.uid}</p>
+            {/* {elections !== undefined && (
                 <>
                     <div className="flex items-center relative w-full">
                         <h1 className="text-slate-700 text-center w-full text-4xl font-bold mt-3 mb-5">Upcoming Elections</h1>
@@ -89,7 +92,7 @@ export default function ElectionDash(props){
                         </div>
                     </div>
                 </>       
-            )}
+            )} */}
         </>
     )
 }

@@ -1,6 +1,6 @@
 import { withIronSessionApiRoute } from "iron-session/next"
 import { sessionOptions } from "../../lib/session"
-import { validateInfo } from '../../lib/database/dbusers'
+import { runner } from '../../lib/database/dbusers'
 
 const bcrypt = require('bcrypt');
 
@@ -14,7 +14,7 @@ export default withIronSessionApiRoute(async (req, res) => {
         }
 
         console.log('> login.js: Performing validation...')
-        const resdb = await validateInfo(username.toLowerCase())
+        const resdb = await runner('validateInfo',[ username.toLowerCase() ])
         console.log('> login.js: Validation result:', resdb)
 
         if(!resdb.found){

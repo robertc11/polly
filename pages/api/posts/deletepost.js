@@ -1,4 +1,4 @@
-import { removeBulletin } from "../../../lib/database/dbbulletins"
+import { runner } from "../../../lib/database/dbbulletins"
 import { sessionOptions } from "../../../lib/session";
 import { withIronSessionApiRoute } from "iron-session/next";
 
@@ -17,7 +17,7 @@ async function handler(req,res){
     console.log('> deletepost.js:',postID)
 
     try{
-        const resdb = await removeBulletin(postID)
+        const resdb = await runner('removeBulletin', [ postID ])
         
         if(!resdb.success){
             throw resdb.msg

@@ -1,4 +1,4 @@
-import { setVotes } from "../../../lib/database/dbbulletins"
+import { runner } from "../../../lib/database/dbbulletins"
 import { sessionOptions } from "../../../lib/session";
 import { withIronSessionApiRoute } from "iron-session/next";
 
@@ -9,7 +9,7 @@ async function handler(req,res){
 
     if(!user || user.isLoggedIn === false) {
         res.status(401).end();
-        console.log("> deletepost.js: ERROR: User not logged in!")
+        console.log("> editvote.js: ERROR: User not logged in!")
         return
     }
 
@@ -27,8 +27,8 @@ async function handler(req,res){
     }
 
     try{
-        const resdb = await setVotes(postid,uid,chosenVote,upDelta,downDelta)
-        console.log('> editbulletin.js',resdb.success)
+        const resdb = await runner('setVotes', [ postid,uid,chosenVote,upDelta,downDelta ])
+        console.log('> editvote.js',resdb.success)
         if(!resdb.success){
             throw "database error!"
         }

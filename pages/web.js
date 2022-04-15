@@ -11,8 +11,9 @@ import ElectionDash from '../components/electionDash'
 // Lib imports (data fetching)
 import useUser from '../lib/useUser'
 import fetchJson from "../lib/fetchJson"
-import useBulletin from '../lib/useBulletin'
+//import useBulletin from '../lib/useBulletin'
 import useOnScreen from '../lib/useOnScreen'
+import { getElections } from '../lib/civic'
 
 //next imports
 import Link from 'next/link'
@@ -22,12 +23,12 @@ import { useRouter } from "next/router"
 
 
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 6  // the number of pages that gets loaded on every call
 
 const getKey = (pageIndex, previousPageData, pageSize) => {
     if(previousPageData && !previousPageData.length) return null
 
-    return `/api/posts/bulletin?per_page=${pageSize}&page=${pageIndex+1}`
+    return `/api/posts/getpost?per_page=${pageSize}&page=${pageIndex+1}`
 }
 
 const fetcher = url => fetch(url).then(r => r.json())
@@ -35,7 +36,7 @@ const fetcher = url => fetch(url).then(r => r.json())
 
 
 
-export default function WebApp(){
+export default function WebApp({ electionData }){
     // get a specified page from the url /web?page=XXX
     const router = useRouter()
     const { page } = router.query
@@ -52,7 +53,7 @@ export default function WebApp(){
         (...args) => getKey(...args, PAGE_SIZE),
         fetcher,
         {
-            // refreshInterval: 5000,
+            refreshInterval: 5000,
             revalidateIfStale: false,
         }
     )
@@ -127,6 +128,7 @@ export default function WebApp(){
 
             {/* <p>{JSON.stringify(bulletins)}</p> */}
             {/* <p>{page}</p> */}
+            <p>{JSON.stringify(electionData)}</p>
 
             <div id="pageWrapper" className="flex py-5 w-2/3 font-dongji h-auto mx-auto">
 
@@ -187,15 +189,14 @@ export default function WebApp(){
 
                 <div id="middlePanel" className="h-auto border-l-[3px] border-slate-300 w-4/6 flex flex-col items-center">
                     { screen==="elections" ? (
-                        <div>
-                            <h1 className="text-slate-700 text-4xl font-bold mt-3">Elections</h1>
+                        <div className="w-full">
+                            <ElectionDash
+                                uid={user.uid}
+                                username={user.username}
+                                cityid={user.cityID}
+                                login={user.isLoggedIn}
+                            />
                         </div>
-                        // <ElectionDash
-                        //     uid={user.uid}
-                        //     username={user.username}
-                        //     cityid={user.cityID}
-                        //     login={user.isLoggedIn}
-                        // />
                     ) : screen==="bulletins" ? (
                         <div className="w-full">
                             <BulletinDash
@@ -231,3 +232,10 @@ export default function WebApp(){
     )
 }
 
+export async function getStaticProps(context){
+    const electionData = await getElections()
+
+    return {
+        props: { electionData }
+    }
+}
