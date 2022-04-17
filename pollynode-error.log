@@ -1,0 +1,1929 @@
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/createuser, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+ReferenceError: httpsServer is not defined
+    at eval (webpack-internal:///./pages/_app.js:43:1)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+ReferenceError: httpsServer is not defined
+    at eval (webpack-internal:///./pages/_app.js:43:1)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+error - pages/_app.js (22:0) @ eval
+ReferenceError: httpsServer is not defined
+[0m [90m 20 | [39m}[0m
+[0m [90m 21 | [39m[0m
+[0m[31m[1m>[22m[39m[90m 22 | [39mhttpsServer[33m.[39mlisten([33mPORT[39m[33m,[39m () [33m=>[39m {[0m
+[0m [90m 23 | [39m  console[33m.[39mlog([32m"HTTPS Server running on port 3000"[39m)[33m;[39m[0m
+[0m [90m 24 | [39m})[33m;[39m[0m
+[0m [90m 25 | [39m[0m
+ReferenceError: httpsServer is not defined
+    at eval (webpack-internal:///./pages/_app.js:43:1)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+error - pages/_app.js (22:0) @ eval
+ReferenceError: httpsServer is not defined
+[0m [90m 20 | [39m}[0m
+[0m [90m 21 | [39m[0m
+[0m[31m[1m>[22m[39m[90m 22 | [39mhttpsServer[33m.[39mlisten([33mPORT[39m[33m,[39m () [33m=>[39m {[0m
+[0m [90m 23 | [39m  console[33m.[39mlog([32m"HTTPS Server running on port 3000"[39m)[33m;[39m[0m
+[0m [90m 24 | [39m})[33m;[39m[0m
+[0m [90m 25 | [39m[0m
+ReferenceError: httpsServer is not defined
+    at eval (webpack-internal:///./pages/_app.js:43:1)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  page: '/'
+}
+ReferenceError: httpsServer is not defined
+    at eval (webpack-internal:///./pages/_app.js:43:1)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  page: '/'
+}
+ReferenceError: httpsServer is not defined
+    at eval (webpack-internal:///./pages/_app.js:43:1)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  page: '/'
+}
+ReferenceError: httpsServer is not defined
+    at eval (webpack-internal:///./pages/_app.js:43:1)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  page: '/'
+}
+ReferenceError: httpsServer is not defined
+    at eval (webpack-internal:///./pages/_app.js:43:1)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  page: '/'
+}
+ReferenceError: httpsServer is not defined
+    at eval (webpack-internal:///./pages/_app.js:43:1)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  page: '/'
+}
+warn  - Port 3000 is in use, trying 3001 instead.
+(node:54107) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:54107) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:54107) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+warn  - Port 3000 is in use, trying 3001 instead.
+(node:54151) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:54151) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:54151) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+warn  - Port 3000 is in use, trying 3001 instead.
+(node:54196) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:54196) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:54196) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+database error!
+database error!
+API resolved without sending a response for /api/login, this may result in stalled requests.
+API resolved without sending a response for /api/login, this may result in stalled requests.
+database error!
+API resolved without sending a response for /api/login, this may result in stalled requests.
+database error!
+database error!
+warn  - Port 3000 is in use, trying 3001 instead.
+(node:84773) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:84773) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:84773) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+[INFO] PID: 1916
+[INFO] PID: 1916
+[INFO] PID: 1916
+Killed
+(node:85270) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:85270) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:85270) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1701) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1701) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1701) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+[INFO] PID: 2139
+Killed
+error Command failed with exit code 137.
+(node:2812) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2812) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2812) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+[INFO] PID: 2856
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 2958
+warn  - Port 3000 is in use, trying 3001 instead.
+warn  - Port 3000 is in use, trying 3001 instead.
+warn  - Port 3001 is in use, trying 3002 instead.
+warn  - Port 3000 is in use, trying 3001 instead.
+warn  - Port 3001 is in use, trying 3002 instead.
+warn  - Port 3002 is in use, trying 3003 instead.
+[INFO] PID: 2958
+warn  - Port 3000 is in use, trying 3001 instead.
+warn  - Port 3001 is in use, trying 3002 instead.
+warn  - Port 3002 is in use, trying 3003 instead.
+warn  - Port 3003 is in use, trying 3004 instead.
+(node:1754) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1754) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1754) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1805) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1805) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1805) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1857) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1857) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1857) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1911) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1911) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1911) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2009) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2009) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2009) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2070) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2070) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2070) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2317) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2317) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2317) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2372) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2372) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2372) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2616) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2616) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2616) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2670) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2670) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2670) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2738) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2738) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2738) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2794) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2794) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2794) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2851) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2851) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2851) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3830) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3830) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3830) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4077) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4077) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4077) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1586) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1586) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1586) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1641) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1641) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1641) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1683) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1683) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1683) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1822) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1822) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1822) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+[INFO] PID: 2185
+[INFO] PID: 2185
+warn  - Port 3000 is in use, trying 3001 instead.
+(node:2605) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2605) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2605) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+warn  - Port 3000 is in use, trying 3001 instead.
+(node:2665) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2665) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2665) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+Killed
+(node:2729) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2729) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2729) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2790) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2790) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2790) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+[INFO] PID: 2834
+[INFO] PID: 2834
+warn  - Port 3000 is in use, trying 3001 instead.
+Killed
+[INFO] PID: 2990
+[INFO] PID: 2990
+[INFO] PID: 3057
+[INFO] PID: 3114
+[INFO] PID: 3114
+[INFO] PID: 2414
+[INFO] PID: 2414
+[INFO] PID: 2477
+[INFO] PID: 2477
+[INFO] PID: 2539
+[INFO] PID: 2682
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 2790
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 2869
+[INFO] PID: 2869
+[INFO] PID: 2869
+Killed
+error Command failed with exit code 137.
+(node:3967) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3967) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3967) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4216) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4216) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4216) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4277) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4277) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4277) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4342) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4342) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4342) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+[INFO] PID: 4400
+warn  - Port 3000 is in use, trying 3001 instead.
+(node:4478) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4478) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4478) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+warn  - Port 3000 is in use, trying 3001 instead.
+(node:4537) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4537) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4537) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+warn  - Port 3000 is in use, trying 3001 instead.
+(node:4600) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4600) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4600) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:919) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:919) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:919) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1927) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1927) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1927) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1997) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1997) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1997) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2051) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2051) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2051) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2120) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2120) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2120) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2179) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2179) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2179) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2394) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2394) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2394) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2462) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2462) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2462) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2523) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2523) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2523) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2770) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2770) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2770) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2826) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2826) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2826) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+[INFO] PID: 2878
+warn  - Port 3000 is in use, trying 3001 instead.
+(node:2980) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2980) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2980) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:1941) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:1941) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:1941) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2151) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2151) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2151) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2353) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2353) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2353) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2416) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2416) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2416) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2482) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2482) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2482) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2543) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2543) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2543) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2803) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2803) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2803) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2860) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2860) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2860) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2925) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2925) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2925) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:2984) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:2984) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:2984) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3046) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3046) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3046) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3108) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3108) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3108) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3331) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3331) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3331) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3396) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3396) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3396) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3465) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3465) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3465) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3530) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3530) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3530) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3601) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3601) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3601) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3675) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3675) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3675) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3741) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3741) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3741) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3797) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3797) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3797) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3862) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3862) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3862) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:3974) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:3974) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:3974) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4030) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4030) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4030) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4089) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4089) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4089) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4148) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4148) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4148) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4203) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4203) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4203) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4262) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4262) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4262) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4314) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4314) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4314) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4369) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4369) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4369) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4454) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4454) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4454) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4526) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4526) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4526) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4586) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4586) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4586) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4632) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4632) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4632) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4687) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4687) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4687) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:4745) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:4745) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:4745) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+[INFO] PID: 1953
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 2025
+Killed
+[INFO] PID: 2167
+Killed
+[INFO] PID: 2414
+[INFO] PID: 2414
+[INFO] PID: 2414
+API resolved without sending a response for /api/login, this may result in stalled requests.
+[INFO] PID: 2414
+[INFO] PID: 2414
+[INFO] PID: 2414
+API resolved without sending a response for /api/login, this may result in stalled requests.
+[INFO] PID: 2414
+API resolved without sending a response for /api/login, this may result in stalled requests.
+[INFO] PID: 2414
+[INFO] PID: 2414
+[INFO] PID: 2414
+API resolved without sending a response for /api/login, this may result in stalled requests.
+[INFO] PID: 2414
+[INFO] PID: 2414
+Killed
+(node:60093) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:60093) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:60093) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:60320) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:60320) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:60320) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:68016) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:68016) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:68016) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:68241) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:68241) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:68241) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:68508) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:68508) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:68508) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:68941) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:68941) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:68941) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:69175) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:69175) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:69175) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:69413) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:69413) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:69413) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:69640) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:69640) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:69640) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:69873) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:69873) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:69873) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:70105) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:70105) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:70105) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:70338) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:70338) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:70338) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:70575) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:70575) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:70575) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:70814) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:70814) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:70814) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:71039) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:71039) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:71039) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:71272) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:71272) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:71272) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+(node:71508) UnhandledPromiseRejectionWarning: ReferenceError: TextEncoder is not defined
+    at /usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:67:19
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/cjs/react-server-dom-webpack-writer.browser.development.server.js:900:5)
+    at Module._compile (internal/modules/cjs/loader.js:778:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+    at Module.load (internal/modules/cjs/loader.js:653:32)
+    at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+    at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+    at Module.require (internal/modules/cjs/loader.js:692:17)
+    at require (internal/modules/cjs/helpers.js:25:18)
+    at Object.<anonymous> (/usr/local/booyahLab/polly-yang/node_modules/next/dist/compiled/react-server-dom-webpack/writer.browser.server.js:6:20)
+(node:71508) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). (rejection id: 1)
+(node:71508) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+error - Failed to load next.config.js, see more info here https://nextjs.org/docs/messages/next-config-error
+Error: Not supported
+    at Object.loadConfig [as default] (/usr/local/booyahLab/polly-yang/node_modules/next/dist/server/config.js:399:74)
+error Command failed with exit code 1.
+[INFO] PID: 71745
+warn  - Port 3000 is in use, trying 3001 instead.
+[INFO] PID: 71745
+Killed
+warn  - Port 3000 is in use, trying 3001 instead.
+[INFO] PID: 840
+Killed
+[INFO] PID: 2333
+Killed
+[INFO] PID: 2467
+[INFO] PID: 2467
+[INFO] PID: 2467
+Killed
+[INFO] PID: 20776
+API resolved without sending a response for /api/login, this may result in stalled requests.
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 21320
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 21563
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 21650
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 22726
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 25499
+[INFO] PID: 25499
+API resolved without sending a response for /api/login, this may result in stalled requests.
+[INFO] PID: 25499
+API resolved without sending a response for /api/login, this may result in stalled requests.
+[INFO] PID: 25499
+[INFO] PID: 25499
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 26551
+Killed
+error Command failed with exit code 137.
+[INFO] PID: 26680
+[INFO] PID: 26680
+[INFO] PID: 26680
+API resolved without sending a response for /api/login, this may result in stalled requests.
