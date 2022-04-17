@@ -16,6 +16,8 @@ export default function BulletinDash(props) {
     const { bulletins, getNewBulletins } = props
     console.log("bulletins robbbbb: ", bulletins)
 
+
+
     const handleOpen = (postid, value) => {
         setOpened(opened.set(postid, value))
         console.log('opened is changed!', opened)
