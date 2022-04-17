@@ -8,7 +8,7 @@ async function bulletinRoute(req,res){
     const user = req.session.user
     
     const {
-        query: { per_page, page },
+        query: { per_page, obj_id },
     } = req
     
 
@@ -18,12 +18,12 @@ async function bulletinRoute(req,res){
         return;
     }
     
-    console.log("> getpost.js: QUERY PARAMS:", per_page, page)
+    console.log("> getpost.js: QUERY PARAMS:", per_page, obj_id)
     console.log("> getpost.js: User's City:", user.cityID[3])
     console.log("> getpost.js: User's ID:", user.uid)
 
     try{
-        const data = await runner('getBulletins',[ user.cityID, user.uid, parseInt(per_page), parseInt(page) ])
+        const data = await runner('getBulletins',[ user.cityID, user.uid, parseInt(per_page), obj_id ])
         if(data.error){
             throw "An error occurred while retrieving the data"
         }

@@ -1,9 +1,10 @@
 import BulletinRow from '../components/bulletinRow'
 import { getCurrentUnix, unixToReg } from '../lib/timestamp'
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Router from 'next/router'
 
 export default function BulletinDash(props){
+
     const user = {
         uid: props.uid,
         username: props.username,

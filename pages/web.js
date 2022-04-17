@@ -14,6 +14,7 @@ import fetchJson from "../lib/fetchJson"
 //import useBulletin from '../lib/useBulletin'
 import useOnScreen from '../lib/useOnScreen'
 import { getElections } from '../lib/civic'
+import useBulletin from '../lib/useBulletin'
 
 //next imports
 import Link from 'next/link'
@@ -23,65 +24,77 @@ import { useRouter } from "next/router"
 
 
 
-const PAGE_SIZE = 6  // the number of pages that gets loaded on every call
-
-const getKey = (pageIndex, previousPageData, pageSize) => {
-    if(previousPageData && !previousPageData.length) return null
-
-    return `/api/posts/getpost?per_page=${pageSize}&page=${pageIndex+1}`
-}
-
-const fetcher = url => fetch(url).then(r => r.json())
-
-
-
-
-export default function WebApp({ electionData }){
-    // get a specified page from the url /web?page=XXX
-    const router = useRouter()
-    const { page } = router.query
-
-    // setting up the infinite scroll
-    const ref = useRef()
-    const isVisible = useOnScreen(ref)
-
+export default function WebApp(){
+    // if user is not logged in take them back to login page
     const { user, mutateUser } = useUser({
         redirectTo: "/login",
     })
 
-    const {data, error, mutate, size, setSize, isValidating} = useSWRInfinite(
-        (...args) => getKey(...args, PAGE_SIZE),
-        fetcher,
-        {
-            refreshInterval: 5000,
-            revalidateIfStale: false,
+    // top checks the latest post in the database and sees if it is already shown on screen or not
+    const [top, setTop] = useState(null)
+    useEffect(() => {
+        const checkNewPosts = async () => {
+            console.log('JUST A TEST!')
+            const res = await fetch('/api/posts/getpost?per_page=1&obj_id=0').then(res => res.json())
+            console.log(res[0])
+            setTop(res?.[0]?._id)
         }
-    )
 
+        if(top === null){
+            checkNewPosts()
+        }
+        var poller = setInterval(checkNewPosts, 5000)
 
-    const bulletins = data ? [].concat(...data) : []
-    const isLoadingInitialData = !data && !error
-    const isLoadingMore = isLoadingInitialData || (size>0 && data && typeof data[size-1]==='undefined')
-    const isEmpty = data?.[0]?.length === 0
-    const isReachingEnd = size === PAGE_SIZE
-    const isRefreshing = isValidating && data && data.length === size
+        return () => {
+            clearInterval(poller)
+        }
+    }, [])
+
+    // setting up the infinite scroll element
+    const ref = useRef()
+    const isVisible = useOnScreen(ref)
+
+    // handles grabbing the bulletin posts when you scroll and when you first load the bulletin page
+    const [bulletins, setBulletins] = useState([])
 
     useEffect(() => {
-        if(isVisible && !isReachingEnd && !isRefreshing){
-            setSize(size+1)
+        const fetchData = async () => {
+            let key = 0
+            if(bulletins.length > 0){
+                key = bulletins?.[bulletins.length-1]?._id
+            }
+            const res = await fetch(`/api/posts/getpost?per_page=${10}&obj_id=${key}`).then(res => res.json())
+            setBulletins(bulletins.concat(res))
         }
-    }, [isVisible, isRefreshing])
 
+        if(isVisible){
+            fetchData()
+        }
+    }, [isVisible])
 
+    const refreshFeed = async () => {
+        console.log("fucking odngji")
+        
+        // scrolls back to top of screen
+        document.body.scrollTop = 0
+        document.documentElement.scrollTop = 0
+
+        const res = await fetch(`/api/posts/getpost?per_page=${10}&obj_id=0`).then(res => res.json())
+        setBulletins(res)
+    }
+
+    // get a specified page from the url /web?page=XXX
+    const router = useRouter()
+    const { page } = router.query
 
     // state to keep track of which screen is open and useEffect hook to set it to the url passed page param
     const [screen, setScreen] = useState('elections')
     useEffect(() => {
-        console.log('YOOOHOO',page)
         if(!page) return
         setScreen(page)
     }, [page])
     
+
 
     if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
         return(
@@ -125,10 +138,12 @@ export default function WebApp({ electionData }){
                     </Link>
                 </div>
             </div>
+            
 
             {/* <p>{JSON.stringify(bulletins)}</p> */}
             {/* <p>{page}</p> */}
-            <p>{JSON.stringify(electionData)}</p>
+            {/* <p>{JSON.stringify(electionData)}</p> */}
+            {/* <p>{top}</p> */}
 
             <div id="pageWrapper" className="flex py-5 w-2/3 font-dongji h-auto mx-auto">
 
@@ -188,6 +203,9 @@ export default function WebApp({ electionData }){
                 </div>
 
                 <div id="middlePanel" className="h-auto border-l-[3px] border-slate-300 w-4/6 flex flex-col items-center">
+                    <div className={(top !== bulletins?.[0]?._id && bulletins.length > 0 && screen==="bulletins")?"bg-emerald-400 inset-x-0 mx-auto p-1 rounded-xl top-5 sticky z-50":"hidden"}>
+                        <button className="text-center font-dongji text-white w-full" onClick={() => refreshFeed()}>New Posts</button>
+                    </div>
                     { screen==="elections" ? (
                         <div className="w-full">
                             <ElectionDash
@@ -207,7 +225,7 @@ export default function WebApp({ electionData }){
                                 bulletins={{bulletins}}
                             />
                             <div className="w-full text-bold text-center invisible" ref={ref}>
-                                {isLoadingMore ? 'loading...' : isReachingEnd ? 'no more posts' : ''}
+                                fucker
                             </div>
                         </div>
                     ) : screen==="cards" ? (
@@ -232,10 +250,10 @@ export default function WebApp({ electionData }){
     )
 }
 
-export async function getStaticProps(context){
-    const electionData = await getElections()
+// export async function getStaticProps(context){
+//     const electionData = await getElections()
 
-    return {
-        props: { electionData }
-    }
-}
+//     return {
+//         props: { electionData }
+//     }
+// }
