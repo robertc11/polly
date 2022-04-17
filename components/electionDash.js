@@ -27,8 +27,8 @@ export default function ElectionDash(props){
                         <div>
                             <h1>City</h1>
                             <li>
-                                {elections.city.map((thisElection) => (
-                                    <ul>
+                                {elections.city.map((thisElection,index) => (
+                                    <ul key={index}>
                                         <h1>{thisElection.title}</h1>
                                         <p>{thisElection.details}</p>
                                         {thisElection.links.map((thisLink) => (
@@ -43,8 +43,8 @@ export default function ElectionDash(props){
                         <div>
                             <h1>County</h1>
                             <li>
-                                {elections.county.map((thisElection) => (
-                                    <ul>
+                                {elections.county.map((thisElection,index) => (
+                                    <ul key={index}>
                                         <h1>{thisElection.title}</h1>
                                         <p>{thisElection.details}</p>
                                         {thisElection.links.map((thisLink) => (
@@ -59,8 +59,8 @@ export default function ElectionDash(props){
                         <div>
                             <h1>State</h1>
                             <li>
-                                {elections.state.map((thisElection) => (
-                                    <ul>
+                                {elections.state.map((thisElection,index) => (
+                                    <ul key={index}>
                                         <h1>{thisElection.title}</h1>
                                         <p>{thisElection.details}</p>
                                         {thisElection.links.map((thisLink) => (
@@ -75,8 +75,8 @@ export default function ElectionDash(props){
                         <div>
                             <h1>Country</h1>
                             <li>
-                                {elections.country.map((thisElection) => (
-                                    <ul>
+                                {elections.country.map((thisElection,index) => (
+                                    <ul key={index}>
                                         <h1>{thisElection.title}</h1>
                                         <p>{thisElection.details}</p>
                                         {thisElection.links.map((thisLink) => (

@@ -18,7 +18,7 @@ import RegistrationForm from '../components/formregister'
 
 
 
-export default function register(){
+export default function Register(){
     const [errorMsg, setErrorMsg] = useState("");
 
     return(
@@ -48,7 +48,7 @@ export default function register(){
                             password: event.currentTarget.password.value,
                         }
 
-                        console.log("this is the new user",body)
+                        console.log("> registration.js: NEW USER:",body)
 
                         try{
                             const res = await fetchJson("/api/createuser", {
@@ -63,7 +63,7 @@ export default function register(){
                             if(error instanceof FetchError){
                                 setErrorMsg(error.message)
                             }else{
-                                console.error("An unexpected error happened:", error)
+                                console.error("> registration.js: An unexpected error happened:", error)
                             }
                         }
                     }}
