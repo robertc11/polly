@@ -26,7 +26,6 @@ export default function BulletinDash(props) {
     // const { bulletins } = useBulletin(user)
     //const { bulletins } = props.bulletins
 
-
     return (
         <>
             {bulletins !== undefined && (
