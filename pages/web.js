@@ -43,7 +43,7 @@ export default function WebApp(){
         if(top === null){
             checkNewPosts()
         }
-        var poller = setInterval(checkNewPosts, 5000)
+        var poller = setInterval(checkNewPosts, 90000)
 
         return () => {
             clearInterval(poller)
@@ -76,8 +76,7 @@ export default function WebApp(){
         console.log("fucking odngji")
         
         // scrolls back to top of screen
-        document.body.scrollTop = 0
-        document.documentElement.scrollTop = 0
+        window.scrollTo({top: 0, behavior: 'smooth'})
 
         const res = await fetch(`/api/posts/getpost?per_page=${10}&obj_id=0`).then(res => res.json())
         setBulletins(res)
@@ -203,8 +202,8 @@ export default function WebApp(){
                 </div>
 
                 <div id="middlePanel" className="h-auto border-l-[3px] border-slate-300 w-4/6 flex flex-col items-center">
-                    <div className={(top !== bulletins?.[0]?._id && bulletins.length > 0 && screen==="bulletins")?"bg-emerald-400 inset-x-0 mx-auto p-1 rounded-xl top-5 sticky z-50":"hidden"}>
-                        <button className="text-center font-dongji text-white w-full" onClick={() => refreshFeed()}>New Posts</button>
+                    <div className={(top !== bulletins?.[0]?._id && bulletins.length > 0 && screen==="bulletins")?"bg-slate-400 inset-x-0 mx-auto rounded-xl top-5 sticky z-50":"hidden"}>
+                        <button className="text-center font-dongji text-white w-full py-1 px-2" onClick={() => refreshFeed()}>New Posts</button>
                     </div>
                     { screen==="elections" ? (
                         <div className="w-full">
