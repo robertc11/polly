@@ -7,7 +7,9 @@ import Router from 'next/router'
 import * as user from '../lib/useUser'
 
 
+
 export default function BulletinDash(props) {
+
 
     const [opened, setOpened] = useState(new Map())
     const [popup, setPopup] = useState(false)
@@ -20,57 +22,10 @@ export default function BulletinDash(props) {
         setOpened(opened.set(postid, value))
         console.log('opened is changed!', opened)
     }
-    // const create = (e) => {
-    //     e.preventDefault()
-    //     const fetchstatus = null
-    //     Swal.fire({
-    //         title: "Create a Post!",
-    //         html: '<input id="postTitle" placeholder="Your shiny new title" class="w-full rounded border-2 border-violet-500 mb-5 p-1 focus:ring focus:outline-none">' +
-    //             '<textarea id="postContent" placeholder="Give us the deets 👀" class="w-full rounded border-2 border-violet-500 p-1 focus:ring focus:outline-none">',
-    //         focusConfirm: false,
-    //         showDenyButton: true,
-    //         denyButtonColor: "#A78BFA",
-    //         showCloseButton: true,
-    //         showConfirmButton: true,
-    //         confirmButtonText: "Post!",
-    //         confirmButtonColor: "#6EE7B7",
-    //         denyButtonText: "Cancel",
-    //         preConfirm: async () => {
-    //             const title = document.getElementById('postTitle').value
-    //             const body = document.getElementById('postContent').value
-    //             if (title.trim() === '' || body.trim() === '') return
-    //             const newPost = {
-    //                 upvotes: 1,
-    //                 downvotes: 0,
-    //                 statement: title,
-    //                 map: false,
-    //                 mapLink: "",
-    //                 city: user.cityID[3],
-    //                 timestamp: getCurrentUnix(),
-    //                 body: body,
-    //                 user: user,
-    //             }
-    //             const result = await fetch("/api/createpost", {
-    //                 method: "POST",
-    //                 headers: { "Content-Type": "application/json" },
-    //                 body: JSON.stringify(newPost)
-    //             })
-    //             console.log('this is the result of trying to create the post!', result)
-    //             fetchstatus = result.status
-    //         }
-    //     }).then((result) => {
-    //         console.log('this is the result of the swal!', result, fetchstatus)
-    //         if (result.isConfirmed && fetchstatus === 200) {
-    //             Swal.fire(
-    //                 'Success!',
-    //                 'Your post has been added.',
-    //                 'success',
-    //             )
-    //         }
-    //     })
-    // }
+    
     // const { bulletins } = useBulletin(user)
     //const { bulletins } = props.bulletins
+
 
     return (
         <>
@@ -78,7 +33,7 @@ export default function BulletinDash(props) {
                 <>
                     <div className="flex items-center relative w-full">
                         <h1 className="text-slate-700 text-center w-full text-4xl font-bold mt-3 mb-5">Community Bulletin</h1>
-                        <button onClick={(e) => create(e)} className="absolute p-5 rounded-full bg-emerald-300 shadow text-white right-4 hover:bg-emerald-500">
+                        <button onClick={() => Router.push("/createPostPage")} className="absolute p-5 rounded-full bg-emerald-300 shadow text-white right-4 hover:bg-emerald-500">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                             </svg>
@@ -116,6 +71,7 @@ export default function BulletinDash(props) {
                                             getNewBulletins={getNewBulletins}
                                         >
                                             <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink} key={thisBulletin.mapLink}></iframe>
+
                                         </BulletinRow>
                                     </React.Fragment>
                                 ))}
@@ -125,6 +81,8 @@ export default function BulletinDash(props) {
                     {/* <p>{console.log('opened is reset!',opened)}</p> */}
                 </>
             )}
+
+
         </>
     )
 }

@@ -10,12 +10,12 @@ async function bulletinRoute(req,res){
 
     if(!user || user.isLoggedIn === false) {
         res.status(401).end();
-        console.log("ERRROR")
+        console.log("> bulletin.js: ERROR: User not logged in!")
         return;
     }
     
-    console.log("USER'S CITY", user.cityID[3])
-    console.log("USER'S ID", user.uid)
+    console.log("> bulletin.js: User's City:", user.cityID[3])
+    console.log("> bulletin.js: User's ID:", user.uid)
 
     try{
         const data = await getBulletins(user.cityID, user.uid)
@@ -24,7 +24,7 @@ async function bulletinRoute(req,res){
         }
         res.json(data.resdb)
     }catch(err){
-        console.log("FUCKING SHITTTER",err)
+        console.log("> bulletin.js: ERROR:",err)
         res.status(500).json({message:err})
     }
 

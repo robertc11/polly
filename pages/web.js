@@ -1,5 +1,5 @@
 // React imports
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // component imports
 import Logo from '../components/logo'
@@ -18,15 +18,27 @@ import Router from "next/router";
 
 
 
-export default function webApp(){
+export default function WebApp(){
     const { user, mutateUser } = useUser({
         redirectTo: "/login",
     })
 
-    const { bulletins } = useBulletin(user)
 
     const [screen, setScreen] = useState('elections')
-    
+    const [bulletins, setBulletins] = useState(undefined)
+
+    useEffect(() => {
+        const initBulletins = async () => {
+            const bs = await fetchJson("/api/bulletin", {method: "GET"})
+            setBulletins(bs)
+        }
+        initBulletins()
+    }, [])
+
+    const  getNewBulletins = async () => {
+        const newBulletins = await fetchJson("api/bulletin", {method: "GET"})
+        setBulletins(newBulletins)
+    }
 
     if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
         return(
@@ -132,19 +144,23 @@ export default function webApp(){
 
                 <div id="middlePanel" className="h-auto border-l-[3px] border-slate-300 w-4/6 flex flex-col items-center">
                     { screen==="elections" ? (
-                        <ElectionDash
-                            uid={user.uid}
-                            username={user.username}
-                            cityid={user.cityID}
-                            login={user.isLoggedIn}
-                        />
+                        <div>
+                            <h1 className="text-slate-700 text-4xl font-bold mt-3">Elections</h1>
+                        </div>
+                        // <ElectionDash
+                        //     uid={user.uid}
+                        //     username={user.username}
+                        //     cityid={user.cityID}
+                        //     login={user.isLoggedIn}
+                        // />
                     ) : screen==="bulletin" ? (
                         <BulletinDash
                             uid={user.uid}
                             username={user.username}
                             cityid={user.cityID}
                             login={user.isLoggedIn}
-                            bulletins={{bulletins}}
+                            bulletins={bulletins}
+                            getNewBulletins={getNewBulletins}
                         />
                     ) : screen==="cards" ? (
                         <div>

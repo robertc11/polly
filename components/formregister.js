@@ -8,6 +8,7 @@ import useValidateUsername from '../lib/useValidateUsername'
 // Next Imports
 import Head from 'next/head'
 import Image from 'next/image'
+import Script from 'next/script'
 
 // Img Imports
 import googleLogo from '../public/powered_by_google_on_white.png'
@@ -44,12 +45,9 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
 
   return(
     <>
-      <Head>
-        <script
-          type="text/javascript"
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo&language=en&libraries=places"
-        ></script>
-      </Head>
+      <Script
+        src={"https://maps.googleapis.com/maps/api/js?key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo&language=en&libraries=places"}
+      ></Script>
 
       <form onSubmit={ onSubmit } className="w-full p-5 flex flex-col justify-center items-center font-kelly text-slate-600">
         
@@ -130,11 +128,11 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
           </h3> */}
 
           <label className="w-1/2 mx-auto">City:</label>
-          <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="city" placeholder=" Allen" defaultValue={selectedPrediction?.structured_formatting?.secondary_text.split(',')[0].trim() || ""} required />
+          <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="city" placeholder=" Allen" defaultValue={selectedPrediction?.structured_formatting?.secondary_text.split(',')[0].trim() || ""} autoComplete="off" required />
           
 
           <label className="w-1/2 mx-auto">State:</label>
-          <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="state" placeholder=" TX/Texas" defaultValue={selectedPrediction?.structured_formatting?.secondary_text.split(',')[1].trim() || ""} required />
+          <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="state" placeholder=" TX/Texas" defaultValue={selectedPrediction?.structured_formatting?.secondary_text.split(',')[1].trim() || ""} autoComplete="off" required />
           
 
           <label className="w-1/2 mx-auto">Postal Code:</label>

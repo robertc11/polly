@@ -57,7 +57,7 @@ export default function Login() {
                                     setErrorMsg(error.data.message)
                                     setLoginCount(loginCount+1)
                                 }else{
-                                    console.error("An unexpected error happened:", error)
+                                    console.error("> /pages/login.js: An unexpected error happened:", error)
                                 }
                             }
                         }}
