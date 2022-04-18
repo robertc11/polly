@@ -20,57 +20,55 @@ export default function BulletinDash(props) {
         setOpened(opened.set(postid, value))
         console.log('opened is changed!', opened)
     }
-
-    const create = (e) => {
-        e.preventDefault()
-        const fetchstatus = null
-        Swal.fire({
-            title: "Create a Post!",
-            html: '<input id="postTitle" placeholder="Your shiny new title" class="w-full rounded border-2 border-violet-500 mb-5 p-1 focus:ring focus:outline-none">' +
-                '<textarea id="postContent" placeholder="Give us the deets 👀" class="w-full rounded border-2 border-violet-500 p-1 focus:ring focus:outline-none">',
-            focusConfirm: false,
-            showDenyButton: true,
-            denyButtonColor: "#A78BFA",
-            showCloseButton: true,
-            showConfirmButton: true,
-            confirmButtonText: "Post!",
-            confirmButtonColor: "#6EE7B7",
-            denyButtonText: "Cancel",
-            preConfirm: async () => {
-                const title = document.getElementById('postTitle').value
-                const body = document.getElementById('postContent').value
-                if (title.trim() === '' || body.trim() === '') return
-                const newPost = {
-                    upvotes: 1,
-                    downvotes: 0,
-                    statement: title,
-                    map: false,
-                    mapLink: "",
-                    city: user.cityID[3],
-                    timestamp: getCurrentUnix(),
-                    body: body,
-                    user: user,
-                }
-                const result = await fetch("/api/createpost", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(newPost)
-                })
-                console.log('this is the result of trying to create the post!', result)
-                fetchstatus = result.status
-            }
-        }).then((result) => {
-            console.log('this is the result of the swal!', result, fetchstatus)
-            if (result.isConfirmed && fetchstatus === 200) {
-                Swal.fire(
-                    'Success!',
-                    'Your post has been added.',
-                    'success',
-                )
-            }
-        })
-    }
-
+    // const create = (e) => {
+    //     e.preventDefault()
+    //     const fetchstatus = null
+    //     Swal.fire({
+    //         title: "Create a Post!",
+    //         html: '<input id="postTitle" placeholder="Your shiny new title" class="w-full rounded border-2 border-violet-500 mb-5 p-1 focus:ring focus:outline-none">' +
+    //             '<textarea id="postContent" placeholder="Give us the deets 👀" class="w-full rounded border-2 border-violet-500 p-1 focus:ring focus:outline-none">',
+    //         focusConfirm: false,
+    //         showDenyButton: true,
+    //         denyButtonColor: "#A78BFA",
+    //         showCloseButton: true,
+    //         showConfirmButton: true,
+    //         confirmButtonText: "Post!",
+    //         confirmButtonColor: "#6EE7B7",
+    //         denyButtonText: "Cancel",
+    //         preConfirm: async () => {
+    //             const title = document.getElementById('postTitle').value
+    //             const body = document.getElementById('postContent').value
+    //             if (title.trim() === '' || body.trim() === '') return
+    //             const newPost = {
+    //                 upvotes: 1,
+    //                 downvotes: 0,
+    //                 statement: title,
+    //                 map: false,
+    //                 mapLink: "",
+    //                 city: user.cityID[3],
+    //                 timestamp: getCurrentUnix(),
+    //                 body: body,
+    //                 user: user,
+    //             }
+    //             const result = await fetch("/api/createpost", {
+    //                 method: "POST",
+    //                 headers: { "Content-Type": "application/json" },
+    //                 body: JSON.stringify(newPost)
+    //             })
+    //             console.log('this is the result of trying to create the post!', result)
+    //             fetchstatus = result.status
+    //         }
+    //     }).then((result) => {
+    //         console.log('this is the result of the swal!', result, fetchstatus)
+    //         if (result.isConfirmed && fetchstatus === 200) {
+    //             Swal.fire(
+    //                 'Success!',
+    //                 'Your post has been added.',
+    //                 'success',
+    //             )
+    //         }
+    //     })
+    // }
     // const { bulletins } = useBulletin(user)
     //const { bulletins } = props.bulletins
 
