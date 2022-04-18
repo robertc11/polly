@@ -24,7 +24,7 @@ import { useRouter } from "next/router"
 
 
 
-export default function WebApp(){
+export default function WebApp({ electionData }){
     // if user is not logged in take them back to login page
     const { user, mutateUser } = useUser({
         redirectTo: "/login",
@@ -141,7 +141,7 @@ export default function WebApp(){
 
             {/* <p>{JSON.stringify(bulletins)}</p> */}
             {/* <p>{page}</p> */}
-            {/* <p>{JSON.stringify(electionData)}</p> */}
+            <p>{JSON.stringify(electionData)}</p>
             {/* <p>{top}</p> */}
 
             <div id="pageWrapper" className="flex py-5 w-2/3 font-dongji h-auto mx-auto">
@@ -249,10 +249,10 @@ export default function WebApp(){
     )
 }
 
-// export async function getStaticProps(context){
-//     const electionData = await getElections()
+export async function getStaticProps(context){
+    const electionData = await getElections()
 
-//     return {
-//         props: { electionData }
-//     }
-// }
+    return {
+        props: { electionData }
+    }
+}
