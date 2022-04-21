@@ -24,7 +24,7 @@ import { useRouter } from "next/router"
 
 
 
-export default function WebApp({ electionData }){
+export default function WebApp(){
     // if user is not logged in take them back to login page
     const { user, mutateUser } = useUser({
         redirectTo: "/login",
@@ -56,6 +56,7 @@ export default function WebApp({ electionData }){
 
     // handles grabbing the bulletin posts when you scroll and when you first load the bulletin page
     const [bulletins, setBulletins] = useState([])
+    const [finished, setFinished] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -65,12 +66,15 @@ export default function WebApp({ electionData }){
             }
             const res = await fetch(`/api/posts/getpost?per_page=${10}&obj_id=${key}`).then(res => res.json())
             setBulletins(bulletins.concat(res))
+            if(res.length < 10){
+                setFinished(true)
+            }
         }
 
-        if(isVisible){
+        if(isVisible && !finished){
             fetchData()
         }
-    }, [isVisible])
+    })
 
     const refreshFeed = async () => {
         console.log("fucking odngji")
@@ -80,6 +84,7 @@ export default function WebApp({ electionData }){
 
         const res = await fetch(`/api/posts/getpost?per_page=${10}&obj_id=0`).then(res => res.json())
         setBulletins(res)
+        setFinished(false)
     }
 
     // get a specified page from the url /web?page=XXX
@@ -141,8 +146,7 @@ export default function WebApp({ electionData }){
 
             {/* <p>{JSON.stringify(bulletins)}</p> */}
             {/* <p>{page}</p> */}
-            <p>{JSON.stringify(electionData)}</p>
-            {/* <p>{top}</p> */}
+            {/* <p>{JSON.stringify(electionData)}</p> */}
 
             <div id="pageWrapper" className="flex py-5 w-2/3 font-dongji h-auto mx-auto">
 
@@ -202,7 +206,7 @@ export default function WebApp({ electionData }){
                 </div>
 
                 <div id="middlePanel" className="h-auto border-l-[3px] border-slate-300 w-4/6 flex flex-col items-center">
-                    <div className={(top !== bulletins?.[0]?._id && bulletins.length > 0 && screen==="bulletins")?"bg-slate-400 inset-x-0 mx-auto rounded-xl top-5 sticky z-50":"hidden"}>
+                    <div className={(top !== bulletins?.[0]?._id && bulletins.length > 0 && screen==="bulletins")?"bg-slate-400 inset-x-0 mx-auto rounded-xl top-5 sticky z-50 animate-slideInTop":"hidden"}>
                         <button className="text-center font-dongji text-white w-full py-1 px-2" onClick={() => refreshFeed()}>New Posts</button>
                     </div>
                     { screen==="elections" ? (
@@ -249,10 +253,10 @@ export default function WebApp({ electionData }){
     )
 }
 
-export async function getStaticProps(context){
-    const electionData = await getElections()
+// export async function getStaticProps(context){
+//     const electionData = await getElections()
 
-    return {
-        props: { electionData }
-    }
-}
+//     return {
+//         props: { electionData }
+//     }
+// }
