@@ -17,6 +17,10 @@ async function handler(req,res){
     const {upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user} = await req.body
     console.log('> createPost.js: Recieved Info:',upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user)
     try{
+        if(statement.trim()===''||body.trim()===''){
+            throw "Please fill in all fields!"
+        }
+        
         const resdb = await runner('createBulletin', [ upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user ])
         
         if(!resdb.success){
@@ -26,6 +30,6 @@ async function handler(req,res){
         res.status(200).json({ success: true })
     }catch(err){
         console.log('> createpost.js: ERR:',err)
-        res.status(500).json({success: false, msg: err})
+        res.status(400).json({success: false, msg: err})
     }
 }

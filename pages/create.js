@@ -97,7 +97,7 @@ export default function CreatePostPage(){
                 setError(res.msg)
             }
         }catch(err){
-            setError(err.message)
+            setError(err.data.msg)
         }
     }
 

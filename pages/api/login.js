@@ -25,6 +25,7 @@ export default withIronSessionApiRoute(async (req, res) => {
             if(err){
                 console.log(err)
                 res.status(500).json({ message: "Authentication Error" })
+                return
             }
             if(result){
                 const user = {
