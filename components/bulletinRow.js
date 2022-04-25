@@ -190,8 +190,9 @@ export default function BulletinRow(props){
                             </svg>     
                         </button>       
                     </div>
-
-                    <p className="text-right w-full">{props.timestamp}</p>
+                    
+                    <p className="text-right w-full text-xs">Posted by <span className="text-violet-400">{props.authorName}</span> on</p>
+                    <p className="text-right w-full text-xs">{props.timestamp}</p>
                 </div>
             </details>
         </>
