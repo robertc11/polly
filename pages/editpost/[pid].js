@@ -136,6 +136,13 @@ export default function EditPostPage(){
         }
     }
 
+    const generateLink = (lat,lng) => {
+        const plusCode = OpenLocationCode.encode(lat, lng)
+        plusCode = plusCode.replace('+','%2B')
+        const link = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo&q=${plusCode}`
+        return link
+    }
+
     return (
         <>
             { notFound ? (
@@ -222,9 +229,9 @@ export default function EditPostPage(){
                                     </Wrapper>   
                                 </div>
 
-                                {clicks.map((latLng, i) => (
+                                {/* {clicks.map((latLng, i) => (
                                     <pre key={i}>{JSON.stringify(latLng.toJSON(), null, 2)}</pre>
-                                ))}
+                                ))} */}
                                 
                                 <p className={error===''?"hidden":"text-center w-full text-red-500"}>{error}</p>
 
