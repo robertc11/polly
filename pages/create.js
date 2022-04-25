@@ -78,7 +78,6 @@ export default function CreatePostPage(){
             city: user.cityID[3],
             timestamp: getCurrentUnix(),
             body: e.currentTarget.textContent.value,
-            user: user,
         }
 
         console.log("processing data and submitting!", body)

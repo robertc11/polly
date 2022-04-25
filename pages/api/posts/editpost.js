@@ -14,16 +14,19 @@ async function handler(req,res){
     }
 
 
-    const {upvotes, downvotes, statement, map, mapLink, city, timestamp, body} = await req.body
-    console.log('> createPost.js: Recieved Info:',upvotes, downvotes, statement, map, mapLink, city, timestamp, body, usr)
+    const {authID, postID, statement, map, mapLink, body} = await req.body
+    console.log('> createPost.js: Recieved Info:',authID, postID, statement, map, mapLink, body, usr)
 
     try{
         if(statement.trim()===''||body.trim()===''){
             throw "Please fill in all fields!"
         }
-        
-        const resdb = await runner('createBulletin', [ upvotes, downvotes, statement, map, mapLink, city, timestamp, body, usr ])
-        
+        if(authID !== usr.uid){
+            throw "You are not authorized to make edits to this post"
+        }
+
+        const resdb = await runner('updateBulletin', [ postID, statement, map, mapLink, body ])
+
         if(!resdb.success){
             throw resdb.msg
         }

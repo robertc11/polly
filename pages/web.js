@@ -56,7 +56,6 @@ export default function WebApp(){
 
     // handles grabbing the bulletin posts when you scroll and when you first load the bulletin page
     const [bulletins, setBulletins] = useState([])
-    const [finished, setFinished] = useState(false)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -64,17 +63,14 @@ export default function WebApp(){
             if(bulletins.length > 0){
                 key = bulletins?.[bulletins.length-1]?._id
             }
-            const res = await fetch(`/api/posts/getpost?per_page=${10}&obj_id=${key}`).then(res => res.json())
+            const res = await fetch(`/api/posts/getpost?per_page=${15}&obj_id=${key}`).then(res => res.json())
             setBulletins(bulletins.concat(res))
-            if(res.length < 10){
-                setFinished(true)
-            }
         }
 
-        if(isVisible && !finished){
+        if(isVisible){
             fetchData()
         }
-    })
+    }, [isVisible])
 
     const refreshFeed = async () => {
         console.log("fucking odngji")
@@ -82,7 +78,7 @@ export default function WebApp(){
         // scrolls back to top of screen
         window.scrollTo({top: 0, behavior: 'smooth'})
 
-        const res = await fetch(`/api/posts/getpost?per_page=${10}&obj_id=0`).then(res => res.json())
+        const res = await fetch(`/api/posts/getpost?per_page=${15}&obj_id=0`).then(res => res.json())
         setBulletins(res)
         setFinished(false)
     }
@@ -124,6 +120,18 @@ export default function WebApp(){
                 <div className="flex items-center">
                     <h1 className="text-xl text-white font-bold ml-5">Hello, {user.first} {user.last}</h1>
                 </div>
+
+                {/* <div className="md:block w-1/4">
+                    <div className="relative flex items-center text-gray-400 focus-within:text-violet-400">
+                        <span className="absolute left-4 h-6 flex items-center pr-3 border-r border-gray-300">
+                            <svg xmlns="http://ww50w3.org/2000/svg" className="w-4 fill-current" viewBox="0 0 35.997 36.004">
+                                <path id="Icon_awesome-search" data-name="search" d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z"></path>
+                            </svg>
+                        </span>
+                        <input type="search" name="leadingIcon" id="leadingIcon" placeholder="Search here" className="w-full pl-14 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-cyan-300 transition" />
+                    </div>
+                </div> */}
+
                 <div className="flex items-center">
                     <Link href="/"><a><Logo theme={"light"} /></a></Link>
                     <h1 className="text-2xl text-white">｜</h1>
@@ -206,7 +214,7 @@ export default function WebApp(){
                 </div>
 
                 <div id="middlePanel" className="h-auto border-l-[3px] border-slate-300 w-4/6 flex flex-col items-center">
-                    <div className={(top !== bulletins?.[0]?._id && bulletins.length > 0 && screen==="bulletins")?"bg-slate-400 inset-x-0 mx-auto rounded-xl top-5 sticky z-50 animate-slideInTop":"hidden"}>
+                    <div className={(top !== bulletins?.[0]?._id && bulletins.length > 0 && screen==="bulletins")?"bg-slate-400 inset-x-0 mx-auto rounded-xl top-5 sticky z-50":"hidden"}>
                         <button className="text-center font-dongji text-white w-full py-1 px-2" onClick={() => refreshFeed()}>New Posts</button>
                     </div>
                     { screen==="elections" ? (
