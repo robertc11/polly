@@ -34,7 +34,7 @@ export default function WebApp(){
     const [top, setTop] = useState(null)
     useEffect(() => {
         const checkNewPosts = async () => {
-            console.log('JUST A TEST!')
+            //console.log('JUST A TEST!')
             const res = await fetch('/api/posts/getpost?per_page=1&obj_id=0').then(res => res.json())
             console.log(res[0])
             setTop(res?.[0]?._id)
@@ -80,7 +80,6 @@ export default function WebApp(){
 
         const res = await fetch(`/api/posts/getpost?per_page=${15}&obj_id=0`).then(res => res.json())
         setBulletins(res)
-        setFinished(false)
     }
 
     // get a specified page from the url /web?page=XXX
