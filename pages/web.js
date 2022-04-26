@@ -36,7 +36,7 @@ export default function WebApp(){
         const checkNewPosts = async () => {
             //console.log('JUST A TEST!')
             const res = await fetch('/api/posts/getpost?per_page=1&obj_id=0').then(res => res.json())
-            console.log(res[0])
+            //console.log(res[0])
             setTop(res?.[0]?._id)
         }
 
@@ -72,14 +72,46 @@ export default function WebApp(){
         }
     }, [isVisible])
 
-    const refreshFeed = async () => {
+    const refreshFeed = () => {
         console.log("fucking odngji")
         
         // scrolls back to top of screen
-        window.scrollTo({top: 0, behavior: 'smooth'})
+        smoothScroll().then(async () => {
+            const res = await fetch(`/api/posts/getpost?per_page=${15}&obj_id=0`).then(res => res.json())
+            setBulletins(res)
+        }).catch((e) => {console.log('there was an error',e)})
+    }
 
-        const res = await fetch(`/api/posts/getpost?per_page=${15}&obj_id=0`).then(res => res.json())
-        setBulletins(res)
+    const smoothScroll = () => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        })
+        console.log('yuhh got to end of the scroll')
+
+        return new Promise((resolve, reject) => {
+            const failed = setTimeout(() => {
+                reject()
+            }, 2000)
+
+            //console.log('window pos', scrollY)
+            const scrollHandler = () => {
+                if(self.scrollY == 0){
+                    window.removeEventListener('scroll', scrollHandler)
+                    clearTimeout(failed)
+                    resolve()
+                }
+            }
+
+            if(self.scrollY == 0){
+                //console.log('lesgoo dababy')
+                clearTimeout(failed)
+                resolve()
+            }else{
+                window.addEventListener('scroll', scrollHandler)
+            }
+        })
     }
 
     // get a specified page from the url /web?page=XXX
