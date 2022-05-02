@@ -143,8 +143,8 @@ export default function BulletinRow(props){
 
     const mapStylesEnabled = "mt-2 rounded-lg shadow px-2 py-1 hover:bg-sky-100 mx-1"
     const mapStylesDisabled = "mt-2 rounded-lg px-2 py-1 bg-slate-200 mx-1 select-none pointer-events-none"
-    const narrow = "shadow-sm mt-2 w-4/5 text-center bg-white hover:ring-2 hover:ring-violet-400 open:ring-1 open:ring-black/5 p-6 rounded-lg"
-    const wide = "shadow border-2 border-violet-50 mt-2 w-11/12 text-center bg-white hover:ring-2 hover:ring-violet-400 open:ring-1 open:ring-black/5 p-6 rounded-lg"
+    const narrow = "shadow-sm mt-2 w-4/5 text-center border-2 border-violet-50 bg-white hover:ring-2 hover:ring-violet-400 open:ring-1 open:ring-black/5 open:border-violet-400 p-6 rounded-lg"
+    const wide = "shadow border-2 border-violet-50 mt-2 w-11/12 text-center bg-white hover:ring-2 hover:ring-violet-400 open:ring-1 open:ring-black/5 p-6 open:border-violet-400 rounded-lg"
 
     return (
         <>
@@ -203,7 +203,7 @@ export default function BulletinRow(props){
                                 <div key={oneComment._id} className="bg-white px-2 pb-1 rounded shadow-sm">
                                     <div className="w-full mt-3">
                                         <p>{oneComment.comment}</p>
-                                        <p className="text-right w-full text-xs">: {oneComment.author.authorName}<span className="ml-2 text-slate-400">{timeAgo(oneComment.timestamp)} ago</span></p>    
+                                        <p className="text-right w-full text-xs">{oneComment.author.authorName}<span className="ml-2 text-slate-400">{timeAgo(oneComment.timestamp)} ago</span></p>    
                                     </div>
                                 </div>
                             ))}

@@ -56,6 +56,10 @@ export default function BulletinDash(props){
             //add the new comment to the shit
             let index = searchForBulletin(parseInt(body.bulletinpostID,16)/10000000000, bulletins) // returns the index of the post where we need to inject our comment
             body._id = response.commentID
+            if(index < 0){
+                console.log('> bulletinDash.js: Binary Search Error!')
+                return false
+            }
             bulletins[index].comments.unshift(body)
             console.log(bulletins[index].comments)
             setTest(!test)
@@ -64,7 +68,6 @@ export default function BulletinDash(props){
         return false
     }
     
-    // const { bulletins } = useBulletin(user)
 
     return (
         <>
