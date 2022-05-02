@@ -183,6 +183,8 @@ export default function BulletinRow(props){
                         </div>
                         
                     </div>
+                    
+                    {props.children}
 
                     <div name="commentSection" className="mb-5 leading-loose w-11/12">
                         <p className="text-left text-black font-semibold">Comments:</p>
@@ -210,7 +212,6 @@ export default function BulletinRow(props){
                         </div>
                     </div>
                     
-                    {props.children}
 
                     <div className={props.isAuthor? 'absolute bottom-0 left-0 flex' : 'hidden'}>
                         <button onClick={() => handleUpdate()}>
