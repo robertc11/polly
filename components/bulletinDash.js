@@ -13,14 +13,58 @@ export default function BulletinDash(props){
     }
 
     const [opened,setOpened] = useState(new Map())
+    const [test,setTest] = useState(false)
 
     const handleOpen = (postid,value) => {
         setOpened(opened.set(postid,value))
         console.log('opened is changed!',opened)
     }
+
+    const { bulletins } = props.bulletins
+
+
+    const searchForBulletin = (targetID, bulletinArr) => {
+        //binary search through comments array
+        //wont work atm bc ids are strings and also not ints
+        console.log(targetID, bulletinArr)
+        var lp = 0
+        var rp = bulletinArr.length-1
+        while(lp <= rp){
+            var mid = Math.floor((lp+rp)/2)
+            if(parseInt(bulletinArr[mid]._id,16)/10000000000 == targetID){
+                return mid
+            }else if(targetID < parseInt(bulletinArr[mid]._id,16)/10000000000){
+                lp = mid+1
+            }else{
+                rp = mid-1
+            }
+        }
+        return -1
+    }
+
+    const handleCommentSubmit = async (body) => {
+        if(body.comment.trim() === '') return false
+
+        const response = await fetch('/api/posts/addcomment', {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(body),
+        }).then((res) => res.json()).catch((err) => console.error('> bulletinDash.js',err))
+
+        console.log(response)
+        if(response.success){
+            //add the new comment to the shit
+            let index = searchForBulletin(parseInt(body.bulletinpostID,16)/10000000000, bulletins) // returns the index of the post where we need to inject our comment
+            body._id = response.commentID
+            bulletins[index].comments.unshift(body)
+            console.log(bulletins[index].comments)
+            setTest(!test)
+            return true
+        }
+        return false
+    }
     
     // const { bulletins } = useBulletin(user)
-    const { bulletins } = props.bulletins
 
     return (
         <>
@@ -48,22 +92,24 @@ export default function BulletinDash(props){
                                 {bulletins.map((thisBulletin) => (
                                     <React.Fragment key={[thisBulletin._id,thisBulletin.upvotes,thisBulletin.downvotes]}>
                                         <BulletinRow
-                                            key = {[thisBulletin._id,thisBulletin.upvotes,thisBulletin.downvotes]}
+                                            key = {[thisBulletin._id, thisBulletin.comments.length]}
                                             width={'wide'}
                                             up={thisBulletin.upvotes}
                                             down={thisBulletin.downvotes}
                                             statement={thisBulletin.statement}
                                             body={thisBulletin.body}
-                                            quotes={thisBulletin.comments}
+                                            comments={thisBulletin.comments}
                                             mapEnabled={thisBulletin.map}
                                             postid={thisBulletin._id}
                                             timestamp={unixToReg(thisBulletin.timestamp)}
                                             action={[thisBulletin?.useractions[0]?.action?.upvote||null, thisBulletin?.useractions[0]?.action?.downvote||null]}
                                             uid={user.uid}
+                                            username={user.username}
                                             handleOpen={(a,b) => handleOpen(a,b)}
                                             open={opened.has(thisBulletin._id)?opened.get(thisBulletin._id):false}
                                             isAuthor={thisBulletin.author.authorID == user.uid}
                                             authorName={thisBulletin.author.authorName}
+                                            handleCommentSubmit={(a) => handleCommentSubmit(a)}
                                         >
                                             <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink} key={thisBulletin.mapLink}></iframe> 
                                         </BulletinRow>

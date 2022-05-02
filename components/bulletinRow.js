@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 import useUpdatesBulletin from '../lib/useUpdates'
 import Swal from 'sweetalert2'
 import Router from 'next/router'
+import { getCurrentUnix, timeAgo, unixToReg } from '../lib/timestamp'
 
 
 export default function BulletinRow(props){
@@ -111,6 +112,24 @@ export default function BulletinRow(props){
         })
     }
 
+    const handleComment = (e) => {
+        e.preventDefault()
+        //props.handleComment(props.postid, e.currentTarget.commentBody.value)
+        const body ={
+            bulletinpostID: props.postid,
+            comment: e.currentTarget.commentBody.value,
+            author: {
+                authorID: props.uid,
+                authorName: props.username,
+            },
+            timestamp: getCurrentUnix(),
+        }
+        console.log(body)
+        
+        const res = props.handleCommentSubmit(body)
+    }
+
+
     const bulletinUpdates = useUpdatesBulletin(
                                     props.postid,props.uid,
                                     upVotes-props.up,
@@ -135,16 +154,6 @@ export default function BulletinRow(props){
                 </summary>
                 <div className="mt-3 flex flex-col items-center justify-center text-sm leading-6 text-slate-500 relative">
                     <p className="text-left mb-3 w-11/12">{props.body}</p>
-
-                    <div name="bulletinText" className="mb-3 leading-loose w-11/12">
-                        <p className="text-left text-black font-semibold">Comments:</p>
-                        {props.quotes.map((quote, index) => (
-                            <div key={index}>
-                                <span>"{quote.comment}"</span>
-                                <span className="text-xs"> -{quote.poster}</span>
-                            </div>
-                        ))}
-                    </div>
                     
                     <div name="bulletinButtons" className="flex items-baseline justify-center">
                         <button className={props.mapEnabled ? mapStylesEnabled : mapStylesDisabled} onClick={props.mapEnabled ? (e) => toggleMap(e) : null}>
@@ -173,6 +182,32 @@ export default function BulletinRow(props){
                             <p className="text-red-500">{downVotes}</p>  
                         </div>
                         
+                    </div>
+
+                    <div name="commentSection" className="mb-5 leading-loose w-11/12">
+                        <p className="text-left text-black font-semibold">Comments:</p>
+                        <div className="bg-gray-100 rounded p-4">
+                            <div className="w-11/12 mx-auto">
+                                <form onSubmit={handleComment} className="relative flex items-center text-gray-400 focus-within:text-violet-400">
+                                    <input type="text" name="commentBody" id="leadingIcon" placeholder="Add a comment" className="w-full pl-4 pr-4 py-1.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-violet-300 transition" />
+                                    <span className="absolute right-4 h-6 pl-4 flex items-center border-l border-gray-300 bg-white">
+                                        <button type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
+                                            </svg>    
+                                        </button>
+                                    </span>
+                                </form>
+                            </div>
+                            {props.comments.map((oneComment) => (
+                                <div key={oneComment._id} className="bg-white px-2 pb-1 rounded shadow-sm">
+                                    <div className="w-full mt-3">
+                                        <p>{oneComment.comment}</p>
+                                        <p className="text-right w-full text-xs">: {oneComment.author.authorName}<span className="ml-2 text-slate-400">{timeAgo(oneComment.timestamp)} ago</span></p>    
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                     
                     {props.children}

@@ -35,8 +35,8 @@ export default function WebApp(){
     useEffect(() => {
         const checkNewPosts = async () => {
             //console.log('JUST A TEST!')
-            const res = await fetch('/api/posts/getpost?per_page=1&obj_id=0').then(res => res.json())
-            //console.log(res[0])
+            const res = await fetch('/api/posts/getpost?per_page=1&obj_id=0').then(res => res.json()).catch((e) => console.log(e))
+            
             setTop(res?.[0]?._id)
         }
 
