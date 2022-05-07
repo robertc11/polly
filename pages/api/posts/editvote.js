@@ -15,7 +15,7 @@ async function handler(req,res){
 
     
     const { upDelta, downDelta, upvoteSelected, downvoteSelected, postid, uid } = await req.body
-    console.log(postid,uid,upDelta,downDelta,upvoteSelected,downvoteSelected)
+    console.log('> editvote.js: Incoming Params:',postid,uid,upDelta,downDelta,upvoteSelected,downvoteSelected)
 
     var chosenVote = ""
     if(upvoteSelected){

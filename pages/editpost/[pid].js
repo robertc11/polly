@@ -14,6 +14,10 @@ import Head from 'next/head'
 import styles from '../../styles/CreatePostPage.module.css'
 
 export default function EditPostPage(){
+    const { user, mutateUser } = useUser({
+        redirectTo: "/login",
+    })
+
     // preloaded form data
     const [ notFound, setNotFound ] = useState(false)
     const [ title, setTitle ] = useState('')
@@ -29,14 +33,15 @@ export default function EditPostPage(){
         if(pid === undefined) return
 
         console.log(pid)
-        const post = await fetch(`/api/posts/getonepost?obj_id=${pid}`).then(res => res.json())
-        console.log(post)
-        if(!post.success){
+        const post = await fetch(`/api/posts/getonepost?obj_id=${pid}`).then(res => res.json()).catch((err) => console.log(err))
+        if(post===undefined || !post.success){
             setNotFound(true)
+            return
         }else{
-            setAuthor(post.author.authorID)
-            setTitle(post.statement)
-            setBody(post.body)
+            console.log(post.data[0])
+            setAuthor(post.data[0]?.author.authorID)
+            setTitle(post.data[0]?.statement)
+            setBody(post.data[0]?.body)
         }
     }, [pid])
 

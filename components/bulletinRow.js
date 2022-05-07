@@ -15,18 +15,6 @@ export default function BulletinRow(props){
     const [selected, setSelected] = useState(props.action)
     const [changed, setChanged] = useState(false)
 
-    useEffect(() => {
-        targetBox.current.addEventListener('toggle', (e) => {
-            if(targetBox.current.open){
-                //console.log('i am opened')
-                props.handleOpen(props.postid,true)
-            }else{
-                //console.log('i am closed')
-                props.handleOpen(props.postid,false)
-            }
-        })
-    })
-
     const toggleMap = (e) => {
         let el = e.currentTarget  // map button
         let parent = el.parentElement.parentElement  // div element
@@ -48,7 +36,7 @@ export default function BulletinRow(props){
         }else{  // do the upvote
             if(selected[1]){  // upvote from downvote
                 setDownVotes(downVotes-1)
-            }
+            }// vanilla upvote
             setUpVotes(upVotes+1)
             setSelected([true, false])
         }
@@ -112,48 +100,51 @@ export default function BulletinRow(props){
         })
     }
 
-    const handleComment = (e) => {
-        e.preventDefault()
-        //props.handleComment(props.postid, e.currentTarget.commentBody.value)
-        const body ={
-            bulletinpostID: props.postid,
-            comment: e.currentTarget.commentBody.value,
-            author: {
-                authorID: props.uid,
-                authorName: props.username,
-            },
-            timestamp: getCurrentUnix(),
-        }
-        console.log(body)
-        
-        const res = props.handleCommentSubmit(body)
-    }
-
 
     const bulletinUpdates = useUpdatesBulletin(
                                     props.postid,props.uid,
-                                    upVotes-props.up,
-                                    downVotes-props.down,
-                                    selected[0],
-                                    selected[1],
+                                    upVotes,
+                                    downVotes,
+                                    selected,
                                     changed,
                                     2000
                             )
-
+    
 
     const mapStylesEnabled = "mt-2 rounded-lg shadow px-2 py-1 hover:bg-sky-100 mx-1"
     const mapStylesDisabled = "mt-2 rounded-lg px-2 py-1 bg-slate-200 mx-1 select-none pointer-events-none"
-    const narrow = "shadow-sm mt-2 w-4/5 text-center border-2 border-violet-50 bg-white hover:ring-2 hover:ring-violet-400 open:ring-1 open:ring-black/5 open:border-violet-400 p-6 rounded-lg"
-    const wide = "shadow border-2 border-violet-50 mt-2 w-11/12 text-center bg-white hover:ring-2 hover:ring-violet-400 open:ring-1 open:ring-black/5 p-6 open:border-violet-400 rounded-lg"
+    //const narrow = "shadow-sm mt-2 w-4/5 text-center border-2 border-violet-50 bg-white hover:ring-2 hover:ring-violet-400 open:ring-1 open:ring-black/5 open:border-violet-400 p-6 rounded-lg"
+    const wide = "shadow-md border-2 border-gray-200 mt-2 mb-2 w-11/12 text-center bg-white hover:ring-2 hover:ring-violet-400 open:ring-1 open:ring-black/5 p-6 rounded-lg relative"
 
     return (
         <>
-            <details ref={targetBox} className={props.width==='wide' ? wide : narrow} open={props.open}>
-                <summary name="summary" className="text-sm leading-6 text-slate-600 font-semibold select-none">
-                    <span name="eventCount" className="font-bold text-emerald-500">{upVotes}</span> {props.statement}
-                </summary>
+            <div ref={targetBox} className={props.width==='wide' ? wide : narrow} open={true}>
+
+                <div className={props.isAuthor? 'absolute top-3 right-5 flex' : 'hidden'}>
+                    <button onClick={() => handleUpdate()}>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>    
+                    </button>
+                    
+                    <button onClick={() => handleDelete()}>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>     
+                    </button>       
+                </div>
+
+                <div className="w-full">
+                    <h1 name="summary" onClick={() => props.handleOpenPost(props.postid)} className="w-11/12 mx-auto text-left text-md text-slate-800 leading-6 text-slate-600 font-semibold cursor-pointer hover:text-violet-600">
+                        {props.statement}
+                    </h1>    
+                </div>
+                
                 <div className="mt-3 flex flex-col items-center justify-center text-sm leading-6 text-slate-500 relative">
-                    <p className="text-left mb-3 w-11/12">{props.body}</p>
+                    <div name="postBody" className="overflow-y-hidden text-left mb-3 w-11/12 relative max-h-24 xl:max-h-full">
+                        <div name="postOverlay" className="w-full h-full bg-gradient-to-b from-transparent via-transparent to-white absolute flex flex-col-reverse items-center" />
+                        {props.body}
+                    </div>
                     
                     <div name="bulletinButtons" className="flex items-baseline justify-center">
                         <button className={props.mapEnabled ? mapStylesEnabled : mapStylesDisabled} onClick={props.mapEnabled ? (e) => toggleMap(e) : null}>
@@ -181,56 +172,36 @@ export default function BulletinRow(props){
 
                             <p className="text-red-500">{downVotes}</p>  
                         </div>
-                        
                     </div>
+
                     
                     {props.children}
-
-                    <div name="commentSection" className="mb-5 leading-loose w-11/12">
-                        <p className="text-left text-black font-semibold">Comments:</p>
-                        <div className="bg-gray-100 rounded p-4">
-                            <div className="w-11/12 mx-auto">
-                                <form onSubmit={handleComment} className="relative flex items-center text-gray-400 focus-within:text-violet-400">
-                                    <input type="text" name="commentBody" id="leadingIcon" placeholder="Add a comment" className="w-full pl-4 pr-4 py-1.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-violet-300 transition" />
-                                    <span className="absolute right-4 h-6 pl-4 flex items-center border-l border-gray-300 bg-white">
-                                        <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
-                                            </svg>    
-                                        </button>
-                                    </span>
-                                </form>
-                            </div>
-                            {props.comments.map((oneComment) => (
-                                <div key={oneComment._id} className="bg-white px-2 pb-1 rounded shadow-sm">
-                                    <div className="w-full mt-3">
-                                        <p>{oneComment.comment}</p>
-                                        <p className="text-right w-full text-xs">{oneComment.author.authorName}<span className="ml-2 text-slate-400">{timeAgo(oneComment.timestamp)} ago</span></p>    
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
                     
-
-                    <div className={props.isAuthor? 'absolute bottom-0 left-0 flex' : 'hidden'}>
-                        <button onClick={() => handleUpdate()}>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                            </svg>    
-                        </button>
-                        
-                        <button onClick={() => handleDelete()}>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                            </svg>     
-                        </button>       
-                    </div>
-                    
-                    <p className="text-right w-full text-xs">Posted by <span className="text-violet-400">{props.authorName}</span> on</p>
-                    <p className="text-right w-full text-xs">{props.timestamp}</p>
                 </div>
-            </details>
+
+                <div id="bottomrow" className="mt-5 font-dongji">
+                    <div className="absolute bottom-1 ml-6 text-sm text-slate-500">
+                        <button onClick={() => props.handleOpenPost(props.postid)} className="mt-2 px-2 py-1 hover:bg-sky-100 mx-1 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                            </svg>
+                            {(props.numComments > 1 ? (
+                                <p>{props.numComments} comments</p>
+                            ) : props.numComments == 1 ? (
+                                <p>{props.numComments} comment</p>
+                            ) : (
+                                <p>0 comments</p>
+                            ))}
+                        </button>
+                    </div>
+
+                    <div className="absolute bottom-2 right-5">
+                        <p className="text-right text-xs">Posted by <span className="text-violet-400">{props.authorName}</span> on</p>
+                        <p className="text-right text-xs">{props.timestamp}</p>
+                    </div>
+                </div>
+            </div>
+
         </>
     )
 }

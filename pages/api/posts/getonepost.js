@@ -21,12 +21,12 @@ async function handler(req,res){
 
 
     try{
-        const data = await runner('getOneBulletin',[ obj_id ])
-        console.log(data)
-        if(!data.success){
+        const resdb = await runner('getOneBulletin',[ obj_id, user.uid ])
+        console.log(resdb)
+        if(!resdb.success){
             throw "An error occurred while retrieving the data"
         }
-        res.json(data)
+        res.json({data: resdb.data, success: true})
     }catch(err){
         console.log("> getonepost.js: ERROR:",err)
         res.status(500).json({success:false, message:err})

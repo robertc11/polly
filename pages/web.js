@@ -21,6 +21,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Router from "next/router"
 import { useRouter } from "next/router"
+import CustomPopup from '../components/customPopup'
 
 
 
@@ -67,13 +68,13 @@ export default function WebApp(){
             setBulletins(bulletins.concat(res))
         }
 
-        if(isVisible){
+        if(isVisible && !sessionStorage.getItem('bulletins')){
             fetchData()
         }
     }, [isVisible])
 
     const refreshFeed = () => {
-        console.log("fucking odngji")
+        //console.log("fucking odngji")
         
         // scrolls back to top of screen
         smoothScroll().then(async () => {
@@ -95,7 +96,7 @@ export default function WebApp(){
                 reject()
             }, 2000)
 
-            //console.log('window pos', scrollY)
+            console.log('window pos', scrollY)
             const scrollHandler = () => {
                 if(self.scrollY == 0){
                     window.removeEventListener('scroll', scrollHandler)
@@ -124,7 +125,55 @@ export default function WebApp(){
         if(!page) return
         setScreen(page)
     }, [page])
-    
+
+
+    const handleClickPost = (postid) => {
+        if(sessionStorage.getItem('bulletins') || sessionStorage.getItem('scrollY') || sessionStorage.getItem('page')) return
+        //console.log('eenie', bulletins)
+        sessionStorage.setItem('bulletins', JSON.stringify(bulletins))
+        console.log('setting the session',window.scrollY)
+        sessionStorage.setItem('scrollY', window.scrollY)
+        sessionStorage.setItem('page', 'bulletins')
+        Router.push(`/viewpost/${postid}`)
+        console.log('hello!',postid)
+    }
+
+    useEffect(() => {
+        // load sessionStorage into state
+        // then clear sessionStorage
+        if(!(sessionStorage.getItem('bulletins') || sessionStorage.getItem('scrollY'))) return
+
+        const completeLoadingAssets = new Promise((resolve, reject) => {
+            let tempBulletins = sessionStorage.getItem('bulletins')
+            tempBulletins = JSON.parse(tempBulletins)
+            setBulletins(tempBulletins)
+            setTop(tempBulletins[0]._id)
+            setScreen(sessionStorage.getItem('page'))
+
+            resolve()
+        })
+        
+        console.log(JSON.parse(sessionStorage.getItem('bulletins')))
+        const scrollDiff = parseFloat(sessionStorage.getItem('scrollY'))
+        completeLoadingAssets.then((res) => {
+            console.log('retrieving the session',scrollDiff)
+            window.scrollTo(0, scrollDiff)
+        }).catch((err) => {
+            console.log('an error occurred!', err)
+        })
+        
+        sessionStorage.removeItem('bulletins')
+        sessionStorage.removeItem('scrollY')
+        sessionStorage.removeItem('page')
+        //sessionStorage.clear()
+        //console.log('clear session storage if there is session storage!')
+    }, [])
+
+    const [popupVisible, setPopupVisible] = useState(true)
+    const popupCloseHandler = (a) => {
+        sessionStorage.setItem("kitten", "popped up once")
+        setPopupVisible(a)
+    }
 
 
     if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
@@ -149,7 +198,7 @@ export default function WebApp(){
 
             <div id="webnav" className="w-full flex justify-between p-3 bg-gradient-to-r from-violet-500 to-indigo-500">
                 <div className="flex items-center">
-                    <h1 className="text-xl text-white font-bold ml-5">Hello, {user.first} {user.last}</h1>
+                    <h1 className="text-xl text-white font-bold ml-5">Hello, {user?.first} {user?.last}</h1>
                 </div>
 
                 {/* <div className="md:block w-1/4">
@@ -170,6 +219,7 @@ export default function WebApp(){
                         <a className="font-bold text-white mr-5 text-lg"
                             onClick={async (e) => {
                                 e.preventDefault()
+                                sessionStorage.clear()
                                 mutateUser(
                                     await fetchJson("/api/logout", { method: "POST" }),
                                     false,
@@ -187,7 +237,16 @@ export default function WebApp(){
             {/* <p>{page}</p> */}
             {/* <p>{JSON.stringify(electionData)}</p> */}
 
-            <div id="pageWrapper" className="flex py-5 w-2/3 font-dongji h-auto mx-auto">
+            <div id="pageWrapper" className="flex py-5 w-3/4 xl:w-2/3 font-dongji h-auto mx-auto">
+
+                <CustomPopup
+                    onClose={(a) => popupCloseHandler(a)}
+                    show={(popupVisible) && (user?.uid === "625852744610a04665f25533") && (!sessionStorage.getItem('kitten'))}
+                    title="Hi Kelly!"
+                >
+                    <p className="text-lg">Pet Me!</p>
+                </CustomPopup>
+
 
                 <div id="leftPanel" className="overflow-auto h-screen w-1/6 flex flex-col items-center">
                     <h1 className="text-lg font-semibold text-black">{user.cityID[3]}, {user.cityID[1]}</h1>
@@ -224,6 +283,7 @@ export default function WebApp(){
                                     await fetchJson("/api/logout", { method: "POST" }),
                                     false,
                                 );
+                                sessionStorage.clear()
                                 Router.push("/login")
                             }}
                         >                        
@@ -239,7 +299,7 @@ export default function WebApp(){
                         <div className="flex justify-center items-center">
                             <h1 className="text-slate-800 font-bold text-2xl select-none">Polly</h1>
                             <h1 className="text-2xl text-black">｜</h1>
-                            <h2 className="text-black">V. 1.0.1</h2>
+                            <span className="text-black text-xs xl:text-[1em]">V. 1.0.1</span>
                         </div>
                     </div>
                 </div>
@@ -265,6 +325,7 @@ export default function WebApp(){
                                 cityid={user.cityID}
                                 login={user.isLoggedIn}
                                 bulletins={{bulletins}}
+                                handlePost={(id) => handleClickPost(id)}
                             />
                             <div className="w-full text-bold text-center invisible" ref={ref}>
                                 fucker
@@ -275,14 +336,42 @@ export default function WebApp(){
                             <h1 className="text-slate-700 text-4xl font-bold mt-3">Candidate Cards</h1>
                         </div>
                     ) : (
-                        <p>404 Page Not Found</p>
+                        <div className="h-screen w-full flex items-center justify-center flex-col">
+                            <p className="text-xl font-dongji"><span className="text-3xl">404</span> - Page Not Found</p>
+                            <Link href="/web?page=elections"><a className="mt-1 text-blue-500 underline">Take me back!</a></Link>
+                        </div>
                     )}
                 </div>
 
-                <div id="rightPanel" className="w-1/6 h-auto bg-blue-500 text-white flex flex-col items-center justify-center">
-                    {/* <h1 className="rotate-90 text-2xl mb-5">YOUR</h1>
-                    <h1 className="rotate-90 text-2xl mt-2 mb-5">AD</h1>
-                    <h1 className="rotate-90 text-2xl mt-2">HERE</h1> */}
+                <div id="rightPanel" className="w-1/6 h-auto text-white flex flex-col items-center">
+                    <div className="sticky top-10 w-full">
+                        { screen === "elections" ? (
+                            <>
+                                <div className="bg-gray-200 w-full py-6 h-screen rounded-md">
+                                    
+                                </div>
+                            </>
+                        ) : screen === "bulletins" ? (
+                            <>
+                                <div id="newpostcontainer" className="bg-gray-200 w-full py-6 h-72 rounded-md">
+                                    <button onClick={() => Router.push("/create")} className="py-1.5 px-3 xl:px-5 xl:py-2 rounded-md bg-emerald-300 text-md text-white right-4 hover:bg-emerald-500 flex items-center justify-center w-5/6 xl:w-3/4 mx-auto">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                                        </svg>
+                                        New Post
+                                    </button>
+                                </div>
+                            </>
+                        ) : screen === "cards" ? (
+                            <>
+                                <div className="bg-gray-200 w-full py-6 h-screen rounded-md">
+                                    
+                                </div>
+                            </>
+                        ) : (
+                            ""
+                        )}
+                    </div>
                 </div>
             </div>
             
