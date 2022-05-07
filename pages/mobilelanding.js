@@ -1,8 +1,13 @@
 import NavBar from "../components/navbar"
+import Head from "next/head"
 
 export default function MobileLanding(){
     return (
         <div>
+            <Head>
+                <title>Polly-Download</title>
+            </Head>
+
             <NavBar />
 
             <div className="max-w-2xl mx-auto pt-10">

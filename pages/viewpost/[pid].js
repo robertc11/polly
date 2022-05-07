@@ -65,9 +65,10 @@ export default function ViewPostPage(){
                     setSelected([data.data[0]?.useractions[0]?.action?.upvote||false, data.data[0]?.useractions[0]?.action?.downvote||false])
                     setAuthorName(data.data[0]?.author.authorName)
                     setCommentsCount(data.data[0]?.comments[0]?.numComments)
+                    document.title = data.data[0]?.statement
                 }
 
-                console.log('this is our postid', data.data[0]?._id)
+                //console.log('this is our postid', data.data[0]?._id)
                 return fetch(`/api/posts/getcomment?post=${data.data[0]?._id}&per_page=${15}&obj_id=${0}`)
             })
             .then(res => res.json())
@@ -238,10 +239,6 @@ export default function ViewPostPage(){
                 </div>
             ) : (
                 <>
-                    <Head>
-                        <title>Polly-App</title>
-                    </Head>
-
                     <div id="webnav" className="w-full flex justify-between p-3 bg-gradient-to-r from-violet-500 to-indigo-500">
                         <div className="flex items-center">
                             <h1 className="text-xl text-white font-bold ml-5">Hello, {user?.first} {user?.last}</h1>
