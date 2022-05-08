@@ -15,6 +15,7 @@ import Footer from '../components/footer'
 import NavBar from '../components/navbar'
 import BlockY from '../components/blockY'
 import RegistrationForm from '../components/formregister'
+import { convertRegion } from '../lib/states'
 
 
 
@@ -46,6 +47,10 @@ export default function Register(){
                             zip: event.currentTarget.zipcode.value,
                             username: event.currentTarget.username.value.toLowerCase(),
                             password: event.currentTarget.password.value,
+                        }
+
+                        if(body.state.length > 2){
+                            body.state = convertRegion(body.state, 2)
                         }
 
                         console.log("> registration.js: NEW USER:",body)

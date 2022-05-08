@@ -64,14 +64,14 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
         <div className={ formScr===1 ? "flex flex-col w-full animate-fadedongji" : "hidden flex flex-col" }>
           <h1 className="font-dongji mb-5 mx-auto text-2xl text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500 font-bold">Personal Information</h1>
           
-          <label className="w-1/2 mx-auto">First Name:</label>
+          <label className="w-1/2 mx-auto"><span className="text-pink-600">*</span>First Name: <span className="italic text-pink-600 text-sm">required</span></label>
           <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="firstname" placeholder=" Jason" required />
           
-          <label className="w-1/2 mx-auto">Last Name:</label>
+          <label className="w-1/2 mx-auto"><span className="text-pink-600">*</span>Last Name: <span className="italic text-pink-600 text-sm">required</span></label>
           <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="lastname" placeholder=" Smith" required />
           
           <div className="w-1/2 mx-auto">
-            <label className="w-full">Email Address:</label> {/* email must be sent in lowercase!!!! */}
+            <label className="w-full"><span className="text-pink-600">*</span>Email Address: <span className="italic text-pink-600 text-sm">required</span></label> {/* email must be sent in lowercase!!!! */}
             <input className="rounded border-2 border-violet-300 w-full mb-3 invalid:mb-0 invalid:border-2 invalid:border-pink-600 peer p-1" type="email" name="email" placeholder=" jsmith@gmail.com" required />
             <p className="hidden peer-invalid:block text-pink-600 text-sm w-full mb-3">Please provide a valid email address.</p>  
           </div>
@@ -96,7 +96,7 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
           <h1 className="font-dongji mb-5 mx-auto text-2xl text-transparent bg-clip-text bg-gradient-to-r from-violet-500 to-indigo-500 font-bold">Street Address</h1>
           
           <div className="w-1/2 mx-auto relative mb-3">
-            <label className="w-full">Street Address:</label>
+            <label className="w-full"><span className="text-pink-600">*</span>Street Address: <span className="italic text-pink-600 text-sm">required</span></label>
             <div className="group" tabIndex={0}>
               <input className="rounded border-2 border-violet-300 w-full peer p-1" type="text" name="streetaddress" placeholder=" 550 S. Watters Rd" value={selectedPrediction===null?searchValue:selectedPrediction.structured_formatting.main_text} onChange={(e) => handleSearch(e, e.target.value)} autoComplete="off" required />
               <ul className="hidden rounded-b-md inset-x-0 border-b-2 border-slate-500 text-black bg-white absolute peer-focus:block group-hover:block">
@@ -127,15 +127,15 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
             {selectedPrediction?.structured_formatting?.main_text || "None"}
           </h3> */}
 
-          <label className="w-1/2 mx-auto">City:</label>
+          <label className="w-1/2 mx-auto"><span className="text-pink-600">*</span>City: <span className="italic text-pink-600 text-sm">required</span></label>
           <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="city" placeholder=" Allen" defaultValue={selectedPrediction?.structured_formatting?.secondary_text.split(',')[0].trim() || ""} autoComplete="off" required />
           
 
-          <label className="w-1/2 mx-auto">State:</label>
+          <label className="w-1/2 mx-auto"><span className="text-pink-600">*</span>State: <span className="italic text-pink-600 text-sm">required</span></label>
           <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="state" placeholder=" TX/Texas" defaultValue={selectedPrediction?.structured_formatting?.secondary_text.split(',')[1].trim() || ""} autoComplete="off" required />
           
 
-          <label className="w-1/2 mx-auto">Postal Code:</label>
+          <label className="w-1/2 mx-auto"><span className="text-pink-600">*</span>Postal Code: <span className="italic text-pink-600 text-sm">required</span></label>
           <input className="rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1" type="text" name="zipcode" placeholder=" 75080" required />
           
 
@@ -160,18 +160,18 @@ export default function RegistrationForm({ errorMessage, onSubmit }) {
           
           {/* <h3>isUsernameValid: {isUsernameValid}</h3> */}
 
-          <label className="w-1/2 mx-auto">Username:</label>
+          <label className="w-1/2 mx-auto"><span className="text-pink-600">*</span>Username: <span className="italic text-pink-600 text-sm">required</span></label>
           <input className={(isUsernameValid??true) ? "rounded border-2 border-violet-300 w-1/2 mx-auto mb-3 p-1":"rounded border-2 border-violet-300 w-1/2 mx-auto p-1"} type="text" name="username" placeholder=" kittenlover21" value={usernameValue} onChange={e => setUsernameValue(e.target.value)} autoComplete="off" required />
           <p className={(isUsernameValid??true) ? "hidden" : "w-1/2 mx-auto text-sm text-pink-600 mb-3"}>This username is already taken!</p>
 
           <div className="w-1/2 mx-auto">
-            <label className="w-full">Password:</label>          
+            <label className="w-full"><span className="text-pink-600">*</span>Password: <span className="italic text-pink-600 text-sm">required</span></label>          
             <input className="rounded border-2 border-violet-300 w-full mb-3 invalid:mb-0 invalid:border-2 invalid:border-pink-600 peer p-1" type="password" name="password" placeholder=" your password here" pattern="(?=.*\d)(?=.*[a-z]).{8,}" value={pass1} onChange={e => setPass1(e.target.value)} required />
             <p className="hidden peer-invalid:block text-pink-600 text-sm w-full mb-3">Passwords must be at least 8 characters and at least one digit!</p>
           </div>
           
 
-          <label className="w-1/2 mx-auto">Confirm Password:</label> 
+          <label className="w-1/2 mx-auto"><span className="text-pink-600">*</span>Confirm Password: <span className="italic text-pink-600 text-sm">required</span></label> 
           <input className={isPassValid?"rounded border-2 border-violet-300 w-1/2 mx-auto mb-5 p-1":"rounded border-2 border-violet-300 w-1/2 mx-auto p-1"} type="password" name="passwordconfirm" placeholder=" confirm your password" value={pass2} onChange={e => setPass2(e.target.value)} required />
           <p className={isPassValid? "hidden":"text-sm w-1/2 mx-auto mb-5 text-pink-600"}>Passwords do not match.</p>
           
