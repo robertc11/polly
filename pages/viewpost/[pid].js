@@ -264,8 +264,8 @@ export default function ViewPostPage(){
                     </div>
 
                     <div className="bg-gray-100 min-h-screen w-screen relative">
-                        <button onClick={() => handleBack()} className="bg-gray-100 w-[24%] absolute left-0 top-0">
-                            <p className="invisible h-screen">filler text</p>
+                        <button onClick={() => handleBack()} className="bg-gray-100 w-[24%] h-full absolute left-0 top-0">
+                            <p className="invisible">filler text</p>
                         </button>
 
                         <div id="textWrapper" className="w-1/2 min-h-screen bg-white mx-auto shadow-lg py-8 px-16 z-50">
@@ -341,8 +341,8 @@ export default function ViewPostPage(){
                             </div>
                         </div>
 
-                        <button onClick={() => handleBack()} className="bg-gray-100 w-[24%] absolute right-0 top-0">
-                            <p className="invisible h-screen">filler text</p>
+                        <button onClick={() => handleBack()} className="bg-gray-100 w-[24%] h-full absolute right-0 top-0">
+                            <p className="invisible">filler text</p>
                         </button>
                     </div>
                 </>
