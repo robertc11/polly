@@ -64,7 +64,7 @@ export default function ViewPostPage(){
                     setTimestamp(data.data[0]?.timestamp)
                     setSelected([data.data[0]?.useractions[0]?.action?.upvote||false, data.data[0]?.useractions[0]?.action?.downvote||false])
                     setAuthorName(data.data[0]?.author.authorName)
-                    setCommentsCount(data.data[0]?.comments[0]?.numComments)
+                    setCommentsCount(data.data[0]?.comments[0]?.numComments || 0)
                     document.title = data.data[0]?.statement
                 }
 
@@ -164,7 +164,7 @@ export default function ViewPostPage(){
         setChanged(true)
     }
 
-    const bulletinUpdates = useUpdatesBulletin(
+    const {last_up, last_down} = useUpdatesBulletin(
         postid,
         user?.uid,
         up,
@@ -178,7 +178,7 @@ export default function ViewPostPage(){
     const ref = useRef()
     const isVisible = useOnScreen(ref)
 
-    // // handles grabbing the bulletin posts when you scroll and when you first load the bulletin page
+    // // handles grabbing the comments when you scroll
 
     useEffect(() => {
         const fetchData = async () => {
@@ -272,6 +272,7 @@ export default function ViewPostPage(){
                             <div className="relative">
                                 <div className="w-full font-dongji font-semibold">
                                     <h1 className="text-2xl">{statement}</h1>
+                                    {/* <p>{last_up} {last_down}</p> */}
                                     <p className="mt-5 leading-8 tracking-wide text-slate-600 text-xl">{body}</p>
                                 </div>
                                 
@@ -283,7 +284,14 @@ export default function ViewPostPage(){
 
                                 <div id="voteWrapper" className="mt-5 flex items-center">
                                     <div name="upBtnDiv" className="flex flex-col items-center justify-center">
-                                        <button name="upBtn" className={selected?.[0] ? "mt-2 rounded-lg border-2 border-gray-300 px-2 py-1 bg-violet-500 text-white hover:bg-sky-100 mx-1" : "mt-2 rounded-lg border-2 border-gray-300 px-2 py-1 hover:bg-sky-100 mx-1"} onClick={(e) => handleUp(e)}>
+                                        <button name="upBtn" 
+                                            className={
+                                                last_up === null ? "mt-2 rounded-lg border-2 border-gray-300 bg-gray-300 px-2 py-1 mx-1 animate-pulse" 
+                                                : selected?.[0] ? "mt-2 rounded-lg border-2 border-gray-300 px-2 py-1 bg-violet-500 text-white hover:bg-sky-100 mx-1" 
+                                                : "mt-2 rounded-lg border-2 border-gray-300 px-2 py-1 hover:bg-sky-100 mx-1"
+                                            } 
+                                            onClick={ last_up !== null ? (e) => handleUp(e) : null }
+                                        >
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
                                             </svg>
@@ -293,7 +301,14 @@ export default function ViewPostPage(){
                                     </div>
                                     
                                     <div name="downBtnDiv" className="flex flex-col items-center justify-center">
-                                        <button name="downBtn" className={selected?.[1] ? "mt-2 rounded-lg border-2 border-gray-300 px-2 py-1 bg-violet-500 text-white hover:bg-sky-100 mx-1" : "mt-2 rounded-lg border-2 border-gray-300 px-2 py-1 hover:bg-sky-100 mx-1"} onClick={(e) => handleDown(e)}>
+                                        <button name="downBtn" 
+                                            className={ 
+                                                last_down === null ? "mt-2 rounded-lg border-2 border-gray-300 bg-gray-300 px-2 py-1 mx-1 animate-pulse" 
+                                                : selected?.[1] ? "mt-2 rounded-lg border-2 border-gray-300 px-2 py-1 bg-violet-500 text-white hover:bg-sky-100 mx-1" 
+                                                : "mt-2 rounded-lg border-2 border-gray-300 px-2 py-1 hover:bg-sky-100 mx-1" 
+                                            }
+                                            onClick={ last_down !== null ? (e) => handleDown(e) : null }
+                                        >
                                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" />
                                             </svg>
@@ -315,15 +330,11 @@ export default function ViewPostPage(){
                             <div id="commentsWrapper" className="mt-2">
                                 <h2 className="">Comments:</h2>
                                 
-                                <form onSubmit={handleComment} className="w-11/12 mx-auto mt-3 relative flex items-center text-gray-400 focus-within:text-violet-400">
-                                    <input type="text" name="commentBody" id="leadingIcon" placeholder="Add a comment" className="w-full pl-4 pr-4 py-1.5 rounded-xl text-sm text-gray-600 outline-none border-2 border-gray-300 focus:border-violet-400 peer transition" />
-                                    <span className="absolute right-4 h-6 pl-4 flex items-center border-l-2 border-gray-300 bg-white peer-focus:border-violet-400">
-                                        <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
-                                                <path fillRule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clipRule="evenodd" />
-                                            </svg>    
-                                        </button>
-                                    </span>
+                                <form onSubmit={handleComment} className="w-11/12 mx-auto mt-3 relative text-gray-400 focus-within:text-violet-400">
+                                    <textarea type="text" name="commentBody" id="leadingIcon" placeholder="Add a comment..." className="w-full pl-4 pr-4 py-1.5 rounded-md text-sm text-gray-600 outline-none border-2 border-gray-300 focus:border-violet-500 peer transition" />
+                                    <div className="w-full flex flex-row-reverse">
+                                        <button type="submit" className="text-sm text-white bg-violet-500 py-1 px-1.5 rounded">Comment</button>
+                                    </div>  
                                 </form>
 
                                 <div id="commentList" >
