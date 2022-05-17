@@ -13,7 +13,7 @@ import useUser from '../lib/useUser'
 import fetchJson from "../lib/fetchJson"
 //import useBulletin from '../lib/useBulletin'
 import useOnScreen from '../lib/useOnScreen'
-import { getElections } from '../lib/civic'
+import { getElections, getVoterInfo } from '../lib/civic'
 import useBulletin from '../lib/useBulletin'
 
 //next imports
@@ -25,7 +25,7 @@ import CustomPopup from '../components/customPopup'
 
 
 
-export default function WebApp(){
+export default function WebApp({electionData}){
     // if user is not logged in take them back to login page
     const { user, mutateUser } = useUser({
         redirectTo: "/login",
@@ -305,7 +305,7 @@ export default function WebApp(){
                 </div>
 
                 <div id="middlePanel" className="h-auto border-l-[3px] border-slate-300 w-4/6 flex flex-col items-center">
-                    <div className={(top !== bulletins?.[0]?._id && bulletins.length > 0 && screen==="bulletins")?"bg-slate-400 inset-x-0 mx-auto rounded-xl top-5 sticky z-50":"hidden"}>
+                    <div className={(top !== bulletins?.[0]?._id && bulletins.length > 0 && screen==="bulletins")?"bg-sky-400 inset-x-0 mx-auto rounded-xl top-5 sticky z-50 hover:bg-sky-500":"hidden"}>
                         <button className="text-center font-dongji text-white w-full py-1 px-2" onClick={() => refreshFeed()}>New Posts</button>
                     </div>
                     { screen==="elections" ? (
@@ -315,6 +315,7 @@ export default function WebApp(){
                                 username={user.username}
                                 cityid={user.cityID}
                                 login={user.isLoggedIn}
+                                elections={electionData}
                             />
                         </div>
                     ) : screen==="bulletins" ? (
@@ -352,7 +353,7 @@ export default function WebApp(){
                                 </div>
                             </>
                         ) : screen === "bulletins" ? (
-                            <>
+                            <div className="h-screen relative">
                                 <div id="newpostcontainer" className="bg-gray-200 w-full py-6 h-72 rounded-md">
                                     <button onClick={() => Router.push("/create")} className="py-1.5 px-3 xl:px-5 xl:py-2 rounded-md bg-emerald-300 text-md text-white right-4 hover:bg-emerald-500 flex items-center justify-center w-5/6 xl:w-3/4 mx-auto">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -361,7 +362,13 @@ export default function WebApp(){
                                         New Post
                                     </button>
                                 </div>
-                            </>
+
+                                <div id="upwrapper" className="w-full py-6 rounded-md absolute bottom-0 mb-24">
+                                    <button onClick={() => smoothScroll()} className="py-1.5 xl:py-2 rounded-xl bg-sky-400 text-md text-white right-4 hover:bg-sky-500 flex items-center justify-center w-8/12 xl:w-7/12 mx-auto">
+                                        <p className="text-xs">Back to Top</p>
+                                    </button>
+                                </div>
+                            </div>
                         ) : screen === "cards" ? (
                             <>
                                 <div className="bg-gray-200 w-full py-6 h-screen rounded-md">
@@ -381,10 +388,11 @@ export default function WebApp(){
     )
 }
 
-// export async function getStaticProps(context){
-//     const electionData = await getElections()
+export async function getStaticProps(context){
+    // const electionData = await getElections()
+    const electionData = await getVoterInfo('9900 Koupela Drive Raleigh NC')
 
-//     return {
-//         props: { electionData }
-//     }
-// }
+    return {
+        props: { electionData }
+    }
+}

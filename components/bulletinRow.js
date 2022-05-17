@@ -93,10 +93,30 @@ export default function BulletinRow(props){
         }).then((result) => {
             console.log('result2',result)
             if (result.isDenied && result.value.success === false) {
-                Swal.fire('Oops!',`An error occurred: ${result.value.msg}`,'error')
+                return Swal.fire({
+                    title: 'Oops!',
+                    text: `An error occurred: ${result.value.msg}`,
+                    icon: 'error',
+                    showConfirmButton: false,
+                    showCancelButton: true,
+                    cancelButtonText: 'Ok',
+                    allowOutsideClick: false,
+                })
             }else if(result.isDenied && result.value.success){
-                Swal.fire('Success!','Your post was deleted','success')
+                return Swal.fire({
+                    title: 'Success!',
+                    text: 'Your post was deleted',
+                    icon: 'success',
+                    allowOutsideClick: false,
+                })
             }
+        }).then((result) => {
+            console.log(result)
+            if(result.isConfirmed){
+                Router.reload('/web?page=bulletins')
+            }
+        }).catch((err) => {
+            console.log('An error occurred while deleting the post!', err)
         })
     }
 
