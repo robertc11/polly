@@ -5,7 +5,7 @@ export default function MobileLanding(){
     return (
         <div>
             <Head>
-                <title>Polly-Download</title>
+                <title>Download</title>
             </Head>
 
             <NavBar />

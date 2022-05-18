@@ -42,14 +42,14 @@ export default function ElectionDash(props){
                 <div className="relative">
                     <p className="w-2/3 mx-auto mt-3">
                         To ensure we have the most accurate and up-to-date information on all upcoming elections in your region, Polly uses its own webscrapers for 
-                        <Link href='/'><a className="text-sky-400"> supported regions</a></Link> and the 
+                        <Link href='/regions'><a className="text-sky-400"> supported regions</a></Link> and the 
                         <Link href='https://developers.google.com/civic-information'><a className="text-sky-400"> Google Civic API </a></Link> 
                         which is supported by Google and the Voting Information Project. The data is built on local government groups contributing elections and may 
                         be incomplete in some areas.
                     </p>
                     <p className="mt-3 w-2/3 mx-auto">If you notice inconsistencies or missing data, please help us by:</p>
                     <ul className="marker:text-violet-400 w-7/12 mx-auto mt-1 space-y-1 list-disc">
-                        <li>Sending an email to <code className="text-sm">dongji.yang@outlook.com</code> with your zipcode and the name of the missing election</li>
+                        <li>Sending an email to <code className="text-sm">support@pollyapp.io</code> with your zipcode and the name of the missing election</li>
                         <li>Submitting a regional support ticket request*</li>
                     </ul>
                     <p className="w-full text-center mt-3 text-xs">*Because of limited staff and resources, we cannot guarantee support for all requested tickets. Thank you for your understanding.</p>    
