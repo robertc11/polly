@@ -1,5 +1,6 @@
 import NavBar from '../components/navbar'
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Regions(){
     return (
@@ -14,9 +15,9 @@ export default function Regions(){
                 <h1 className="text-3xl font-bold text-center text-slate-700 mt-10">Supported Regions</h1>
 
                 <p className="w-7/12 mx-auto mt-3 text-lg">
-                    Don't see your city on the list? Just because your city isn't here doesn't mean you won't receive election data. 
-                    It just means that the team at Polly can't meticulously check to see if all the data is there. 
-                    If you want greater reliability and access, you can add your city by either:
+                    Don't see your city on the list? No need to panic! Just because your city isn't here doesn't mean you won't receive election data. 
+                    It just means that the team at Polly can't take out our microscope and meticulously check to see if all the data is there. 
+                    If you want greater reliability and access to local election data, you can add your city by either:
                 </p>
                 <ul className="w-[55%] mx-auto mt-3 text-lg space-y-2 marker:text-violet-400 list-disc">
                     <li>
@@ -24,11 +25,15 @@ export default function Regions(){
                         and your zipcode
                     </li>
                     <li>
-                        Filling out our regional support ticket request form
+                        Filling out our regional support ticket request form*
                     </li>
                 </ul>
                 <p className="w-7/12 mx-auto mt-2 text-lg">
-                    Please note: due to our limited size and staffing constraints, not all ticket requests can be approved instantly.
+                    If you want to report a missing election for any region, 
+                    visit <Link href="/"><a className="text-sky-400">election hide-and-seek</a></Link>.
+                </p>
+                <p className="w-7/12 mx-auto mt-2 text-sm">
+                    *Please note: due to our limited size and staffing constraints, not all ticket requests can be approved instantly.
                     We thank you for your understanding and patience.
                 </p>
                 

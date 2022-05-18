@@ -8,7 +8,7 @@ export default function ElectionBlock(props){
     return (
         <>
             <div className="w-[49.5%] xl:w-[33%] border-2 border-gray-300 p-2 font-dongji mt-1 rounded">
-                <Link href='/'><a><h1 className="font-semibold hover:text-violet-500">{props.electionName}</h1></a></Link>
+                <Link href=''><a><h1 className="font-semibold hover:text-violet-500">{props.electionName}</h1></a></Link>
                 <p className="">{days[date.getDay()]}, {months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</p>
                 
                 <div className="flex items-center mt-3 space-x-1.5">

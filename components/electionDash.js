@@ -31,7 +31,7 @@ export default function ElectionDash(props){
                 </div>
             </div>
             {/* <p>{user.uid}</p> */}
-            {/* <p>{JSON.stringify(allElections)}</p> */}
+            <p>{JSON.stringify(allElections)}</p>
             {/* <p className="text-xs">{JSON.stringify(props.elections)}</p> */}
 
             <CustomPopup
@@ -44,7 +44,7 @@ export default function ElectionDash(props){
                         To ensure we have the most accurate and up-to-date information on all upcoming elections in your region, Polly uses its own webscrapers for 
                         <Link href='/regions'><a className="text-sky-400"> supported regions</a></Link> and the 
                         <Link href='https://developers.google.com/civic-information'><a className="text-sky-400"> Google Civic API </a></Link> 
-                        which is supported by Google and the Voting Information Project. The data is built on local government groups contributing elections and may 
+                        which is supported by Google and the Voting Information Project. The data is built from the contribution of local government groups and may 
                         be incomplete in some areas.
                     </p>
                     <p className="mt-3 w-2/3 mx-auto">If you notice inconsistencies or missing data, please help us by:</p>
