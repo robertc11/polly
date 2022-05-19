@@ -16,7 +16,7 @@ def formatDate(date):
 
 
 class election:
-    def __init__(self, name, date, city, county, state, link):
+    def __init__(self, name, date, state='N/A', county='N/A', city='N/A', link='N/A'):
         self.electionName = name
         self.electionDay = formatDate(date)  # dates in the form YYYY-MM-DD
         self.cityID = ["USA",state,county.capitalize(),city.capitalize()]  # currently hardcode to USA
