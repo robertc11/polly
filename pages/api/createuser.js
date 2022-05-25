@@ -1,4 +1,4 @@
-import { createUser } from '../../lib/database/dbusers'
+import { runner } from '../../lib/database/dbusers'
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10
@@ -11,7 +11,7 @@ export default async function handler(req,res){
         if(err){
             res.status(500).json({message:err})
         }
-        const resdb = await createUser(firstname,lastname,email,phone,street,city,state,zip,username,hash)
+        const resdb = await runner('createUser',[ firstname,lastname,email,phone,street,city,state,zip,username,hash ])
         console.log('> createuser.js: Result:', resdb)
 
         if(!resdb.success){
