@@ -2,7 +2,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import useSWRInfinite from 'swr/infinite'
 
-
 // component imports
 import Logo from '../components/logo'
 import BulletinDash from '../components/bulletinDash'

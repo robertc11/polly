@@ -14,22 +14,37 @@ def formatDate(date):
     except:
         return [1, 'formatDate: Error parsing string!']
 
+def parseCityID(arr):
+    try:
+        res = [arr[0],arr[1]]
+        for i in range(2,len(arr)):
+            if arr[i] is not None:
+                res.append(arr[i].capitalize())
+            else:
+                res.append(None)
+        return [2, res]
+    except:
+        return [1, "parseCityID: failed"]
 
-class election:
-    def __init__(self, name, date, state='N/A', county='N/A', city='N/A', link='N/A'):
+class Election:
+    def __init__(self, name, date, state=None, county=None, city=None, links=[]):
         self.electionName = name
-        self.electionDay = formatDate(date)  # dates in the form YYYY-MM-DD
-        self.cityID = ["USA",state,county.capitalize(),city.capitalize()]  # currently hardcode to USA
-        self.link = "" if link is None else link
-    
+        self.links = links
+
+        dateRes = formatDate(date)  # dates in the form YYYY-MM-DD
+        self.electionDay = dateRes[1] if dateRes[0] == SUCCESS_CODE else None
+
+        parseRes = parseCityID(["USA",state,county,city])
+        self.cityID = parseRes[1] if parseRes[0] == SUCCESS_CODE else None  # currently hardcode to USA
+        
     def setElectionName(self, newName):
         self.electionName = newName
     
     def setElectionDay(self, newDate):
         self.electionDay = formatDate(newDate)
     
-    def setElectionLink(self, newLink):
-        self.link = newLink
+    def addLink(self, newLink):
+        self.links.append(newLink)
 
     def setElectionCityID(self, newState, newCounty, newCity):
         self.cityID = ["USA", newState, newCounty, newCity]
@@ -40,12 +55,12 @@ class election:
     def getElectionDay(self):
         return self.electionDay
 
-    def getElectionLink(self):
-        return self.link
+    def getElectionLinks(self):
+        return self.links
     
     def getElectionCityID(self):
         return self.cityID
 
     def printElection(self):
-        print('This Election:',self.electionName,self.electionDay,self.cityID,self.link)
+        print('This Election:',self.electionName,self.electionDay,self.cityID,self.links)
 

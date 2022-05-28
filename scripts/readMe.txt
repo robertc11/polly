@@ -15,3 +15,7 @@ https://lxml.de/installation.html
 Requests:
 python -m pip install requests
 https://docs.python-requests.org/en/latest/
+
+PyMongo:
+pip install PyMongo
+https://pymongo.readthedocs.io/en/stable/tutorial.html
