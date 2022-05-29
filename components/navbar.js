@@ -13,6 +13,8 @@ export default function NavBar(){
                 <Link href="/"><a className="ml-2 p-5 hover:text-blue-200">HOME</a></Link>
                 <Link href="/"><a className="p-5 hover:text-blue-200">SUPPORT</a></Link>
                 <Link href="/mobilelanding"><a className="p-5 hover:text-blue-200">DOWNLOAD</a></Link>
+                <Link href="/blogPage"><a className="p-5 hover:text-blue-200">BLOG</a></Link>
+
             </div>
         </div>
     )

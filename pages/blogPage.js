@@ -3,6 +3,7 @@ import BlockY from '../components/blockY'
 import NavBar from '../components/navbar'
 import { blogPost2 } from '../lib/blogData'
 import Head from 'next/head';
+import Link from 'next/link';
 
 
 export default function blogHome() {
@@ -25,12 +26,12 @@ export default function blogHome() {
 
            <div>
                {blogPost2.map((item) => (
-
            
-                   <div key={item.title}>
-                   <div>{item.title}</div>
-                   <div>{item.date.toString()}</div>
-                   <div>{item.content}</div>
+            
+                    <div key={item.slug}>
+                    <div><Link href={`/blog/${item.slug}`}><a>{item.title}</a></Link> </div>                   
+                    <div>{item.date.toString()}</div>
+                    <div>{item.content}</div>
 
                 
                </div>

@@ -1,11 +1,7 @@
 // React imports
-<<<<<<< HEAD
-import React, { useState, useEffect } from 'react'
-=======
 import React, { useState, useRef, useEffect } from 'react'
 import useSWRInfinite from 'swr/infinite'
 
->>>>>>> a8a1376321457d97c275ba32318daf436787e4f2
 
 // component imports
 import Logo from '../components/logo'
@@ -35,8 +31,6 @@ export default function WebApp({electionData}){
         redirectTo: "/login",
     })
 
-<<<<<<< HEAD
-=======
     // top checks the latest post in the database and sees if it is already shown on screen or not
     const [top, setTop] = useState(null)
     useEffect(() => {
@@ -96,7 +90,6 @@ export default function WebApp({electionData}){
             behavior: 'smooth',
         })
         console.log('yuhh got to end of the scroll')
->>>>>>> a8a1376321457d97c275ba32318daf436787e4f2
 
         return new Promise((resolve, reject) => {
             const failed = setTimeout(() => {
@@ -128,22 +121,6 @@ export default function WebApp({electionData}){
 
     // state to keep track of which screen is open and useEffect hook to set it to the url passed page param
     const [screen, setScreen] = useState('elections')
-<<<<<<< HEAD
-    const [bulletins, setBulletins] = useState(undefined)
-
-    useEffect(() => {
-        const initBulletins = async () => {
-            const bs = await fetchJson("/api/bulletin", {method: "GET"})
-            setBulletins(bs)
-        }
-        initBulletins()
-    }, [])
-
-    const  getNewBulletins = async () => {
-        const newBulletins = await fetchJson("api/bulletin", {method: "GET"})
-        setBulletins(newBulletins)
-    }
-=======
     useEffect(() => {
         if(!page) return
         setScreen(page)
@@ -198,7 +175,6 @@ export default function WebApp({electionData}){
         setPopupVisible(a)
     }
 
->>>>>>> a8a1376321457d97c275ba32318daf436787e4f2
 
     if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
         return(
@@ -357,24 +333,6 @@ export default function WebApp({electionData}){
                                 fucker
                             </div>
                         </div>
-<<<<<<< HEAD
-                        // <ElectionDash
-                        //     uid={user.uid}
-                        //     username={user.username}
-                        //     cityid={user.cityID}
-                        //     login={user.isLoggedIn}
-                        // />
-                    ) : screen==="bulletin" ? (
-                        <BulletinDash
-                            uid={user.uid}
-                            username={user.username}
-                            cityid={user.cityID}
-                            login={user.isLoggedIn}
-                            bulletins={bulletins}
-                            getNewBulletins={getNewBulletins}
-                        />
-=======
->>>>>>> a8a1376321457d97c275ba32318daf436787e4f2
                     ) : screen==="cards" ? (
                         <div>
                             <h1 className="text-slate-700 text-4xl font-bold mt-3">Candidate Cards</h1>

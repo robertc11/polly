@@ -3,42 +3,6 @@ import React, {useState, useEffect} from 'react';
 import BlockY from '../components/blockY'
 import NavBar from '../components/navbar'
 
-//var chrome = (window.navigator.userAgent)
-//console.log(chrome)
-
-// const blogDataPayLoad = {
-//     blogTitle: title,
-//     blogSubHeading: sub, 
-//     blogBody: body
-
-// }
-
-
-//let blogdata = {blogDataArray}
-export function hookTesting() {
-//const [body, setBody] = useState()
-console.log(body)
-}
-
-
-// export function handleInput(e) {
-// bodydata = this.state.blogbody
-// blogDataArray.push(bodydata)
-
-// }
-
-export function handleClick() {
-    console.log("button clicked")
-}
-
-export function Dispatcher(blogDataPayLoad) {
-    //let PL = blogDataPayLoad
-    console.log("GOT HERE")
-}
-
-
-
-
 export default function blogPage() {
 
     
@@ -49,37 +13,39 @@ export default function blogPage() {
     const [sub, setSub] = useState("")
 
     const blogDataPayLoad = {
+
         blogTitle: title,
         blogSubHeading: sub, 
         blogBody: body
-
     }
+
     console.log(body)
     console.log(blogDataPayLoad)
 
-    const handleChange = (e) =>{
+    const handleChange = (e, request, response) =>{
         e.preventDefault()
         let PL = blogDataPayLoad
         console.log("handleChange +++++++ ", PL)
 
         //let blogSubmit = blogAPI()
-
-        fetch('/api/blogs/blog.api' , {
-            method : "POST",
-            headers : {'content-type': 'application/json'},
-            body : JSON.stringify(PL)
-        })
-        .then (response => response.json())
-        .then(res => {
-            console.log("Successful blog Post!", res)
-        })
+        try {
+            fetch('/api/blogs/blog.api', {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(PL)
+            })
+                //.then(response => response.json())
+                   .then(response => response.json())
+                    //console.log(JSON.stringify(response.json())
+                .then(response => {
+                    console.log("Successful blog Post!", response)
+             
+                })
+        } catch (err) {
+            console.log("robs err argh!", err)
+        }
 
     }
-
-    
-    
-
-    //let duplicatebody = {body}
 
     
    return (
@@ -113,25 +79,7 @@ export default function blogPage() {
   </BlockY>
   </>
 
-    //  <div class="border-solid border-2 border-indigo-600 ..." >
-    //     <h1><b>Blog Page</b></h1>
-        
-    //     <p className="text-lg text-fuchsia-500 text-center">I am testing paragraph functionality</p>
-    //     <ul>
-    //         <li>basketball is fun</li>
-    //         <li>i like fajita</li>
-    //         <li>fatcats are lazy</li>
-    //     </ul>
-    //     <form className="w-full p-5 flex flex-col justify-center items-center font-kelly text-slate-600">
-    //         <label for="body">Blog Body</label>
-    //         <input type="text" className="border-solid border-2 border-indigo-600"/><br></br> 
-    //         <input type="text" value="Blog Body"/> 
-    //     </form>
-   
-    //     </div>
-
-   
-
+ 
                 
    )
 
