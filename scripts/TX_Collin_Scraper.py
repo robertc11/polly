@@ -2,12 +2,16 @@ from bs4 import BeautifulSoup
 import requests
 from data_obj import Election
 
+# indexOfSplit function to find the index of a list delimiting date from name
+# params: arr - List
 def indexOfSplit(arr):
     for i in range(len(arr)):
         if arr[i].isnumeric():
             return i+1
     return -1
 
+# readElections function to gather all elections on the collin county election page
+# returns a list of all found elections
 def readElections():
     allElections = []
 
@@ -34,6 +38,8 @@ def readElections():
         allElections.append(thisElection)
     return allElections
 
+# readUpcomingElections function to get all elections on the collin county upcoming election page
+# returns a list of all found upcoming elections
 def readUpcomingElections():
     allElections = []
 
@@ -60,9 +66,10 @@ def readUpcomingElections():
         allElections.append(thisElection)
     return allElections
 
-
+# main function - runner
 def main():
-    data = sorted(readElections() + readUpcomingElections(), key=lambda x: x.getElectionName(), reverse=False) # sort in alphabetical order
+    # sort in alphabetical order
+    data = sorted(readElections() + readUpcomingElections(), key=lambda x: x.getElectionName(), reverse=False) 
     for election in data:
         election.printElection()
 

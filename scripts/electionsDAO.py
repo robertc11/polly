@@ -3,14 +3,18 @@ from difflib import SequenceMatcher
 
 client = MongoClient('localhost', 27017)
 
+# checkDup function to check if a duplicate election already exists in database
+# params: electionObj - Election, dbData - List
 def checkDup(electionObj, dbData):
     for row in dbData:
-        s = SequenceMatcher(lambda x: x == ' ', row['name'], electionObj.getElectionName())
+        s = SequenceMatcher(lambda x: x == ' ', row['name'].lower(), electionObj.getElectionName().lower())
         delta = round(s.ratio(),3)
         if delta > 0.6:
             return True
     return False
 
+# insertDocuments function to insert elections into the database
+# params: arr - List of Elections to be added
 def insertDocuments(arr):
     db = client.events
     collection = db.elections
