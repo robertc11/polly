@@ -243,6 +243,7 @@ export default function WebApp({electionData}){
                     onClose={(a) => popupCloseHandler(a)}
                     show={(popupVisible) && (user?.uid === "6267136047598ab239dd4789") && (!sessionStorage.getItem('kitten'))}
                     title="Hi Kelly!"
+                    closeText="Close"
                 >
                     <p className="text-lg w-full text-center">Pet Me!</p>
                     <div className="-mt-4 w-[400px] h-[400px] bg-[url('../public/kittenopen.svg')] bg-no-repeat hover:bg-[url('../public/kittenclosedhearts.svg')] hover:cursor-grabbing"></div>

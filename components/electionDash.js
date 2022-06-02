@@ -38,6 +38,7 @@ export default function ElectionDash(props){
                 title="How We Source Our Data"
                 onClose={(a) => popupCloseHandler(a)}
                 show={popupVisible}
+                closeText="Ok"
             >
                 <div className="relative">
                     <p className="w-2/3 mx-auto mt-3">
@@ -67,9 +68,9 @@ export default function ElectionDash(props){
                     </button>
                 </h1>
                 <div className="w-full flex flex-wrap items-center justify-between">
-                    {allElections.map((thisElection, index) => {
-                        var tmp = thisElection.ocdDivisionId.split('/')
-                        if(tmp.length > 0 && tmp[tmp.length-1].includes('city')){
+                    {allElections?.map((thisElection, index) => {
+                        var tmp = thisElection?.ocdDivisionId?.split('/')
+                        if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('city')){
                             return (
                                 <ElectionBlock
                                     key={thisElection.id}
@@ -91,9 +92,9 @@ export default function ElectionDash(props){
                     </button>
                 </h1>
                 <div className="w-full flex flex-wrap items-center justify-between">
-                    {allElections.map((thisElection, index) => {
-                        var tmp = thisElection.ocdDivisionId.split('/')
-                        if(tmp.length > 0 && tmp[tmp.length-1].includes('county')){
+                    {allElections?.map((thisElection, index) => {
+                        var tmp = thisElection?.ocdDivisionId?.split('/')
+                        if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('county')){
                             return (
                                 <ElectionBlock
                                     key={thisElection.id}
@@ -115,9 +116,9 @@ export default function ElectionDash(props){
                     </button>
                 </h1>
                 <div className="w-full flex flex-wrap items-center justify-between">
-                    {allElections.map((thisElection, index) => {
-                        var tmp = thisElection.ocdDivisionId.split('/')
-                        if(tmp.length > 0 && tmp[tmp.length-1].includes('state')){
+                    {allElections?.map((thisElection, index) => {
+                        var tmp = thisElection?.ocdDivisionId?.split('/')
+                        if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('state')){
                             return (
                                 <ElectionBlock
                                     key={thisElection.id}
@@ -139,9 +140,9 @@ export default function ElectionDash(props){
                     </button>
                 </h1>
                 <div className="w-full flex flex-wrap items-center justify-between">
-                    {allElections.map((thisElection, index) => {
-                        var tmp = thisElection.ocdDivisionId.split('/')
-                        if(tmp.length > 0 && tmp[tmp.length-1].includes('country')){
+                    {allElections?.map((thisElection, index) => {
+                        var tmp = thisElection?.ocdDivisionId?.split('/')
+                        if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('country')){
                             return (
                                 <ElectionBlock
                                     key={thisElection.id}

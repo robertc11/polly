@@ -318,7 +318,7 @@ export default function ViewPostPage(){
                                     </div>
                                 </div>
 
-                                <div className="absolute bottom-2 right-5">
+                                <div className="absolute bottom-2 right-5 font-dongji">
                                     <p className="text-right text-xs">Posted by <span className="text-violet-400">{authorName}</span> on</p>
                                     <p className="text-right text-xs">{unixToReg(timestamp)}</p>
                                 </div>    
@@ -327,7 +327,7 @@ export default function ViewPostPage(){
 
                             <hr className="mt-3"></hr>
 
-                            <div id="commentsWrapper" className="mt-2">
+                            <div id="commentsWrapper" className="mt-2 font-dongji">
                                 <h2 className="">Comments:</h2>
                                 
                                 <form onSubmit={handleComment} className="w-11/12 mx-auto mt-3 relative text-gray-400 focus-within:text-violet-400">
@@ -339,9 +339,9 @@ export default function ViewPostPage(){
 
                                 <div id="commentList" >
                                     {comments?.map((oneComment,index) => (
-                                        <div key={oneComment._id} className="w-11/12 mt-3 p-6 mx-auto shadow-md border-2 border-gray-100 relative">
-                                            <p className="text-sm">{oneComment.comment}</p>
-                                            <p className="absolute right-1 bottom-1 text-xs">{oneComment.author.authorName}<span className="ml-2 text-slate-400">{timeAgo(oneComment.timestamp)} ago</span></p> 
+                                        <div key={oneComment?._id} className="w-11/12 mt-3 p-6 mx-auto shadow-md border-2 border-gray-100 relative">
+                                            <p className="text-sm">{oneComment?.comment}</p>
+                                            <p className="absolute right-1 bottom-1 text-xs">{oneComment?.author?.authorName}<span className="ml-2 text-slate-400">{timeAgo(oneComment?.timestamp)} ago</span></p> 
                                         </div>
                                     ))}
                                 </div>
