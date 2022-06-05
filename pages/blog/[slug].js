@@ -11,8 +11,13 @@ export default function pollyNewsBlog({ title, date, content }) {
                     <title>{title}</title>
                 </head>
                 <main>
-                    <h1>{title}</h1>
-                    <div>{content}</div>
+                <div className="border-b-2 border-gray-200 mb-4">
+                    <h2 className="text-2xl font-bold">{title}</h2>
+                   
+                    <div className="text-gray-600 text-md">{date}</div>
+                    </div>
+                    <div className="">{content}</div>
+            
                 </main>
             </div>
         
