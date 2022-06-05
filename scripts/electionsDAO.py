@@ -25,7 +25,8 @@ def insertDocuments(arr):
     toObj = []
     for item in arr:
         # check for similarity/existence in the db - no duplicates
-        if checkDup(item, currEntries):
+        if checkDup(item, currEntries) or len(item) < 4:
+            print("Issue with election item - skipped")
             continue
 
         doc = {
