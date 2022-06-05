@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from difflib import SequenceMatcher
+import time
 
 client = MongoClient('localhost', 27017)
 
@@ -19,7 +20,7 @@ def insertDocuments(arr):
     db = client.events
     collection = db.elections
 
-    currEntries = db.find({"cityID": arr[0].getElectionCityID()}) # array of all the current elections matching the location
+    currEntries = collection.find({"cityID": arr[0].getElectionCityID()}) # cursor obj of all the current elections matching the location
 
     toObj = []
     for item in arr:
@@ -28,14 +29,20 @@ def insertDocuments(arr):
             continue
 
         doc = {
-            'name':item[0],
-            'electionDay':item[1],
-            'cityID':item[2],
-            'links':item[3]
+            'name':item.getElectionName(),
+            'electionDay':item.getElectionDay(),
+            'cityID':item.getElectionCityID(),
+            'links':item.getElectionLinks(),
+            'timestamp': int(time.time())
         }
+        
         toObj.append(doc)
     
-    result = collection.insert_many(toObj)
+    if len(toObj) > 0:
+        result = collection.insert_many(toObj)
+        print(result)
+    else:
+        print("No documents were inserted!")
 
 
 

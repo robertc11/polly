@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from data_obj import Election
+from electionsDAO import insertDocuments
 
 # indexOfSplit function to find the index of a list delimiting date from name
 # params: arr - List
@@ -72,6 +73,7 @@ def main():
     data = sorted(readElections() + readUpcomingElections(), key=lambda x: x.getElectionName(), reverse=False) 
     for election in data:
         election.printElection()
+    insertDocuments(data)
 
 if __name__ == '__main__':
     main()
