@@ -18,8 +18,6 @@ export default function ElectionDash(props){
         setPopupVisible(a)
     }
 
-    const allElections = [props.elections?.election || ''].concat(props.elections?.otherElections || [])
-
     return (
         <>
             <div className="flex items-center justify-center w-full">
@@ -31,7 +29,7 @@ export default function ElectionDash(props){
                 </div>
             </div>
             {/* <p>{user.uid}</p> */}
-            <p>{JSON.stringify(allElections)}</p>
+            {/* <p>{JSON.stringify(props.elections)}</p> */}
             {/* <p className="text-xs">{JSON.stringify(props.elections)}</p> */}
 
             <CustomPopup
@@ -68,17 +66,30 @@ export default function ElectionDash(props){
                     </button>
                 </h1>
                 <div className="w-full flex flex-wrap items-center justify-between">
-                    {allElections?.map((thisElection, index) => {
-                        var tmp = thisElection?.ocdDivisionId?.split('/')
-                        if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('city')){
-                            return (
-                                <ElectionBlock
-                                    key={thisElection.id}
-                                    electionName={thisElection.name}
-                                    electionID={thisElection.id}
-                                    electionDate={thisElection.electionDay}
-                                />
-                            )
+                    {props.elections?.map((thisElection, index) => {
+                        if(thisElection.ocdDivisionId){
+                            var tmp = thisElection?.ocdDivisionId?.split('/')
+                            if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('city')){
+                                return (
+                                    <ElectionBlock
+                                        key={thisElection.id}
+                                        electionName={thisElection.name}
+                                        electionID={thisElection.id}
+                                        electionDate={thisElection.electionDay}
+                                    />
+                                )
+                            }    
+                        }else{
+                            if(thisElection.cityID[3] !== null){
+                                return (
+                                    <ElectionBlock
+                                        key={thisElection._id}
+                                        electionName={thisElection.name}
+                                        electionID={thisElection._id}
+                                        electionDate={thisElection.electionDay}
+                                    />
+                                )
+                            }
                         }
                     })}
                 </div>
@@ -92,17 +103,30 @@ export default function ElectionDash(props){
                     </button>
                 </h1>
                 <div className="w-full flex flex-wrap items-center justify-between">
-                    {allElections?.map((thisElection, index) => {
-                        var tmp = thisElection?.ocdDivisionId?.split('/')
-                        if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('county')){
-                            return (
-                                <ElectionBlock
-                                    key={thisElection.id}
-                                    electionName={thisElection.name}
-                                    electionID={thisElection.id}
-                                    electionDate={thisElection.electionDay}
-                                />
-                            )
+                    {props.elections?.map((thisElection, index) => {
+                        if(thisElection.ocdDivisionId){
+                            var tmp = thisElection?.ocdDivisionId?.split('/')
+                            if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('county')){
+                                return (
+                                    <ElectionBlock
+                                        key={thisElection.id}
+                                        electionName={thisElection.name}
+                                        electionID={thisElection.id}
+                                        electionDate={thisElection.electionDay}
+                                    />
+                                )
+                            }    
+                        }else{
+                            if(thisElection.cityID[2] !== null && thisElection.cityID[3] === null){
+                                return (
+                                    <ElectionBlock
+                                        key={thisElection._id}
+                                        electionName={thisElection.name}
+                                        electionID={thisElection._id}
+                                        electionDate={thisElection.electionDay}
+                                    />
+                                )
+                            }
                         }
                     })}
                 </div>
@@ -116,17 +140,30 @@ export default function ElectionDash(props){
                     </button>
                 </h1>
                 <div className="w-full flex flex-wrap items-center justify-between">
-                    {allElections?.map((thisElection, index) => {
-                        var tmp = thisElection?.ocdDivisionId?.split('/')
-                        if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('state')){
-                            return (
-                                <ElectionBlock
-                                    key={thisElection.id}
-                                    electionName={thisElection.name}
-                                    electionID={thisElection.id}
-                                    electionDate={thisElection.electionDay}
-                                />
-                            )
+                    {props.elections?.map((thisElection, index) => {
+                        if(thisElection.ocdDivisionId){
+                            var tmp = thisElection?.ocdDivisionId?.split('/')
+                            if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('state')){
+                                return (
+                                    <ElectionBlock
+                                        key={thisElection.id}
+                                        electionName={thisElection.name}
+                                        electionID={thisElection.id}
+                                        electionDate={thisElection.electionDay}
+                                    />
+                                )
+                            }    
+                        }else{
+                            if(thisElection.cityID[1] !== null && thisElection.cityID[2] === null && thisElection.cityID[3] === null){
+                                return (
+                                    <ElectionBlock
+                                        key={thisElection._id}
+                                        electionName={thisElection.name}
+                                        electionID={thisElection._id}
+                                        electionDate={thisElection.electionDay}
+                                    />
+                                )
+                            }
                         }
                     })}
                 </div>
@@ -140,17 +177,30 @@ export default function ElectionDash(props){
                     </button>
                 </h1>
                 <div className="w-full flex flex-wrap items-center justify-between">
-                    {allElections?.map((thisElection, index) => {
-                        var tmp = thisElection?.ocdDivisionId?.split('/')
-                        if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('country')){
-                            return (
-                                <ElectionBlock
-                                    key={thisElection.id}
-                                    electionName={thisElection.name}
-                                    electionID={thisElection.id}
-                                    electionDate={thisElection.electionDay}
-                                />
-                            )
+                    {props.elections?.map((thisElection, index) => {
+                        if(thisElection.ocdDivisionId){
+                            var tmp = thisElection?.ocdDivisionId?.split('/')
+                            if(tmp?.length > 0 && tmp?.[tmp?.length-1].includes('country')){
+                                return (
+                                    <ElectionBlock
+                                        key={thisElection.id}
+                                        electionName={thisElection.name}
+                                        electionID={thisElection.id}
+                                        electionDate={thisElection.electionDay}
+                                    />
+                                )
+                            }
+                        }else{
+                            if(thisElection.cityID[0] !== null && thisElection.cityID[1] === null && thisElection.cityID[2] === null && thisElection.cityID[3] === null){
+                                return (
+                                    <ElectionBlock
+                                        key={thisElection._id}
+                                        electionName={thisElection.name}
+                                        electionID={thisElection._id}
+                                        electionDate={thisElection.electionDay}
+                                    />
+                                )
+                            }
                         }
                     })}
                 </div>

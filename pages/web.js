@@ -14,6 +14,7 @@ import fetchJson from "../lib/fetchJson"
 import useOnScreen from '../lib/useOnScreen'
 import { getElections, getVoterInfo } from '../lib/civic'
 import useBulletin from '../lib/useBulletin'
+import useElections from '../lib/useElections'
 
 //next imports
 import Link from 'next/link'
@@ -24,11 +25,13 @@ import CustomPopup from '../components/customPopup'
 
 
 
-export default function WebApp({electionData}){
+
+export default function WebApp(){
     // if user is not logged in take them back to login page
-    const { user, mutateUser } = useUser({
+    const { user } = useUser({
         redirectTo: "/login",
     })
+    const { elections } = useElections(user)
 
     // top checks the latest post in the database and sees if it is already shown on screen or not
     const [top, setTop] = useState(null)
@@ -316,7 +319,7 @@ export default function WebApp({electionData}){
                                 username={user.username}
                                 cityid={user.cityID}
                                 login={user.isLoggedIn}
-                                elections={electionData}
+                                elections={elections}
                             />
                         </div>
                     ) : screen==="bulletins" ? (
@@ -389,11 +392,19 @@ export default function WebApp({electionData}){
     )
 }
 
-export async function getStaticProps(context){
-    // const electionData = await getElections()
-    const electionData = await getVoterInfo('9900 Koupela Drive Raleigh NC')
-
-    return {
-        props: { electionData }
-    }
-}
+// export async function getStaticProps(context){
+//     // const electionData = await getElections()
+//     // replace with call to our api endpoint
+//     // const electionData = await getVoterInfo('9900 Koupela Drive Raleigh NC')
+//     const electionData = await fetch('/api/elections', {
+//         method: "GET",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({
+//             usercityid: user.cityID,
+//         }),
+//     }).then(res => res.json()).catch((e) => console.log(e))
+    
+//     return {
+//         props: { electionData }
+//     }
+// }
