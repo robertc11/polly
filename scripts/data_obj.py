@@ -1,5 +1,6 @@
 from dateutil import parser
 import datetime
+import time
 
 ERROR_CODE = 1
 SUCCESS_CODE = 2
@@ -10,9 +11,9 @@ def formatDate(date):
     if not isinstance(date,str):
         return [1, "formatDate: Expected input of type string!"]
     try:
-        res = parser.parse(date)  # of type datetime
-        res = res.date()
-        return [2, res.strftime("%Y-%m-%d")]
+        resA = parser.parse(date)  # of type datetime
+        resB = resA.date()
+        return [2, resB.strftime("%Y-%m-%d"), int(resA.timestamp())]
     except:
         return [1, 'formatDate: Error parsing string!']
 
@@ -37,6 +38,7 @@ class Election:
 
         dateRes = formatDate(date)  # dates in the form YYYY-MM-DD
         self.electionDay = dateRes[1] if dateRes[0] == SUCCESS_CODE else None
+        self.electionUnix = dateRes[2] if dateRes[0] == SUCCESS_CODE else None
 
         parseRes = parseCityID(["USA",state,county,city])
         self.cityID = parseRes[1] if parseRes[0] == SUCCESS_CODE else None  # currently hardcode to USA
@@ -76,6 +78,9 @@ class Election:
     # getElectionCityID function to get election cityID
     def getElectionCityID(self):
         return self.cityID
+
+    def getElectionUnix(self):
+        return self.electionUnix
 
     # printElection function to print all attributes of Election object
     def printElection(self):

@@ -70,7 +70,7 @@ def readUpcomingElections():
 # main function - runner
 def main():
     # sort in alphabetical order
-    data = sorted(readElections() + readUpcomingElections(), key=lambda x: x.getElectionName(), reverse=False) 
+    data = readElections() + readUpcomingElections()
     for election in data:
         election.printElection()
     insertDocuments(data)

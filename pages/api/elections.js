@@ -5,6 +5,7 @@ import { runner as eventsRunner } from "../../lib/database/dbevents"
 import { runner as usersRunner } from "../../lib/database/dbusers"
 import { getVoterInfo } from "../../lib/civic";
 var stringSimilarity = require("string-similarity")
+import { getCurrentUnix } from "../../lib/timestamp";
 
 export default withIronSessionApiRoute(electionsRoute, sessionOptions)
 
@@ -24,7 +25,8 @@ async function electionsRoute(req,res){
     try{
         const id = [country, state, county, city]
         console.log(id, user.cityID)
-        var eventsData = await eventsRunner('getElections', [id])
+        var eventsData = await eventsRunner('getElections', [id, getCurrentUnix()])
+        console.log(eventsData)
         var userData = await usersRunner('getAddress', [user.uid])
         var civicData = null
         if(userData.success){
@@ -44,7 +46,7 @@ async function electionsRoute(req,res){
             // there is civic data
             var civicArr = [civicData.election].concat(civicData.otherElections || [])
             if(eventsData.resdb.length > 0){
-                const merged = mergeData(eventsData.resdb, civicArr)
+                var merged = mergeData(eventsData.resdb, civicArr)
                 res.status(200).json(merged)
             }else{
                 res.status(200).json(civicArr)
@@ -63,7 +65,7 @@ function mergeData(a,b){
 
     var lp = 1
     for(var rp=1; rp < combined.length; rp++){
-        if(stringSimilarity.compareTwoStrings(combined[rp].name.toLowerCase(),combined[rp-1].name.toLowerCase()) < 0.6){
+        if(stringSimilarity.compareTwoStrings(combined[rp].name.toLowerCase(),combined[rp-1].name.toLowerCase()) < 0.8){
             combined[lp] = combined[rp]
             lp++
         }
