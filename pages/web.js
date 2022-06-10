@@ -177,7 +177,6 @@ export default function WebApp(){
         setPopupVisible(a)
     }
 
-
     if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
         return(
             <>

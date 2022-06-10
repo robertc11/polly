@@ -14,6 +14,7 @@ export default function BulletinRow(props){
     const [downVotes, setDownVotes] = useState(props.down)
     const [selected, setSelected] = useState(props.action)
     const [changed, setChanged] = useState(false)
+    const { getNewBulletins } = props
 
     const toggleMap = (e) => {
         let el = e.currentTarget  // map button
