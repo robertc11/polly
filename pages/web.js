@@ -1,11 +1,6 @@
 // React imports
-<<<<<<< HEAD
-import React, { useState, useEffect } from 'react'
-=======
 import React, { useState, useRef, useEffect } from 'react'
 import useSWRInfinite from 'swr/infinite'
-
->>>>>>> a8a1376321457d97c275ba32318daf436787e4f2
 
 // component imports
 import Logo from '../components/logo'
@@ -19,6 +14,7 @@ import fetchJson from "../lib/fetchJson"
 import useOnScreen from '../lib/useOnScreen'
 import { getElections, getVoterInfo } from '../lib/civic'
 import useBulletin from '../lib/useBulletin'
+import useElections from '../lib/useElections'
 
 //next imports
 import Link from 'next/link'
@@ -29,14 +25,14 @@ import CustomPopup from '../components/customPopup'
 
 
 
-export default function WebApp({electionData}){
+
+export default function WebApp(){
     // if user is not logged in take them back to login page
-    const { user, mutateUser } = useUser({
+    const { user } = useUser({
         redirectTo: "/login",
     })
+    const { elections } = useElections(user)
 
-<<<<<<< HEAD
-=======
     // top checks the latest post in the database and sees if it is already shown on screen or not
     const [top, setTop] = useState(null)
     useEffect(() => {
@@ -96,7 +92,6 @@ export default function WebApp({electionData}){
             behavior: 'smooth',
         })
         console.log('yuhh got to end of the scroll')
->>>>>>> a8a1376321457d97c275ba32318daf436787e4f2
 
         return new Promise((resolve, reject) => {
             const failed = setTimeout(() => {
@@ -128,22 +123,6 @@ export default function WebApp({electionData}){
 
     // state to keep track of which screen is open and useEffect hook to set it to the url passed page param
     const [screen, setScreen] = useState('elections')
-<<<<<<< HEAD
-    const [bulletins, setBulletins] = useState(undefined)
-
-    useEffect(() => {
-        const initBulletins = async () => {
-            const bs = await fetchJson("/api/bulletin", {method: "GET"})
-            setBulletins(bs)
-        }
-        initBulletins()
-    }, [])
-
-    const  getNewBulletins = async () => {
-        const newBulletins = await fetchJson("api/bulletin", {method: "GET"})
-        setBulletins(newBulletins)
-    }
-=======
     useEffect(() => {
         if(!page) return
         setScreen(page)
@@ -197,8 +176,6 @@ export default function WebApp({electionData}){
         sessionStorage.setItem("kitten", "popped up once")
         setPopupVisible(a)
     }
-
->>>>>>> a8a1376321457d97c275ba32318daf436787e4f2
 
     if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
         return(
@@ -267,6 +244,7 @@ export default function WebApp({electionData}){
                     onClose={(a) => popupCloseHandler(a)}
                     show={(popupVisible) && (user?.uid === "6267136047598ab239dd4789") && (!sessionStorage.getItem('kitten'))}
                     title="Hi Kelly!"
+                    closeText="Close"
                 >
                     <p className="text-lg w-full text-center">Pet Me!</p>
                     <div className="-mt-4 w-[400px] h-[400px] bg-[url('../public/kittenopen.svg')] bg-no-repeat hover:bg-[url('../public/kittenclosedhearts.svg')] hover:cursor-grabbing"></div>
@@ -340,7 +318,7 @@ export default function WebApp({electionData}){
                                 username={user.username}
                                 cityid={user.cityID}
                                 login={user.isLoggedIn}
-                                elections={electionData}
+                                elections={elections}
                             />
                         </div>
                     ) : screen==="bulletins" ? (
@@ -357,24 +335,6 @@ export default function WebApp({electionData}){
                                 fucker
                             </div>
                         </div>
-<<<<<<< HEAD
-                        // <ElectionDash
-                        //     uid={user.uid}
-                        //     username={user.username}
-                        //     cityid={user.cityID}
-                        //     login={user.isLoggedIn}
-                        // />
-                    ) : screen==="bulletin" ? (
-                        <BulletinDash
-                            uid={user.uid}
-                            username={user.username}
-                            cityid={user.cityID}
-                            login={user.isLoggedIn}
-                            bulletins={bulletins}
-                            getNewBulletins={getNewBulletins}
-                        />
-=======
->>>>>>> a8a1376321457d97c275ba32318daf436787e4f2
                     ) : screen==="cards" ? (
                         <div>
                             <h1 className="text-slate-700 text-4xl font-bold mt-3">Candidate Cards</h1>
@@ -431,11 +391,19 @@ export default function WebApp({electionData}){
     )
 }
 
-export async function getStaticProps(context){
-    // const electionData = await getElections()
-    const electionData = await getVoterInfo('9900 Koupela Drive Raleigh NC')
-
-    return {
-        props: { electionData }
-    }
-}
+// export async function getStaticProps(context){
+//     // const electionData = await getElections()
+//     // replace with call to our api endpoint
+//     // const electionData = await getVoterInfo('9900 Koupela Drive Raleigh NC')
+//     const electionData = await fetch('/api/elections', {
+//         method: "GET",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({
+//             usercityid: user.cityID,
+//         }),
+//     }).then(res => res.json()).catch((e) => console.log(e))
+    
+//     return {
+//         props: { electionData }
+//     }
+// }
