@@ -1,5 +1,3 @@
-// File not in use but here for reference until I delete it
-
 export const googleAutocomplete = async text => {
     return new Promise((resolve, reject) => {
         if(!text){

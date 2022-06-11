@@ -8,9 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@googlemaps/react-wrapper": "^1.1.27",
+    "@react-google-maps/api": "^2.12.0",
     "bcrypt": "^5.0.1",
-    "fast-equals": "^3.0.1",
     "iron-session": "^6.0.5",
     "mongodb": "^4.3.0",
     "next": "12.0.7",
@@ -18,7 +17,8 @@
     "react-dom": "17.0.2",
     "string-similarity": "^4.0.4",
     "sweetalert2": "^11.4.0",
-    "swr": "^1.1.2"
+    "swr": "^1.1.2",
+    "use-places-autocomplete": "^3.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.2",
