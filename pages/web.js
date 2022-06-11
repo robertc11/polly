@@ -28,7 +28,7 @@ import CustomPopup from '../components/customPopup'
 
 export default function WebApp(){
     // if user is not logged in take them back to login page
-    const { user } = useUser({
+    const { user, mutateUser } = useUser({
         redirectTo: "/login",
     })
     const { elections } = useElections(user)

@@ -14,15 +14,15 @@ async function handler(req,res){
     }
 
 
-    const {upvotes, downvotes, statement, map, mapLink, city, timestamp, body} = await req.body
-    console.log('> createPost.js: Recieved Info:',upvotes, downvotes, statement, map, mapLink, city, timestamp, body, usr)
+    const {upvotes, downvotes, statement, map, mapLink, city, timestamp, body, anonymous} = await req.body
+    console.log('> createPost.js: Recieved Info:',upvotes, downvotes, statement, map, mapLink, city, timestamp, body, anonymous, usr)
 
     try{
         if(statement.trim()===''||body.trim()===''){
             throw "Please fill in all fields!"
         }
         
-        const resdb = await runner('createBulletin', [ upvotes, downvotes, statement, map, mapLink, city, timestamp, body, usr ])
+        const resdb = await runner('createBulletin', [ upvotes, downvotes, statement, map, mapLink, city, timestamp, body, anonymous, usr ])
         
         if(!resdb.success){
             throw resdb.msg
