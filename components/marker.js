@@ -1,3 +1,5 @@
+// FILE NOT IN USE -- MARKED FOR DELETION
+
 import { useEffect, useState } from "react";
 
 const Marker = (options) => {

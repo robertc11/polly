@@ -1,15 +1,11 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState, useRef } from 'react'
-import { Wrapper } from "@googlemaps/react-wrapper"
 import * as React from 'react'
-import Marker from "../../components/marker"
-import Map from '../../components/map'
 import useUser from '../../lib/useUser'
 import Router from 'next/router'
 import { getCurrentUnix, timeAgo, unixToReg } from '../../lib/timestamp'
 import fetchJson from '../../lib/fetchJson'
-import Script from 'next/script'
 import Head from 'next/head'
 import styles from '../../styles/CreatePostPage.module.css'
 import Logo from "../../components/logo"
