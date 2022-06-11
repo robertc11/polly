@@ -1,10 +1,8 @@
 import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState, useRef } from 'react'
-import { Wrapper } from "@googlemaps/react-wrapper"
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import * as React from 'react'
-import Marker from "../../components/marker"
-import Map from '../../components/map'
 import useUser from '../../lib/useUser'
 import Router from 'next/router'
 import { getCurrentUnix } from '../../lib/timestamp'
@@ -12,6 +10,11 @@ import fetchJson from '../../lib/fetchJson'
 import Script from 'next/script'
 import Head from 'next/head'
 import styles from '../../styles/CreatePostPage.module.css'
+import { getGeocode, getLatLng } from "use-places-autocomplete"
+import AddrSearch from '../../components/addrsearch'
+
+
+const LIBS = ["places"]
 
 export default function EditPostPage(){
     const { user, mutateUser } = useUser({
@@ -50,17 +53,13 @@ export default function EditPostPage(){
     const [error, setError] = useState('')
     
     // google maps data
-    const [clicks, setClicks] = useState([])
-    const [center, setCenter] = useState({lat: 33.021526, lng: -96.709848})
-    const [zoom, setZoom] = useState(12)
-
-    const onClick = (e) => {
-        setClicks([e.latLng])
-    }
-
-    const onIdle = (m) => {
-        setZoom(m.getZoom())
-        setCenter(m.getCenter())
+    const { isLoaded } = useLoadScript({
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_KEY,
+        libraries: LIBS,
+    })
+    const [point, setPoint] = useState(null)
+    const getSelectedPoint = (value) => {
+        setPoint(value)
     }
 
     // post submission data
@@ -115,8 +114,8 @@ export default function EditPostPage(){
             authID: author,
             postID: pid,
             statement: e.currentTarget.title.value,
-            map: (clicks.length > 0)?true:false,
-            mapLink: (clicks.length > 0)?generateLink(clicks[0].lat(),clicks[0].lng()):'',
+            map: (point !== null)?true:false,
+            mapLink: (point !== null)?generateLink(point):'',
             body: e.currentTarget.textContent.value,
         }
 
@@ -141,8 +140,16 @@ export default function EditPostPage(){
         }
     }
 
-    const generateLink = (lat,lng) => {
-        const plusCode = OpenLocationCode.encode(lat, lng)
+    const generateLink = (point) => {
+        var plusCode = null
+        if(typeof(point.lat) === 'number'){
+            plusCode = OpenLocationCode.encode(point.lat, point.lng)
+        }else if(typeof(point.lat) === 'function'){
+            plusCode = OpenLocationCode.encode(point.lat(), point.lng())
+        }else{
+            return ''
+        }
+        // const plusCode = OpenLocationCode.encode(lat, lng)
         plusCode = plusCode.replace('+','%2B')
         const link = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo&q=${plusCode}`
         return link
@@ -219,19 +226,15 @@ export default function EditPostPage(){
 
                                 <div className={toggleMap? null : "hidden"}>
                                     <hr className="mb-3 text-slate-600 w-3/4 mx-auto"></hr>
-                                    <p className="w-2/3 mx-auto">Click on the map to select a location or <button type="button" className="underline text-sky-500" onClick={() => setClicks([])}>clear the map</button>:</p>
-                                    <Wrapper apiKey={"AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo"}>
-                                        <Map
-                                            center={center}
-                                            onClick={onClick}
-                                            onIdle={onIdle}
-                                            zoom={zoom}
-                                        >
-                                            {clicks.map((latLng, i) => (
-                                                <Marker key={i} position={latLng} />
-                                            ))}
-                                        </Map>
-                                    </Wrapper>   
+                                    { !isLoaded ? (
+                                        <div>Loading</div>
+                                    ) : (
+                                        <>
+                                            <Map 
+                                                handlePoint={(a) => getSelectedPoint(a)}
+                                            />
+                                        </>
+                                    ) }
                                 </div>
 
                                 {/* {clicks.map((latLng, i) => (
@@ -252,4 +255,54 @@ export default function EditPostPage(){
             
         </>
     )
+}
+
+
+function Map({handlePoint}) {
+    const [center, setCenter] = useState({lat: 33.021526, lng: -96.709848})
+    const [selected, setSelected] = useState(null)
+    const [zoom, setZoom] = useState(12)
+
+    useEffect(() => {
+        handlePoint(selected)
+    }, [selected])
+
+    const onClickMap = (e) => {
+        setSelected(e.latLng)
+    }
+    
+    return (
+        <>
+            <p className="w-2/3 mx-auto">Click on the map to select a location or <button type="button" className="underline text-sky-500" onClick={() => setSelected(null)}>clear the map</button>:</p>
+            <PlacesAutocomplete 
+                setSelected={setSelected}
+                setZoom={setZoom}
+                setCenter={setCenter}
+            />
+            <GoogleMap
+                zoom={zoom}
+                center={center}
+                mapContainerClassName="map-container"
+                onClick={onClickMap}
+                clickableIcons={false}
+            >
+                {selected && <Marker position={selected}/>}
+            </GoogleMap>
+        </>
+        
+    )
+}
+
+const PlacesAutocomplete = ({setSelected, setZoom, setCenter}) => {
+    const handleSelection = async (addr) => {
+        const res = await getGeocode({address: addr.description})
+        const {lat, lng} = await getLatLng(res[0])
+        setSelected({lat, lng})
+        setZoom(15)
+        setCenter({lat, lng})
+    }
+
+    return <AddrSearch 
+        handleSelection={(addr) => handleSelection(addr)}
+    />
 }
