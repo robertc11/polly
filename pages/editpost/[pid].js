@@ -241,8 +241,8 @@ export default function EditPostPage(){
                                 <p className={error===''?"hidden":"text-center w-full text-red-500"}>{error}</p>
 
                                 <div className="w-10/12 mx-auto flex flex-row-reverse items-center mt-3 mb-10 text-slate-600">
-                                    <button type="submit" className="w-1/6 mt-3 px-1 py-2 bg-violet-500 mr-1 ml-3 text-white">Save!</button>
-                                    <button type="button" className="w-1/6 mt-3 px-1 py-2 bg-slate-300 ml-1" onClick={() => Router.push("/web?page=bulletins")}>Cancel</button>                           
+                                    <button type="submit" className="w-1/6 mt-3 px-1 py-2 bg-violet-500 mr-1 ml-3 text-white rounded">Save!</button>
+                                    <button type="button" className="w-1/6 mt-3 px-1 py-2 bg-slate-300 ml-1 rounded" onClick={() => Router.push("/web?page=bulletins")}>Cancel</button>                           
                                 </div>
                             </form>
                         </div>

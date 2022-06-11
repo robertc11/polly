@@ -64,6 +64,11 @@ export default function CreatePostPage(){
         }
     }
 
+    const [isAnon, setIsAnon] = useState(false)
+    const toggleAnon = () => {
+        setIsAnon(!isAnon)
+    }
+
     // form submit handler
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -78,6 +83,7 @@ export default function CreatePostPage(){
             city: user.cityID[3],
             timestamp: getCurrentUnix(),
             body: e.currentTarget.textContent.value,
+            anonymous: isAnon,
         }
 
         console.log("processing data and submitting!", body)
@@ -193,9 +199,27 @@ export default function CreatePostPage(){
                         
                         <p className={error===''?"hidden":"text-center w-full text-red-500"}>{error}</p>
 
+                        <div className="w-10/12 mx-auto flex flex-row-reverse items-center mt-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 2.829a4.978 4.978 0 01-1.414-2.83m-1.414 5.658a9 9 0 01-2.167-9.238m7.824 2.167a1 1 0 111.414 1.414m-1.414-1.414L3 3m8.293 8.293l1.414 1.414" />
+                            </svg>
+
+                            <label className={styles.switch}>
+                                <input type="checkbox" onChange={() => toggleAnon()} />
+                                <span className={[styles.slider,styles.round].join(' ')}></span>
+                            </label>
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <div className="w-10/12 mx-auto flex flex-row-reverse items-center">
+                            <small>{isAnon ? "Posting Anonymously" : "Posting Publicly"}</small>
+                        </div>
+
                         <div className="w-10/12 mx-auto flex flex-row-reverse items-center mt-3 mb-10 text-slate-600">
-                            <button type="submit" className="w-1/6 mt-3 px-1 py-2 bg-violet-500 mr-1 ml-3 text-white">Create!</button>
-                            <button type="button" className="w-1/6 mt-3 px-1 py-2 bg-slate-300 ml-1" onClick={() => Router.push("/web?page=bulletins")}>Cancel</button>                           
+                            <button type="submit" className="w-1/6 mt-3 px-1 py-2 bg-violet-500 mr-1 ml-3 text-white rounded">Create!</button>
+                            <button type="button" className="w-1/6 mt-3 px-1 py-2 bg-slate-300 ml-1 rounded" onClick={() => Router.push("/web?page=bulletins")}>Cancel</button>                           
                         </div>
                     </form>
                 </div>
