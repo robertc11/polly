@@ -21,7 +21,7 @@ export default function pollyNewsBlog({ title, date, content }) {
                    
                     <div className="text-gray-600 text-md">{date}</div>
                     </div> 
-                    <div className="">{hydratedconent}</div>
+                    <div className="prose lg:prose-xl">{hydratedconent}</div>
             
                 </main>
                 
