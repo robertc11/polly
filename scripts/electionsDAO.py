@@ -1,8 +1,17 @@
 from pymongo import MongoClient
 from difflib import SequenceMatcher
 import time
+import os
+from dotenv import load_dotenv
 
-client = MongoClient('localhost', 27017)
+load_dotenv()
+
+uri = os.getenv('MONGO_URL_CLOUD') if os.getenv('NODE_ENV') == 'production' else os.getenv('MONGO_URL_LOCAL')
+client = None
+if os.getenv('NODE_ENV') == 'production':
+    client = MongoClient(uri, serverSelectionTimeoutMS=5000)
+else:
+    client = MongoClient(uri, 27017)
 
 # checkDup function to check if a duplicate election already exists in database
 # params: electionObj - Election, dbData - List
