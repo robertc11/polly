@@ -1,5 +1,6 @@
 import Footer from "../../components/footer";
-import { blogPost2 } from "../../lib/blogData"
+//import { blogPost2 } from "../../lib/blogData"
+import { getAllPosts } from '../../lib/blogData'
 
 
 export default function pollyNewsBlog({ title, date, content }) {
@@ -15,7 +16,7 @@ export default function pollyNewsBlog({ title, date, content }) {
                     <h2 className="text-2xl font-bold">{title}</h2>
                    
                     <div className="text-gray-600 text-md">{date}</div>
-                    </div>
+                    </div> 
                     <div className="">{content}</div>
             
                 </main>
@@ -27,19 +28,32 @@ export default function pollyNewsBlog({ title, date, content }) {
 
 
 export async function getStaticProps(context) {
-    console.log("hi", context);
     const { params } = context;
+    const allPosts =  getAllPosts();
+    //console.log("hi", context);
+    const {data, content} = allPosts.find((item) => item.slug === params.slug)
+   console.log(data, content)
+    //const { params } = context;
     return {
-        props: blogPost2.find((item) => item.slug === params.slug)
+
+        props: {
+            ...data,
+            date: data.date,
+            content,
+
+        }  
     };
 }
 
 
     export async function getStaticPaths() {
-
+      const allPosts =  getAllPosts();
+      console.log(allPosts)
         return {
-            paths:  blogPost2.map((item) => ({
-                params: { slug: item.slug },
+            paths:  getAllPosts().map((post) => ({
+                params: { 
+                    slug: post.slug 
+                },
             })),
             fallback: false
         };     

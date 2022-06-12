@@ -1,13 +1,13 @@
 import { render } from 'react-dom'
 import BlockY from '../components/blockY'
 import NavBar from '../components/navbar'
-import { blogPost2 } from '../lib/blogData'
+import { getAllPosts } from '../lib/blogData'
 import Head from 'next/head';
 import Link from 'next/link';
 
 
 
-export default function blogHome() {
+export default function blogHome({posts}) {
 
 
 
@@ -24,7 +24,7 @@ export default function blogHome() {
                         <div className="space-y-4">
 
                                
-                                        {blogPost2.map((item) => (
+                                        {posts.map((item) => (
                                                 <BlogPostItem key={item.slug} {...item} />
                                         ))}
                                 
@@ -38,7 +38,34 @@ export default function blogHome() {
 
 
 
-         function  BlogPostItem({ slug, title, date, content }) {
+                                        export async function getStaticProps(context) {
+                                                const { params } = context;
+                                                const allPosts =  getAllPosts();
+                                                //console.log("hi", context);
+                                                //const {data, content} = allPosts.find((item) => item.slug === params.slug)
+                                               //console.log(data, content)
+                                                //const { params } = context;
+                                                return {
+                                            
+                                                    props: {
+                                                            posts: allPosts.map(({data, content, slug}) => ({
+                                                                ...data,
+                                                                date: data.date,
+                                                                content,
+                                                                slug,                                                    
+
+                                                            })
+
+                                                            )
+                                                        
+                                                    }  
+                                                };
+                                            }
+
+        
+        
+        
+          function  BlogPostItem({ slug, title, date, content }) {
                  return(
 
                         <div className=" border hover:border-purple-400 shadow rounded w-11/12 mx-auto text-left text-md text-slate-800 leading-6 text-slate-600 font-semibold ">
