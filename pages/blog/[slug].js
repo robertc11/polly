@@ -1,9 +1,13 @@
 import Footer from "../../components/footer";
 //import { blogPost2 } from "../../lib/blogData"
 import { getAllPosts } from '../../lib/blogData'
+import { serialize } from 'next-mdx-remote/serialize'
+import { MDXRemote } from 'next-mdx-remote'
+
 
 
 export default function pollyNewsBlog({ title, date, content }) {
+    const hydratedconent = MDXRemote(content)
     
     return (
         <>
@@ -17,9 +21,10 @@ export default function pollyNewsBlog({ title, date, content }) {
                    
                     <div className="text-gray-600 text-md">{date}</div>
                     </div> 
-                    <div className="">{content}</div>
+                    <div className="">{hydratedconent}</div>
             
                 </main>
+                
             </div>
         
         </>
@@ -32,6 +37,7 @@ export async function getStaticProps(context) {
     const allPosts =  getAllPosts();
     //console.log("hi", context);
     const {data, content} = allPosts.find((item) => item.slug === params.slug)
+    const mdxSource = await serialize(content)
    console.log(data, content)
     //const { params } = context;
     return {
@@ -39,7 +45,7 @@ export async function getStaticProps(context) {
         props: {
             ...data,
             date: data.date,
-            content,
+            content: mdxSource,
 
         }  
     };
