@@ -6,7 +6,7 @@ import { runner as usersRunner } from "../../../lib/database/dbusers"
 import { getVoterInfo } from "../../../lib/civic";
 var stringSimilarity = require("string-similarity")
 import { getCurrentUnix } from "../../../lib/timestamp";
-import { verify } from "jsonwebtoken";
+import { verify, decode } from "jsonwebtoken";
 
 const authJWT = (fn) => async (req, res) => {
     const user = req.session.user
@@ -27,18 +27,22 @@ const authJWT = (fn) => async (req, res) => {
 
 export default withIronSessionApiRoute(authJWT(async function electionsRoute(req,res){
     if(req.method === "GET"){
-        const user = req.session?.user || null
+        var user = req.session.user
+        if(!user || !user.isLoggedIn){
+            // get the data from the jwt
+            user = decode(req.headers.authorization)
+        }
 
         const { 
-            query: { uid, country, state, county, city },
+            query: { country, state, county, city },
         } = await req
 
         try{
             const id = [country, state, county, city]
-            console.log(id)
+            console.log(id, user.uid)
             var eventsData = await eventsRunner('getElections', [id, getCurrentUnix()])
             console.log(eventsData)
-            var userData = await usersRunner('getAddress', [ user ? user.uid : uid ])
+            var userData = await usersRunner('getAddress', [ user.uid ])
             var civicData = null
             if(userData.success){
                 console.log('> elections.js: Address String', userData.address+' '+id[3]+' '+id[1])
