@@ -223,7 +223,7 @@ export default function WebApp(){
                                 e.preventDefault()
                                 sessionStorage.clear()
                                 mutateUser(
-                                    await fetchJson("/api/logout", { method: "POST" }),
+                                    await fetchJson("/api/web/logout", { method: "POST" }),
                                     false,
                                 );
                             }}
@@ -284,7 +284,7 @@ export default function WebApp(){
                             onClick={async (e) => {
                                 e.preventDefault()
                                 mutateUser(
-                                    await fetchJson("/api/logout", { method: "POST" }),
+                                    await fetchJson("/api/web/logout", { method: "POST" }),
                                     false,
                                 );
                                 sessionStorage.clear()
@@ -396,7 +396,7 @@ export default function WebApp(){
 //     // const electionData = await getElections()
 //     // replace with call to our api endpoint
 //     // const electionData = await getVoterInfo('9900 Koupela Drive Raleigh NC')
-//     const electionData = await fetch('/api/elections', {
+//     const electionData = await fetch('/api/web/elections', {
 //         method: "GET",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({

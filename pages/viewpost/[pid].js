@@ -248,7 +248,7 @@ export default function ViewPostPage(){
                                     onClick={async (e) => {
                                         e.preventDefault()
                                         mutateUser(
-                                            await fetchJson("/api/logout", { method: "POST" }),
+                                            await fetchJson("/api/web/logout", { method: "POST" }),
                                             false,
                                         );
                                     }}
