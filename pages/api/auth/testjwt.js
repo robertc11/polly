@@ -1,7 +1,7 @@
 import { verify } from "jsonwebtoken"
 
 const authJWT = (fn) => async(req, res) => {
-    verify(req.headers.authorization, '0c24670c-a9f6-4acb-a509-49f6136b71b6', async function(err, decoded){
+    verify(req.headers.authorization, process.env.SECRET, async function(err, decoded){
         if(!err && decoded){
             return await fn(req,res)
         }

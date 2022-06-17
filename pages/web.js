@@ -9,6 +9,7 @@ import ElectionDash from '../components/electionDash'
 
 // Lib imports (data fetching)
 import useUser from '../lib/useUser'
+import { withSessionSsr } from '../lib/session'
 import fetchJson from "../lib/fetchJson"
 //import useBulletin from '../lib/useBulletin'
 import useOnScreen from '../lib/useOnScreen'
@@ -24,13 +25,32 @@ import { useRouter } from "next/router"
 import CustomPopup from '../components/customPopup'
 
 
+export const getServerSideProps = withSessionSsr( 
+    async function getServerSideProps({ req }) {
+        const user = req?.session?.user || null
+        //console.log('this is the user shitter!', user)
+        
+        if(!user){
+            return {
+                redirect: {
+                    destination: '/login',
+                    permanent: false,
+                }
+            }
+        }
 
+        return {
+            props: {
+                user
+            }
+        }
+})
 
-export default function WebApp(){
+export default function WebApp({ user }){
     // if user is not logged in take them back to login page
-    const { user, mutateUser } = useUser({
-        redirectTo: "/login",
-    })
+    // const { user, mutateUser } = useUser({
+    //     redirectTo: "/login",
+    // })
     const { elections } = useElections(user)
 
     // top checks the latest post in the database and sees if it is already shown on screen or not
@@ -217,20 +237,28 @@ export default function WebApp(){
                 <div className="flex items-center">
                     <Link href="/"><a><Logo theme={"light"} /></a></Link>
                     <h1 className="text-2xl text-white">｜</h1>
-                    <Link href="/login">
-                        <a className="font-bold text-white mr-5 text-lg"
-                            onClick={async (e) => {
-                                e.preventDefault()
-                                sessionStorage.clear()
-                                mutateUser(
-                                    await fetchJson("/api/web/logout", { method: "POST" }),
-                                    false,
-                                );
-                            }}
-                        >
-                            Logout
-                        </a>
-                    </Link>
+                    <a className="font-bold text-white mr-5 text-lg cursor-pointer"
+                        onClick={async (e) => {
+                            e.preventDefault()
+                            
+                            // mutateUser(
+                            //     await fetchJson("/api/web/logout", { method: "POST" }),
+                            //     false,
+                            // );
+
+                            fetch('/api/auth/logout', { method: "POST" })
+                            .then(res => res.json)
+                            .then(data => {
+                                if(!data.isLoggedIn){
+                                    sessionStorage.clear()
+                                    Router.push("/login")
+                                }
+                            })
+                            .catch(err => console.error(err))
+                        }}
+                    >
+                        Logout
+                    </a>
                 </div>
             </div>
             
@@ -283,12 +311,19 @@ export default function WebApp(){
                         <button className="text-slate-500 px-2 py-8 border-b-2 border-white h-1/4 duration-200 flex justify-center items-center duration-200 hover:text-violet-100 flex justify-center items-center" 
                             onClick={async (e) => {
                                 e.preventDefault()
-                                mutateUser(
-                                    await fetchJson("/api/web/logout", { method: "POST" }),
-                                    false,
-                                );
-                                sessionStorage.clear()
-                                Router.push("/login")
+                                // mutateUser(
+                                //     await fetchJson("/api/web/logout", { method: "POST" }),
+                                //     false,
+                                // );
+                                fetch("/api/auth/logout", { method: "POST"})
+                                .then(res => res.json())
+                                .then(data => {
+                                    if(!data.isLoggedIn){
+                                        sessionStorage.clear()
+                                        Router.push("/login")
+                                    }
+                                })
+                                .catch(err => console.error(err))
                             }}
                         >                        
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
