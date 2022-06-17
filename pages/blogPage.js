@@ -6,7 +6,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 
-
+// main blog page
 export default function blogHome({ posts }) {
 
 
@@ -37,7 +37,7 @@ export default function blogHome({ posts }) {
 }
 
 
-
+// call getAllPosts and return props
 export async function getStaticProps(context) {
         const { params } = context;
         const allPosts = getAllPosts();
@@ -64,7 +64,7 @@ export async function getStaticProps(context) {
 
 
 
-
+//extracted logic from blogHome to style easier
 function BlogPostItem({ slug, title, date, content }) {
         return (
 
