@@ -72,7 +72,7 @@ function BlogPostItem({ slug, title, date, content }) {
                         <div >
                                 <div className="cursor-pointer hover:text-violet-600"><Link href={`/blog/${slug}`}><a>{title}</a></Link> </div>
                                 <div>{date.toString()}</div>
-                                <div>{content}</div>
+                                <div>{content.substring(0, 300)}</div>
                         </div>
                 </div>
 
