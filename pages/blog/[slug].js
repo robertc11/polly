@@ -5,7 +5,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 import { MDXRemote } from 'next-mdx-remote'
 
 
-
+// This function takes serialized string and hydrates it 
 export default function pollyNewsBlog({ title, date, content }) {
     const hydratedconent = MDXRemote(content)
 
@@ -31,15 +31,14 @@ export default function pollyNewsBlog({ title, date, content }) {
     )
 }
 
-
+// calls getAllpost and returns serialized content
 export async function getStaticProps(context) {
     const { params } = context;
     const allPosts = getAllPosts();
     //console.log("hi", context);
     const { data, content } = allPosts.find((item) => item.slug === params.slug)
     const mdxSource = await serialize(content)
-    console.log(data, content)
-    //const { params } = context;
+    console.log(data, content)    
     return {
 
         props: {
@@ -51,7 +50,7 @@ export async function getStaticProps(context) {
     };
 }
 
-
+// call getAllPosts and return paths
 export async function getStaticPaths() {
     const allPosts = getAllPosts();
     console.log(allPosts)
