@@ -1,10 +1,6 @@
-import { withIronSessionApiRoute } from "iron-session/next";
-import { sessionOptions } from "../../../lib/session";
 import { runner } from '../../../lib/database/dbbulletins'
 
-export default withIronSessionApiRoute(handler, sessionOptions)
-
-async function handler(req,res){
+export default async function handler(req,res){
     if(req.method === "GET"){
         const user = req.session.user
 

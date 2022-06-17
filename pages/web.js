@@ -1,6 +1,5 @@
 // React imports
 import React, { useState, useRef, useEffect } from 'react'
-import useSWRInfinite from 'swr/infinite'
 
 // component imports
 import Logo from '../components/logo'
@@ -8,14 +7,9 @@ import BulletinDash from '../components/bulletinDash'
 import ElectionDash from '../components/electionDash'
 
 // Lib imports (data fetching)
-import useUser from '../lib/useUser'
-import { withSessionSsr } from '../lib/session'
-import fetchJson from "../lib/fetchJson"
-//import useBulletin from '../lib/useBulletin'
 import useOnScreen from '../lib/useOnScreen'
-import { getElections, getVoterInfo } from '../lib/civic'
-import useBulletin from '../lib/useBulletin'
 import useElections from '../lib/useElections'
+import { getSession } from '../lib/redis-auth/sessions'
 
 //next imports
 import Link from 'next/link'
@@ -25,32 +19,25 @@ import { useRouter } from "next/router"
 import CustomPopup from '../components/customPopup'
 
 
-export const getServerSideProps = withSessionSsr( 
-    async function getServerSideProps({ req }) {
-        const user = req?.session?.user || null
-        //console.log('this is the user shitter!', user)
-        
-        if(!user){
-            return {
-                redirect: {
-                    destination: '/login',
-                    permanent: false,
-                }
-            }
-        }
+export async function getServerSideProps({ req }){
+    const res = await getSession(req?.cookies?.pollytoken || null)
+    const user = (res.success) ? JSON.parse(res?.sessionData) : null
 
+    if(!user || !user?.isLoggedIn){
         return {
-            props: {
-                user
+            redirect: {
+                destination: '/login',
+                permanent: false,
             }
         }
-})
+    }
+
+    return {
+        props: { user }
+    }
+}
 
 export default function WebApp({ user }){
-    // if user is not logged in take them back to login page
-    // const { user, mutateUser } = useUser({
-    //     redirectTo: "/login",
-    // })
     const { elections } = useElections(user)
 
     // top checks the latest post in the database and sees if it is already shown on screen or not
@@ -197,20 +184,6 @@ export default function WebApp({ user }){
         setPopupVisible(a)
     }
 
-
-    if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
-        return(
-            <>
-                <Head>
-                    <title>Loading</title>
-                </Head>
-
-                <div className="h-screen flex flex-col justify-center items-center p-5 font-dongji">
-                    <h1 className="text-4xl text-sky-500 animate-bounce">Loading...</h1>
-                </div>
-            </>
-        )
-    }
 
     return(
         <>

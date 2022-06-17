@@ -1,6 +1,4 @@
 // template file - refer to bulletin.js
-import { withIronSessionApiRoute } from "iron-session/next";
-import { sessionOptions } from "../../../lib/session";
 import { runner as eventsRunner } from "../../../lib/database/dbevents"
 import { runner as usersRunner } from "../../../lib/database/dbusers"
 import { getVoterInfo } from "../../../lib/civic";
@@ -25,7 +23,7 @@ const authJWT = (fn) => async (req, res) => {
     }
 }
 
-export default withIronSessionApiRoute(authJWT(async function electionsRoute(req,res){
+export default authJWT(async function electionsRoute(req,res){
     if(req.method === "GET"){
         var user = req.session.user
         if(!user || !user.isLoggedIn){
@@ -74,7 +72,7 @@ export default withIronSessionApiRoute(authJWT(async function electionsRoute(req
     }else{
         res.status(405).json({ message: "GET Requests Only. Reference Docs at Pollyapp.io/documentation" })
     }
-}), sessionOptions)
+})
 
 function mergeData(a,b){
     var combined = a.concat(b)

@@ -5,21 +5,37 @@ import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import * as React from 'react'
 import useUser from '../../lib/useUser'
 import Router from 'next/router'
-import { getCurrentUnix } from '../../lib/timestamp'
 import fetchJson from '../../lib/fetchJson'
 import Script from 'next/script'
 import Head from 'next/head'
 import styles from '../../styles/CreatePostPage.module.css'
 import { getGeocode, getLatLng } from "use-places-autocomplete"
 import AddrSearch from '../../components/addrsearch'
+import { getSession } from "../../lib/redis-auth/sessions"
 
 
 const LIBS = ["places"]
 
-export default function EditPostPage(){
-    const { user, mutateUser } = useUser({
-        redirectTo: "/login",
-    })
+export async function getServerSideProps({ req }){
+    const res = await getSession(req?.cookies?.pollytoken || null)
+    const user = (res.success) ? JSON.parse(res?.sessionData) : null
+
+    if(!user || !user?.isLoggedIn){
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            }
+        }
+    }
+
+    return {
+        props: { user }
+    }
+}
+
+
+export default function EditPostPage({ user }){
 
     // preloaded form data
     const [ notFound, setNotFound ] = useState(false)

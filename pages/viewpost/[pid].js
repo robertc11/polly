@@ -2,44 +2,32 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState, useRef } from 'react'
 import * as React from 'react'
-import useUser from '../../lib/useUser'
 import Router from 'next/router'
 import { getCurrentUnix, timeAgo, unixToReg } from '../../lib/timestamp'
-import fetchJson from '../../lib/fetchJson'
-import Head from 'next/head'
-import styles from '../../styles/CreatePostPage.module.css'
 import Logo from "../../components/logo"
 import useUpdatesBulletin from "../../lib/useUpdates"
 import useOnScreen from "../../lib/useOnScreen"
-import { withSessionSsr } from "../../lib/session"
+import { getSession } from "../../lib/redis-auth/sessions"
 
+export async function getServerSideProps({ req }){
+    const res = await getSession(req?.cookies?.pollytoken || null)
+    const user = (res.success) ? JSON.parse(res?.sessionData) : null
 
-export const getServerSideProps = withSessionSsr( 
-    async function getServerSideProps({ req }) {
-        const user = req?.session?.user || null
-        //console.log('this is the user shitter!', user)
-        
-        if(!user){
-            return {
-                redirect: {
-                    destination: '/login',
-                    permanent: false,
-                }
-            }
-        }
-
+    if(!user || !user?.isLoggedIn){
         return {
-            props: {
-                user
+            redirect: {
+                destination: '/login',
+                permanent: false,
             }
         }
-})
+    }
 
+    return {
+        props: { user }
+    }
+}
 
 export default function ViewPostPage({ user }){
-    // const { user, mutateUser } = useUser({
-    //     redirectTo: "/login",
-    // })
 
     // grab the post id from url
     const router = useRouter()
