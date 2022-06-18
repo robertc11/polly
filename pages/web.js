@@ -5,18 +5,21 @@ import React, { useState, useRef, useEffect } from 'react'
 import Logo from '../components/logo'
 import BulletinDash from '../components/bulletinDash'
 import ElectionDash from '../components/electionDash'
+import CustomPopup from '../components/customPopup'
 
 // Lib imports (data fetching)
 import useOnScreen from '../lib/useOnScreen'
 import useElections from '../lib/useElections'
 import { getSessionSsr } from '../lib/redis-auth/wrappers'
+import useUser from '../lib/useUser'
 
 //next imports
 import Link from 'next/link'
 import Head from 'next/head'
 import Router from "next/router"
 import { useRouter } from "next/router"
-import CustomPopup from '../components/customPopup'
+
+
 
 
 export async function getServerSideProps({ req }){
@@ -37,6 +40,8 @@ export async function getServerSideProps({ req }){
 }
 
 export default function WebApp({ user }){
+    const verify_session = useUser({ redirectTo: '/login' })  // this checks if the session is still valid or not after you have logged in
+
     const { elections } = useElections(user)
 
     // top checks the latest post in the database and sees if it is already shown on screen or not
@@ -52,7 +57,7 @@ export default function WebApp({ user }){
         if(top === null){
             checkNewPosts()
         }
-        var poller = setInterval(checkNewPosts, 90000)
+        var poller = setInterval(checkNewPosts, 120000) // polls every 2 minutes
 
         return () => {
             clearInterval(poller)

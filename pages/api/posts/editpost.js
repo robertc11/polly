@@ -13,13 +13,13 @@ export default async function handler(req,res){
 
 
         const {authID, postID, statement, map, mapLink, body} = await req.body
-        console.log('> createPost.js: Recieved Info:',authID, postID, statement, map, mapLink, body, usr)
+        console.log('> createPost.js: Recieved Info:',authID, postID, statement, map, mapLink, body, user)
 
         try{
             if(statement.trim()===''||body.trim()===''){
                 throw "Please fill in all fields!"
             }
-            if(authID !== usr.uid){
+            if(authID !== user.uid){
                 throw "You are not authorized to make edits to this post"
             }
 

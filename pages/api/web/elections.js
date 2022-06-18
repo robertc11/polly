@@ -4,33 +4,16 @@ import { runner as usersRunner } from "../../../lib/database/dbusers"
 import { getVoterInfo } from "../../../lib/civic";
 var stringSimilarity = require("string-similarity")
 import { getCurrentUnix } from "../../../lib/timestamp";
-import { verify, decode } from "jsonwebtoken";
 import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
 
-const authJWT = (fn) => async (req, res) => {
-    const user = await getSessionSsr(req)
-    if(!user || user.isLoggedIn === false){
-        verify(req.headers.authorization, process.env.SECRET, async function(err, decoded){
-            if(!err && decoded){
-                // user is not logged into webapp but has a valid jwt
-                return await fn(req,res)
-            }
-            // user is not logged into webapp and does not have a valid jwt
-            res.status(500).json({ message: "Authentication Failed - Access to resource denied" })
-        })
-    }else{
-        // user is logged into the webapp
-        return await fn(req, res)
-    }
-}
-
-export default authJWT(async function electionsRoute(req,res){
+export default async function electionsRoute(req,res){
     if(req.method === "GET"){
         var user = await getSessionSsr(req)
 
-        if(!user || !user.isLoggedIn){
-            // get the data from the jwt
-            user = decode(req.headers.authorization)
+        if(!user){
+            res.status(401).end();
+            console.log("> getpost.js: ERROR: User not logged in!")
+            return;
         }
 
         const { 
@@ -74,7 +57,7 @@ export default authJWT(async function electionsRoute(req,res){
     }else{
         res.status(405).json({ message: "GET Requests Only. Reference Docs at Pollyapp.io/documentation" })
     }
-})
+}
 
 function mergeData(a,b){
     var combined = a.concat(b)

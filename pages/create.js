@@ -9,7 +9,8 @@ import Head from 'next/head'
 import styles from '../styles/CreatePostPage.module.css'
 import { getGeocode, getLatLng } from "use-places-autocomplete"
 import AddrSearch from '../components/addrsearch'
-import { getSessionSsr } from '../lib/redis-auth/sessions'
+import { getSessionSsr } from '../lib/redis-auth/wrappers'
+import useUser from '../lib/useUser'
 
 const LIBS = ["places"]
 
@@ -30,7 +31,9 @@ export async function getServerSideProps({ req }){
     }
 }
 
-export default function CreatePostPage(){
+export default function CreatePostPage({ user }){
+    const verify_session = useUser({ redirectTo: '/login' })
+
     const [error, setError] = useState('')
     
     // google maps data

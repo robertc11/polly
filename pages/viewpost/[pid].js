@@ -7,7 +7,8 @@ import { getCurrentUnix, timeAgo, unixToReg } from '../../lib/timestamp'
 import Logo from "../../components/logo"
 import useUpdatesBulletin from "../../lib/useUpdates"
 import useOnScreen from "../../lib/useOnScreen"
-import { getSessionSsr } from "../../lib/redis-auth/sessions"
+import { getSessionSsr } from "../../lib/redis-auth/wrappers"
+import useUser from "../../lib/useUser"
 
 export async function getServerSideProps({ req }){
     const user = await getSessionSsr(req)
@@ -27,6 +28,7 @@ export async function getServerSideProps({ req }){
 }
 
 export default function ViewPostPage({ user }){
+    const verify_session = useUser({ redirectTo: '/login' })
 
     // grab the post id from url
     const router = useRouter()
