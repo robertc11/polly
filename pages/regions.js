@@ -11,7 +11,7 @@ export default function Regions(){
 
             <NavBar />
 
-            <div className="font-dongji w-full">
+            <div className="font-dongji w-full mb-10">
                 <h1 className="text-3xl font-bold text-center text-slate-700 mt-10">Supported Regions</h1>
 
                 <p className="w-7/12 mx-auto mt-3 text-lg">
@@ -43,41 +43,98 @@ export default function Regions(){
                         <th className="border border-slate-400 p-2">County</th>
                         <th className="border border-slate-400 p-2">City</th>
                         <th className="border border-slate-400 p-2">City ID</th>
+                        <th className="border border-slate-400 p-2">Status</th>
                     </tr>
                     <tr className="bg-white even:bg-slate-200">
                         <td className="border border-slate-400 p-2">Collin</td>
                         <td className="border border-slate-400 p-2">Allen</td>
                         <td className="border border-slate-400 p-2">["USA","TX","Collin","Allen"]</td>
+                        <td className="border border-slate-400 p-2">
+                            <div className="flex items-center text-amber-500 justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                </svg>
+                                Maintenance 
+                            </div>
+                        </td>
                     </tr>
                     <tr className="bg-white even:bg-slate-200">
                         <td className="border border-slate-400 p-2">Collin</td>
                         <td className="border border-slate-400 p-2">Plano</td>
                         <td className="border border-slate-400 p-2">["USA","TX","Collin","Plano"]</td>
+                        <td className="border border-slate-400 p-2">
+                            <div className="flex items-center text-emerald-500 justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                </svg>
+                                Online    
+                            </div>
+                        </td>   
                     </tr>
                     <tr className="bg-white even:bg-slate-200"> 
                         <td className="border border-slate-400 p-2">Collin</td>
                         <td className="border border-slate-400 p-2">Mckinney</td>
                         <td className="border border-slate-400 p-2">["USA","TX","Collin","Mckinney"]</td>
+                        <td className="border border-slate-400 p-2">
+                            <div className="flex items-center text-amber-500 justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                </svg>
+                                Maintenance
+                            </div>
+                        </td>
                     </tr>
                     <tr className="bg-white even:bg-slate-200">
                         <td className="border border-slate-400 p-2">Collin</td>
                         <td className="border border-slate-400 p-2">Carrollton</td>
                         <td className="border border-slate-400 p-2">["USA","TX","Collin","Carrollton"]</td>
+                        <td className="border border-slate-400 p-2">
+                            <div className="flex items-center text-red-500 justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                                </svg>
+                                Offline    
+                            </div>
+                        </td>
                     </tr>
                     <tr className="bg-white even:bg-slate-200">
                         <td className="border border-slate-400 p-2">Collin</td>
                         <td className="border border-slate-400 p-2">Dallas</td>
                         <td className="border border-slate-400 p-2">["USA","TX","Collin","Dallas"]</td>
+                        <td className="border border-slate-400 p-2">
+                            <div className="flex items-center text-red-500 justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                                </svg>
+                                Offline    
+                            </div>
+                        </td>
                     </tr>
                     <tr className="bg-white even:bg-slate-200">
                         <td className="border border-slate-400 p-2">Collin</td>
                         <td className="border border-slate-400 p-2">Frisco</td>
                         <td className="border border-slate-400 p-2">["USA","TX","Collin","Frisco"]</td>
+                        <td className="border border-slate-400 p-2">
+                            <div className="flex items-center text-amber-500 justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                </svg>
+                                Maintenance
+                            </div>
+                        </td>
                     </tr>
                     <tr className="bg-white even:bg-slate-200">
                         <td className="border border-slate-400 p-2">Collin</td>
                         <td className="border border-slate-400 p-2">Richardson</td>
                         <td className="border border-slate-400 p-2">["USA","TX","Collin","Richardson"]</td>
+                        <td className="border border-slate-400 p-2">
+                            <div className="flex items-center text-amber-500 justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                                </svg>
+                                Maintenance   
+                            </div>
+                        </td>
                     </tr>
                 </table>
             </div>

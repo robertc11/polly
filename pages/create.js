@@ -1,8 +1,6 @@
-import { useEffect, useState, useRef } from 'react'
-import { Wrapper } from "@googlemaps/react-wrapper"
+import { useEffect, useState, useRef, useMemo } from 'react'
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import * as React from 'react'
-import Marker from "../components/marker"
-import Map from '../components/map'
 import useUser from '../lib/useUser'
 import Router from 'next/router'
 import { getCurrentUnix } from '../lib/timestamp'
@@ -10,6 +8,10 @@ import fetchJson from '../lib/fetchJson'
 import Script from 'next/script'
 import Head from 'next/head'
 import styles from '../styles/CreatePostPage.module.css'
+import { getGeocode, getLatLng } from "use-places-autocomplete"
+import AddrSearch from '../components/addrsearch'
+
+const LIBS = ["places"]
 
 export default function CreatePostPage(){
     const { user, mutateUser } = useUser({  // only logged in users can create posts
@@ -19,17 +21,13 @@ export default function CreatePostPage(){
     const [error, setError] = useState('')
     
     // google maps data
-    const [clicks, setClicks] = useState([])
-    const [center, setCenter] = useState({lat: 33.021526, lng: -96.709848})
-    const [zoom, setZoom] = useState(12)
-
-    const onClick = (e) => {
-        setClicks([e.latLng])
-    }
-
-    const onIdle = (m) => {
-        setZoom(m.getZoom())
-        setCenter(m.getCenter())
+    const { isLoaded } = useLoadScript({
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_KEY,
+        libraries: LIBS,
+    })
+    const [point, setPoint] = useState(null)
+    const getSelectedPoint = (value) => {
+        setPoint(value)
     }
 
     // post submission data
@@ -64,6 +62,11 @@ export default function CreatePostPage(){
         }
     }
 
+    const [isAnon, setIsAnon] = useState(false)
+    const toggleAnon = () => {
+        setIsAnon(!isAnon)
+    }
+
     // form submit handler
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -73,11 +76,12 @@ export default function CreatePostPage(){
             upvotes: 1,
             downvotes: 0,
             statement: e.currentTarget.title.value,
-            map: (clicks.length > 0)?true:false,
-            mapLink: (clicks.length > 0)?generateLink(clicks[0].lat(),clicks[0].lng()):'',
+            map: (point !== null)?true:false,
+            mapLink: (point !== null)?generateLink(point):'',
             city: user.cityID[3],
             timestamp: getCurrentUnix(),
             body: e.currentTarget.textContent.value,
+            anonymous: isAnon,
         }
 
         console.log("processing data and submitting!", body)
@@ -100,8 +104,16 @@ export default function CreatePostPage(){
         }
     }
 
-    const generateLink = (lat,lng) => {
-        const plusCode = OpenLocationCode.encode(lat, lng)
+    const generateLink = (point) => {
+        var plusCode = null
+        if(typeof(point.lat) === 'number'){
+            plusCode = OpenLocationCode.encode(point.lat, point.lng)
+        }else if(typeof(point.lat) === 'function'){
+            plusCode = OpenLocationCode.encode(point.lat(), point.lng())
+        }else{
+            return ''
+        }
+        // const plusCode = OpenLocationCode.encode(lat, lng)
         plusCode = plusCode.replace('+','%2B')
         const link = `https://www.google.com/maps/embed/v1/place?key=AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo&q=${plusCode}`
         return link
@@ -109,10 +121,8 @@ export default function CreatePostPage(){
 
     return (
         <>
-            <Script
-                src={"https://cdn.jsdelivr.net/openlocationcode/latest/openlocationcode.min.js"}
-            >    
-            </Script>
+            <Script src={"https://cdn.jsdelivr.net/openlocationcode/latest/openlocationcode.min.js"} />
+
 
             <Head>
                 <title>New Post</title>
@@ -164,27 +174,17 @@ export default function CreatePostPage(){
                             <svg className="mr-2 cursor-pointer hover:text-gray-700 border rounded-full p-1 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
                         </div>
 
-                        {/* <div className="w-10/12 mx-auto mt-5 mb-5">
-                            <input type="checkbox" name="mapOpener" onChange={() => handleToggle()} ></input>
-                            <label htmlFor="mapOpener"> Add a Location</label>
-                        </div> */}
-
-
                         <div className={toggleMap? null : "hidden"}>
                             <hr className="mb-3 text-slate-600 w-3/4 mx-auto"></hr>
-                            <p className="w-2/3 mx-auto">Click on the map to select a location or <button type="button" className="underline text-sky-500" onClick={() => setClicks([])}>clear the map</button>:</p>
-                            <Wrapper apiKey={"AIzaSyBPyTRO8tcnYubJZiEnyZOCgmIoxPuFNYo"}>
-                                <Map
-                                    center={center}
-                                    onClick={onClick}
-                                    onIdle={onIdle}
-                                    zoom={zoom}
-                                >
-                                    {clicks.map((latLng, i) => (
-                                        <Marker key={i} position={latLng} />
-                                    ))}
-                                </Map>
-                            </Wrapper>   
+                            { !isLoaded ? (
+                                <div>Loading</div>
+                            ) : (
+                                <>
+                                    <Map 
+                                        handlePoint={(a) => getSelectedPoint(a)}
+                                    />
+                                </>
+                            ) }
                         </div>
 
                         {/* {clicks.map((latLng, i) => (
@@ -193,13 +193,81 @@ export default function CreatePostPage(){
                         
                         <p className={error===''?"hidden":"text-center w-full text-red-500"}>{error}</p>
 
+                        <div className="w-10/12 mx-auto flex flex-row-reverse items-center mt-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636a9 9 0 010 12.728m0 0l-2.829-2.829m2.829 2.829L21 21M15.536 8.464a5 5 0 010 7.072m0 0l-2.829-2.829m-4.243 2.829a4.978 4.978 0 01-1.414-2.83m-1.414 5.658a9 9 0 01-2.167-9.238m7.824 2.167a1 1 0 111.414 1.414m-1.414-1.414L3 3m8.293 8.293l1.414 1.414" />
+                            </svg>
+
+                            <label className={styles.switch}>
+                                <input type="checkbox" onChange={() => toggleAnon()} />
+                                <span className={[styles.slider,styles.round].join(' ')}></span>
+                            </label>
+                            
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <div className="w-10/12 mx-auto flex flex-row-reverse items-center">
+                            <small>{isAnon ? "Posting Anonymously" : "Posting Publicly"}</small>
+                        </div>
+
                         <div className="w-10/12 mx-auto flex flex-row-reverse items-center mt-3 mb-10 text-slate-600">
-                            <button type="submit" className="w-1/6 mt-3 px-1 py-2 bg-violet-500 mr-1 ml-3 text-white">Create!</button>
-                            <button type="button" className="w-1/6 mt-3 px-1 py-2 bg-slate-300 ml-1" onClick={() => Router.push("/web?page=bulletins")}>Cancel</button>                           
+                            <button type="submit" className="w-1/6 mt-3 px-1 py-2 bg-violet-500 mr-1 ml-3 text-white rounded">Create!</button>
+                            <button type="button" className="w-1/6 mt-3 px-1 py-2 bg-slate-300 ml-1 rounded" onClick={() => Router.push("/web?page=bulletins")}>Cancel</button>                           
                         </div>
                     </form>
                 </div>
             </div>
+
         </>
     )
+}
+
+function Map({handlePoint}) {
+    const [center, setCenter] = useState({lat: 33.021526, lng: -96.709848})
+    const [selected, setSelected] = useState(null)
+    const [zoom, setZoom] = useState(12)
+
+    useEffect(() => {
+        handlePoint(selected)
+    }, [selected])
+
+    const onClickMap = (e) => {
+        setSelected(e.latLng)
+    }
+    
+    return (
+        <>
+            <p className="w-2/3 mx-auto">Click on the map to select a location or <button type="button" className="underline text-sky-500" onClick={() => setSelected(null)}>clear the map</button>:</p>
+            <PlacesAutocomplete 
+                setSelected={setSelected}
+                setZoom={setZoom}
+                setCenter={setCenter}
+            />
+            <GoogleMap
+                zoom={zoom}
+                center={center}
+                mapContainerClassName="map-container"
+                onClick={onClickMap}
+                clickableIcons={false}
+            >
+                {selected && <Marker position={selected}/>}
+            </GoogleMap>
+        </>
+        
+    )
+}
+
+const PlacesAutocomplete = ({setSelected, setZoom, setCenter}) => {
+    const handleSelection = async (addr) => {
+        const res = await getGeocode({address: addr.description})
+        const {lat, lng} = await getLatLng(res[0])
+        setSelected({lat, lng})
+        setZoom(15)
+        setCenter({lat, lng})
+    }
+
+    return <AddrSearch 
+        handleSelection={(addr) => handleSelection(addr)}
+    />
 }

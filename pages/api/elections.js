@@ -1,54 +1,75 @@
-// --- FILE NOT IN USE AND MARKED FOR DELETION ---
+// template file - refer to bulletin.js
+import { withIronSessionApiRoute } from "iron-session/next";
+import { sessionOptions } from "../../lib/session";
+import { runner as eventsRunner } from "../../lib/database/dbevents"
+import { runner as usersRunner } from "../../lib/database/dbusers"
+import { getVoterInfo } from "../../lib/civic";
+var stringSimilarity = require("string-similarity")
+import { getCurrentUnix } from "../../lib/timestamp";
 
-// // template file - refer to bulletin.js
-// import { withIronSessionApiRoute } from "iron-session/next";
-// import { sessionOptions } from "../../lib/session";
-// const { MongoClient } = require('mongodb')
-// const url = process.env.MONGO_URL
-// const client = new MongoClient(url)
+export default withIronSessionApiRoute(electionsRoute, sessionOptions)
 
-// export default withIronSessionApiRoute(electionsRoute, sessionOptions)
+async function electionsRoute(req,res){
+    const user = req.session.user
 
-// async function electionsRoute(req,res){
-//     const user = req.session.user
-//     console.log("> elections.js: USER'S CITYID:", user.cityID)
-//     const queryCity = {"cityID": user.cityID}
-//     const queryCounty = {"cityID": [user.cityID[0], user.cityID[1], user.cityID[2], null]}
-//     const queryState = {"cityID": [user.cityID[0], user.cityID[1], null, null]}
-//     const queryCountry = {"cityID": [user.cityID[0], null, null, null]}
+    if(!user || user.isLoggedIn === false) {
+        res.status(401).end();
+        console.log("> elections.js: ERROR - user not logged in!")
+        return;
+    }
 
-//     if(!user || user.isLoggedIn === false) {
-//         res.status(401).end();
-//         console.log("> elections.js: ERROR")
-//         return;
-//     }
+    const { 
+        query: { country, state, county, city },
+    } = await req
 
-//     try{
-//         await client.connect()
-//         await client.db("admin").command({ ping: 1 })
-//         console.log('> elections.js: connected to database!')
-
-//         // perform db search here
-//         const bulletinDatabase = client.db('events')
-//         const dataCity = await bulletinDatabase.collection('elections').find(queryCity).sort({"timestamps.target": 1}).limit(6).toArray()
-//         const dataCounty = await bulletinDatabase.collection('elections').find(queryCounty).sort({"timestamps.target": 1}).limit(6).toArray()
-//         const dataState = await bulletinDatabase.collection('elections').find(queryState).sort({"timestamps.target": 1}).limit(6).toArray()
-//         const dataCountry = await bulletinDatabase.collection('elections').find(queryCountry).sort({"timestamps.target": 1}).limit(6).toArray()
+    try{
+        const id = [country, state, county, city]
+        console.log(id, user.cityID)
+        var eventsData = await eventsRunner('getElections', [id, getCurrentUnix()])
+        console.log(eventsData)
+        var userData = await usersRunner('getAddress', [user.uid])
+        var civicData = null
+        if(userData.success){
+            console.log('> elections.js: Address String', userData.address+' '+user.cityID[3]+' '+user.cityID[1])
+            civicData = await getVoterInfo(userData.address+' '+user.cityID[3]+' '+user.cityID[1])
+            console.log('this is civicdata!', civicData)
+        }
         
-//         const data = {
-//             city: dataCity,
-//             county: dataCounty,
-//             state: dataState,
-//             country: dataCountry,
-//         }
+        if(civicData === null || civicData.error|| civicData.notFound){
+            // there is no civic data
+            if(eventsData.resdb.length > 0){
+                res.status(200).json(eventsData.resdb)
+            }else{
+                throw "No data was found!"
+            }
+        }else{
+            // there is civic data
+            var civicArr = [civicData.election].concat(civicData.otherElections || [])
+            if(eventsData.resdb.length > 0){
+                var merged = mergeData(eventsData.resdb, civicArr)
+                res.status(200).json(merged)
+            }else{
+                res.status(200).json(civicArr)
+            }
+        }
+    }catch(err){
+        console.log("> elections.js: ERROR", err)
+        res.status(500).json({message:err})
+    }
+}
 
-//         res.json(data)
-//     }catch(err){
-//         console.log("> elections.js: ERROR")
-//         res.status(500).json({message:err})
-//     }finally{
-//         await client.close()
-//         console.log('> elections.js: MONGODB Connection CLOSED')
-//     }
+function mergeData(a,b){
+    var combined = a.concat(b)
+    combined.sort((a,b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1)  // sort by name in asc order
+    console.log('this is combined!',combined)
 
-// }
+    var lp = 1
+    for(var rp=1; rp < combined.length; rp++){
+        if(stringSimilarity.compareTwoStrings(combined[rp].name.toLowerCase(),combined[rp-1].name.toLowerCase()) < 0.8){
+            combined[lp] = combined[rp]
+            lp++
+        }
+    }
+
+    return combined.slice(0,lp)
+}

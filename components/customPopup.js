@@ -20,7 +20,7 @@ export default function CustomPopup(props){
                     &times;
                 </span>
                 <div>{props.children}</div>
-                <button className="text-white text-md px-3 py-1 rounded bg-violet-500 mt-2" onClick={closeHandler}>Close</button>
+                <button className="text-white text-md px-3 py-1 rounded bg-violet-500 mt-2" onClick={closeHandler}>{props.closeText}</button>
             </div>
         </div>
     )
