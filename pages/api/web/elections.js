@@ -5,9 +5,10 @@ import { getVoterInfo } from "../../../lib/civic";
 var stringSimilarity = require("string-similarity")
 import { getCurrentUnix } from "../../../lib/timestamp";
 import { verify, decode } from "jsonwebtoken";
+import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
 
 const authJWT = (fn) => async (req, res) => {
-    const user = req.session.user
+    const user = await getSessionSsr(req)
     if(!user || user.isLoggedIn === false){
         verify(req.headers.authorization, process.env.SECRET, async function(err, decoded){
             if(!err && decoded){
@@ -25,7 +26,8 @@ const authJWT = (fn) => async (req, res) => {
 
 export default authJWT(async function electionsRoute(req,res){
     if(req.method === "GET"){
-        var user = req.session.user
+        var user = await getSessionSsr(req)
+
         if(!user || !user.isLoggedIn){
             // get the data from the jwt
             user = decode(req.headers.authorization)

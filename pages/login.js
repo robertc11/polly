@@ -5,7 +5,7 @@ import React, { useState } from "react"
 import Head from 'next/head'
 
 //Importing lib files
-import { getSession } from "../lib/redis-auth/sessions";
+import { getSessionSsr } from "../lib/redis-auth/wrappers";
 
 // Importing components
 import LoginForm from "../components/formlogin"
@@ -13,10 +13,9 @@ import Router from "next/router";
 
 
 export async function getServerSideProps({ req }){
-    const res = await getSession(req?.cookies?.pollytoken || null)
-    const user = (res.success) ? JSON.parse(res?.sessionData) : null
+    const user = await getSessionSsr(req)
 
-    if(user || user?.isLoggedIn){
+    if(user){
         return {
             redirect: {
                 destination: '/web',

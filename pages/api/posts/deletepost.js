@@ -1,13 +1,14 @@
 import { runner } from "../../../lib/database/dbbulletins"
+import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
 
 export default async function handler(req,res){
     if(req.method === "POST"){
-        const user = req.session.user
-
-        if(!user || user.isLoggedIn === false) {
+        const user = await getSessionSsr(req)
+        
+        if(!user) {
             res.status(401).end();
-            console.log("> deletepost.js: ERROR: User not logged in!")
-            return
+            console.log("> getpost.js: ERROR: User not logged in!")
+            return;
         }
         
         const { postID } = await req.body

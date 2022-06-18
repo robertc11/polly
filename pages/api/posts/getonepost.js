@@ -1,19 +1,19 @@
 import { runner } from '../../../lib/database/dbbulletins'
+import { getSessionSsr } from '../../../lib/redis-auth/wrappers';
 
 export default async function handler(req,res){
     if(req.method === "GET"){
-        const user = req.session.user
-
-        const {
-            query: { obj_id },
-        } = req
+        const user = await getSessionSsr(req)
         
-        if(!user || user.isLoggedIn === false) {
+        if(!user) {
             res.status(401).end();
             console.log("> getpost.js: ERROR: User not logged in!")
             return;
         }
 
+        const {
+            query: { obj_id },
+        } = req
         console.log("> getonepost.js: QUERY PARAMS:", obj_id)
 
 

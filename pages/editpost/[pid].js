@@ -3,7 +3,6 @@ import { useRouter } from "next/router"
 import { useEffect, useState, useRef } from 'react'
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import * as React from 'react'
-import useUser from '../../lib/useUser'
 import Router from 'next/router'
 import fetchJson from '../../lib/fetchJson'
 import Script from 'next/script'
@@ -11,16 +10,15 @@ import Head from 'next/head'
 import styles from '../../styles/CreatePostPage.module.css'
 import { getGeocode, getLatLng } from "use-places-autocomplete"
 import AddrSearch from '../../components/addrsearch'
-import { getSession } from "../../lib/redis-auth/sessions"
+import { getSessionSsr } from "../../lib/redis-auth/sessions"
 
 
 const LIBS = ["places"]
 
 export async function getServerSideProps({ req }){
-    const res = await getSession(req?.cookies?.pollytoken || null)
-    const user = (res.success) ? JSON.parse(res?.sessionData) : null
+    const user = await getSessionSsr(req)
 
-    if(!user || !user?.isLoggedIn){
+    if(!user){
         return {
             redirect: {
                 destination: '/login',
@@ -33,7 +31,6 @@ export async function getServerSideProps({ req }){
         props: { user }
     }
 }
-
 
 export default function EditPostPage({ user }){
 

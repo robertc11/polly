@@ -9,15 +9,14 @@ import Head from 'next/head'
 import styles from '../styles/CreatePostPage.module.css'
 import { getGeocode, getLatLng } from "use-places-autocomplete"
 import AddrSearch from '../components/addrsearch'
-import { getSession } from '../lib/redis-auth/sessions'
+import { getSessionSsr } from '../lib/redis-auth/sessions'
 
 const LIBS = ["places"]
 
 export async function getServerSideProps({ req }){
-    const res = await getSession(req?.cookies?.pollytoken || null)
-    const user = (res.success) ? JSON.parse(res?.sessionData) : null
+    const user = await getSessionSsr(req)
 
-    if(!user || !user?.isLoggedIn){
+    if(!user){
         return {
             redirect: {
                 destination: '/login',

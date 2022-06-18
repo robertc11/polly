@@ -9,7 +9,7 @@ import ElectionDash from '../components/electionDash'
 // Lib imports (data fetching)
 import useOnScreen from '../lib/useOnScreen'
 import useElections from '../lib/useElections'
-import { getSession } from '../lib/redis-auth/sessions'
+import { getSessionSsr } from '../lib/redis-auth/wrappers'
 
 //next imports
 import Link from 'next/link'
@@ -20,10 +20,9 @@ import CustomPopup from '../components/customPopup'
 
 
 export async function getServerSideProps({ req }){
-    const res = await getSession(req?.cookies?.pollytoken || null)
-    const user = (res.success) ? JSON.parse(res?.sessionData) : null
+    const user = await getSessionSsr(req)
 
-    if(!user || !user?.isLoggedIn){
+    if(!user){
         return {
             redirect: {
                 destination: '/login',

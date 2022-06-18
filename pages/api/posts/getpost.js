@@ -1,20 +1,19 @@
 import { runner } from '../../../lib/database/dbbulletins'
+import { getSessionSsr } from '../../../lib/redis-auth/wrappers';
 
 export default async function bulletinRoute(req,res){
     if(req.method === "GET"){
-        const user = req.session.user
+        const user = await getSessionSsr(req)
         
-        const {
-            query: { per_page, obj_id },
-        } = req
-        
-
-        if(!user || user.isLoggedIn === false) {
+        if(!user) {
             res.status(401).end();
             console.log("> getpost.js: ERROR: User not logged in!")
             return;
         }
         
+        const {
+            query: { per_page, obj_id },
+        } = req
         // console.log("> getpost.js: QUERY PARAMS:", per_page, obj_id)
         // console.log("> getpost.js: User's City:", user.cityID[3])
         // console.log("> getpost.js: User's ID:", user.uid)

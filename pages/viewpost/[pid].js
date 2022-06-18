@@ -7,13 +7,12 @@ import { getCurrentUnix, timeAgo, unixToReg } from '../../lib/timestamp'
 import Logo from "../../components/logo"
 import useUpdatesBulletin from "../../lib/useUpdates"
 import useOnScreen from "../../lib/useOnScreen"
-import { getSession } from "../../lib/redis-auth/sessions"
+import { getSessionSsr } from "../../lib/redis-auth/sessions"
 
 export async function getServerSideProps({ req }){
-    const res = await getSession(req?.cookies?.pollytoken || null)
-    const user = (res.success) ? JSON.parse(res?.sessionData) : null
+    const user = await getSessionSsr(req)
 
-    if(!user || !user?.isLoggedIn){
+    if(!user){
         return {
             redirect: {
                 destination: '/login',

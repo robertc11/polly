@@ -1,13 +1,14 @@
 import { runner } from "../../../lib/database/dbbulletins"
+import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
 
 export default async function handler(req,res){
     if(req.method === "POST"){
-        const usr = req.session.user
-
-        if(!usr || usr.isLoggedIn === false) {
+        const user = await getSessionSsr(req)
+        
+        if(!user) {
             res.status(401).end();
-            console.log("> createpost.js: ERROR: User not logged in!")
-            return
+            console.log("> getpost.js: ERROR: User not logged in!")
+            return;
         }
 
 
