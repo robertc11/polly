@@ -188,7 +188,6 @@ export default function WebApp({ user }){
         setPopupVisible(a)
     }
 
-
     return(
         <>
             <Head>

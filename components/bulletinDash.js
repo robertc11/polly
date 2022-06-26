@@ -2,6 +2,7 @@ import BulletinRow from '../components/bulletinRow'
 import { getCurrentUnix, unixToReg } from '../lib/timestamp'
 import React, { useState, useRef, useEffect } from 'react'
 import Router from 'next/router'
+import * as user from '../lib/useUser'
 
 export default function BulletinDash(props){
 
@@ -26,9 +27,9 @@ export default function BulletinDash(props){
 
 
                     {/* <p>{JSON.stringify(bulletins)}</p> */}
-                
+
                     <div className="w-full">
-                        {JSON.stringify(bulletins)==='[]' ? (
+                        {JSON.stringify(bulletins) === '[]' ? (
                             <div className="flex flex-col justify-center items-center mx-auto p-5 text-slate-600 font-dongji">
                                 <h1>It's lonely in here <span className="text-2xl">😔</span></h1>
                                 <h2>Add a post for your community to see</h2>
@@ -56,16 +57,18 @@ export default function BulletinDash(props){
                                             authorName={thisBulletin.author.authorName}
                                             handleOpenPost={(id) => props.handlePost(id)}
                                         >
-                                            <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink} key={thisBulletin.mapLink}></iframe> 
+                                            <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink} key={thisBulletin.mapLink}></iframe>
+
                                         </BulletinRow>
                                     </React.Fragment>
                                 ))}
-                            </div>    
-                        )}       
+                            </div>
+                        )}
                     </div>
                     {/* <p>{console.log('opened is reset!',opened)}</p> */}
                 </>
             )}
+
 
         </>
     )
