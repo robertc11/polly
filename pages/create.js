@@ -180,7 +180,7 @@ export default function CreatePostPage({ user }){
                             type="text" 
                             name="textContent"
                             placeholder=" My cats love..."
-                            maxLength="440"
+                            maxLength="1500"
                             onFocus={() => setActiveElement("textarea")}
                         />
                         
