@@ -102,14 +102,14 @@ export default function WebApp({ user }){
             left: 0,
             behavior: 'smooth',
         })
-        console.log('yuhh got to end of the scroll')
+        //console.log('yuhh got to end of the scroll')
 
         return new Promise((resolve, reject) => {
             const failed = setTimeout(() => {
                 reject()
             }, 2000)
 
-            console.log('window pos', scrollY)
+            //console.log('window pos', scrollY)
             const scrollHandler = () => {
                 if(self.scrollY == 0){
                     window.removeEventListener('scroll', scrollHandler)
@@ -144,11 +144,11 @@ export default function WebApp({ user }){
         if(sessionStorage.getItem('bulletins') || sessionStorage.getItem('scrollY') || sessionStorage.getItem('page')) return
         //console.log('eenie', bulletins)
         sessionStorage.setItem('bulletins', JSON.stringify(bulletins))
-        console.log('setting the session',window.scrollY)
+        //console.log('setting the session',window.scrollY)
         sessionStorage.setItem('scrollY', window.scrollY)
         sessionStorage.setItem('page', 'bulletins')
         Router.push(`/viewpost/${postid}`)
-        console.log('hello!',postid)
+        //console.log('hello!',postid)
     }
 
     useEffect(() => {
@@ -169,7 +169,7 @@ export default function WebApp({ user }){
         console.log(JSON.parse(sessionStorage.getItem('bulletins')))
         const scrollDiff = parseFloat(sessionStorage.getItem('scrollY'))
         completeLoadingAssets.then((res) => {
-            console.log('retrieving the session',scrollDiff)
+            //console.log('retrieving the session',scrollDiff)
             window.scrollTo(0, scrollDiff)
         }).catch((err) => {
             console.log('an error occurred!', err)
@@ -254,6 +254,13 @@ export default function WebApp({ user }){
                 >
                     <p className="text-lg w-full text-center">Pet Me!</p>
                     <div className="-mt-4 w-[400px] h-[400px] bg-[url('../public/kittenopen.svg')] bg-no-repeat hover:bg-[url('../public/kittenclosedhearts.svg')] hover:cursor-grabbing"></div>
+                    {/*
+                        You say you love rain, but you use an umbrella to walk under it.
+                        You say you love sun, but you seek shelter when it is shining.
+                        You say you love wind, but when it comes you close your windows.
+                        So that's why I'm scared when you say you love me.
+                        - Bob Marley 
+                    */}
                 </CustomPopup>
 
 
