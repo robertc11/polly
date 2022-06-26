@@ -3,14 +3,27 @@ import Link from 'next/link'
 export default function ElectionBlock(props){
     const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
     const months = ['January','February','March','April','May','June','July','August','September','October','November','December']
+
+    const handleEmail = () => {
+        window.open(`mailto:test@example.com?subject=Reminder! Upcoming Election&body=${props.electionName} happening on ${props.electionDate}. Want more info? Visit pollyapp.io`)
+    }
+
+    const handleAddCalendar = () => {
+        window.open(`http://www.google.com/calendar/render?action=TEMPLATE&text=${props.electionName}&dates=${props.electionDate.replaceAll('-','')}/${props.electionDate.replaceAll('-','')}&details=An+upcoming+election+in+your+area!`,'_blank')
+    }
     
     const date = new Date(props.electionDate)
+    const ymd = props.electionDate.split('-')
+    const parseDay = (dayStr) => {
+        if(dayStr.charAt(0) === '0') return dayStr.charAt(1)
+        return dayStr
+    }
     return (
         <>
             <div className="w-[49.5%] xl:w-[33%] border-2 border-gray-300 p-2 font-dongji mt-1 rounded h-[200px] overflow-auto">
                 <div className="w-full h-full flex flex-col">
                     <Link href=''><a><h1 className="font-semibold hover:text-violet-500">{props.electionName}</h1></a></Link>
-                    <p className="">{days[date.getDay()]}, {months[date.getMonth()]} {date.getDate()}, {date.getFullYear()}</p>
+                    <p className="">{days[date.getDay()]}, {months[parseInt(ymd[1])-1]} {parseDay(ymd[2])}, {ymd[0]}</p>
                     
                     <div className="mt-auto">
                         <div className="flex items-center mt-3 space-x-1.5">
@@ -20,13 +33,13 @@ export default function ElectionBlock(props){
                                 </svg>
                             </button>
 
-                            <button onClick={() => null} className="border-2 border-gray-300 p-1 rounded-full group hover:border-violet-400">
+                            <button onClick={handleEmail} className="border-2 border-gray-300 p-1 rounded-full group hover:border-violet-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 group-hover:text-violet-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
                             </button>
 
-                            <button onClick={() => null} className="border-2 border-gray-300 p-1 rounded-full group hover:border-violet-400">
+                            <button onClick={handleAddCalendar} className="border-2 border-gray-300 p-1 rounded-full group hover:border-violet-400">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400 group-hover:text-violet-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
@@ -36,10 +49,8 @@ export default function ElectionBlock(props){
                             Share, Email, or Add to Calendar
                         </small>    
                     </div>
-                    
-                </div>    
                 </div>
-                
+            </div>
         </>
     )
 }
