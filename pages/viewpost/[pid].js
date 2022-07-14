@@ -9,6 +9,7 @@ import useUpdatesBulletin from "../../lib/useUpdates"
 import useOnScreen from "../../lib/useOnScreen"
 import { getSessionSsr } from "../../lib/redis-auth/wrappers"
 import useUser from "../../lib/useUser"
+import Webnav from "../../components/webnav"
 
 export async function getServerSideProps({ req }){
     const user = await getSessionSsr(req)
@@ -248,38 +249,10 @@ export default function ViewPostPage({ user }){
                 </div>
             ) : (
                 <>
-                    <div id="webnav" className="w-full flex justify-between p-3 bg-gradient-to-r from-violet-500 to-indigo-500">
-                        <div className="flex items-center">
-                            <h1 className="text-xl text-white font-bold ml-5">Hello, {user?.first} {user?.last}</h1>
-                        </div>
+                    <Webnav user={user} redirect={'/web'}></Webnav>
 
-                        <div className="flex items-center">
-                            <Link href="/"><a><Logo theme={"light"} /></a></Link>
-                            <h1 className="text-2xl text-white">｜</h1>
-                            <a className="font-bold text-white mr-5 text-lg cursor-pointer"
-                                onClick={async (e) => {
-                                    e.preventDefault()
-                                    // mutateUser(
-                                    //     await fetchJson("/api/web/logout", { method: "POST" }),
-                                    //     false,
-                                    // );
-                                    fetch("/api/auth/logout", { method: "POST"})
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        if(!data.isLoggedIn){
-                                            Router.push("/login")
-                                        }
-                                    })
-                                    .catch(err => console.error(err))
-                                }}
-                            >
-                                Logout
-                            </a>
-                        </div>
-                    </div>
-
-                    <div className="bg-gray-100 min-h-screen w-screen relative">
-                        <button onClick={() => handleBack()} className="bg-gray-100 w-[24%] h-full absolute left-0 top-0">
+                    <div className="bg-[#f5f5f5] min-h-screen w-screen relative">
+                        <button onClick={() => handleBack()} className="bg-[#f5f5f5] w-[24%] h-full absolute left-0 top-0">
                             <p className="invisible">filler text</p>
                         </button>
 
@@ -288,7 +261,7 @@ export default function ViewPostPage({ user }){
                                 <div className="w-full font-dongji font-semibold">
                                     <h1 className="text-2xl">{statement}</h1>
                                     {/* <p>{last_up} {last_down}</p> */}
-                                    <p className="mt-5 leading-8 tracking-wide text-slate-600 text-xl">{body}</p>
+                                    <p className="mt-3 text-slate-600 text-xl">{body}</p>
                                 </div>
                                 
                                 <div id="contentWrapper" className="mt-3 flex justify-center items-center">
@@ -367,7 +340,7 @@ export default function ViewPostPage({ user }){
                             </div>
                         </div>
 
-                        <button onClick={() => handleBack()} className="bg-gray-100 w-[24%] h-full absolute right-0 top-0">
+                        <button onClick={() => handleBack()} className="bg-[#f5f5f5] w-[24%] h-full absolute right-0 top-0">
                             <p className="invisible">filler text</p>
                         </button>
                     </div>

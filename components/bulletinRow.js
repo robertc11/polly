@@ -163,7 +163,7 @@ export default function BulletinRow(props){
                 <div className="mt-3 flex flex-col items-center justify-center text-sm leading-6 text-slate-500 relative">
                     <div name="postBody" className="overflow-y-hidden text-left mb-3 w-11/12 relative max-h-24 xl:max-h-full">
                         <div name="postOverlay" className="w-full h-full bg-gradient-to-b from-transparent via-transparent to-white absolute flex flex-col-reverse items-center" />
-                        { (props.body.split(' ').length > 100) ? props.body.split(' ').slice(0,99).join(' ')+'...' : props.body }
+                        { (props.body.split(' ').length > 81) ? props.body.split(' ').slice(0,80).join(' ')+'...' : props.body }
                     </div>
                     
                     <div name="bulletinButtons" className="flex items-baseline justify-center">
