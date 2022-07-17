@@ -1,6 +1,7 @@
 import NavBar from '../components/navbar'
 import Head from 'next/head'
 import Link from 'next/link'
+import Footer from '../components/footer'
 
 export default function Regions(){
     return (
@@ -11,7 +12,7 @@ export default function Regions(){
 
             <NavBar />
 
-            <div className="font-dongji w-full mb-10">
+            <div className="font-dongji w-full mb-[200px]">
                 <h1 className="text-3xl font-bold text-center text-slate-700 mt-10">Supported Regions</h1>
 
                 <p className="w-7/12 mx-auto mt-3 text-lg">
@@ -138,6 +139,8 @@ export default function Regions(){
                     </tr>
                 </table>
             </div>
+
+            <Footer />
         </>
     )
 }

@@ -31,7 +31,7 @@ export default function Footer(){
                     <div className="flex flex-col justify-center basis-1/3">
                         <h1 className="text-lg font-bold mb-2">Documentation</h1>
                         <Link href="/"><a className="mb-1">API</a></Link>
-                        <Link href="/"><a className="mb-1">Locations</a></Link>
+                        <Link href="/regions"><a className="mb-1">Locations</a></Link>
                         <Link href="/"><a className="mb-1">Demo</a></Link> 
                     </div>
 

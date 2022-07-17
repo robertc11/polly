@@ -1,36 +1,47 @@
 // React imports
 import React, { useState, useRef, useEffect } from 'react'
-import useSWRInfinite from 'swr/infinite'
 
 // component imports
 import Logo from '../components/logo'
 import BulletinDash from '../components/bulletinDash'
 import ElectionDash from '../components/electionDash'
+import CustomPopup from '../components/customPopup'
 
 // Lib imports (data fetching)
-import useUser from '../lib/useUser'
-import fetchJson from "../lib/fetchJson"
-//import useBulletin from '../lib/useBulletin'
 import useOnScreen from '../lib/useOnScreen'
-import { getElections, getVoterInfo } from '../lib/civic'
-import useBulletin from '../lib/useBulletin'
 import useElections from '../lib/useElections'
+import { getSessionSsr } from '../lib/redis-auth/wrappers'
+import useUser from '../lib/useUser'
 
 //next imports
 import Link from 'next/link'
 import Head from 'next/head'
 import Router from "next/router"
 import { useRouter } from "next/router"
-import CustomPopup from '../components/customPopup'
 
 
 
 
-export default function WebApp(){
-    // if user is not logged in take them back to login page
-    const { user, mutateUser } = useUser({
-        redirectTo: "/login",
-    })
+export async function getServerSideProps({ req }){
+    const user = await getSessionSsr(req)
+
+    if(!user){
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            }
+        }
+    }
+
+    return {
+        props: { user }
+    }
+}
+
+export default function WebApp({ user }){
+    const verify_session = useUser({ redirectTo: '/login' })  // this checks if the session is still valid or not after you have logged in
+
     const { elections } = useElections(user)
 
     // top checks the latest post in the database and sees if it is already shown on screen or not
@@ -46,7 +57,7 @@ export default function WebApp(){
         if(top === null){
             checkNewPosts()
         }
-        var poller = setInterval(checkNewPosts, 90000)
+        var poller = setInterval(checkNewPosts, 120000) // polls every 2 minutes
 
         return () => {
             clearInterval(poller)
@@ -177,20 +188,6 @@ export default function WebApp(){
         setPopupVisible(a)
     }
 
-    if(!user || user.isLoggedIn===false){  // skeleton loading page if the user accesses through url but not logged in
-        return(
-            <>
-                <Head>
-                    <title>Loading</title>
-                </Head>
-
-                <div className="h-screen flex flex-col justify-center items-center p-5 font-dongji">
-                    <h1 className="text-4xl text-sky-500 animate-bounce">Loading...</h1>
-                </div>
-            </>
-        )
-    }
-
     return(
         <>
             <Head>
@@ -216,20 +213,28 @@ export default function WebApp(){
                 <div className="flex items-center">
                     <Link href="/"><a><Logo theme={"light"} /></a></Link>
                     <h1 className="text-2xl text-white">｜</h1>
-                    <Link href="/login">
-                        <a className="font-bold text-white mr-5 text-lg"
-                            onClick={async (e) => {
-                                e.preventDefault()
-                                sessionStorage.clear()
-                                mutateUser(
-                                    await fetchJson("/api/logout", { method: "POST" }),
-                                    false,
-                                );
-                            }}
-                        >
-                            Logout
-                        </a>
-                    </Link>
+                    <a className="font-bold text-white mr-5 text-lg cursor-pointer"
+                        onClick={async (e) => {
+                            e.preventDefault()
+                            
+                            // mutateUser(
+                            //     await fetchJson("/api/web/logout", { method: "POST" }),
+                            //     false,
+                            // );
+
+                            fetch('/api/auth/logout', { method: "POST" })
+                            .then(res => res.json)
+                            .then(data => {
+                                if(!data.isLoggedIn){
+                                    sessionStorage.clear()
+                                    Router.push("/login")
+                                }
+                            })
+                            .catch(err => console.error(err))
+                        }}
+                    >
+                        Logout
+                    </a>
                 </div>
             </div>
             
@@ -282,12 +287,19 @@ export default function WebApp(){
                         <button className="text-slate-500 px-2 py-8 border-b-2 border-white h-1/4 duration-200 flex justify-center items-center duration-200 hover:text-violet-100 flex justify-center items-center" 
                             onClick={async (e) => {
                                 e.preventDefault()
-                                mutateUser(
-                                    await fetchJson("/api/logout", { method: "POST" }),
-                                    false,
-                                );
-                                sessionStorage.clear()
-                                Router.push("/login")
+                                // mutateUser(
+                                //     await fetchJson("/api/web/logout", { method: "POST" }),
+                                //     false,
+                                // );
+                                fetch("/api/auth/logout", { method: "POST"})
+                                .then(res => res.json())
+                                .then(data => {
+                                    if(!data.isLoggedIn){
+                                        sessionStorage.clear()
+                                        Router.push("/login")
+                                    }
+                                })
+                                .catch(err => console.error(err))
                             }}
                         >                        
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -395,7 +407,7 @@ export default function WebApp(){
 //     // const electionData = await getElections()
 //     // replace with call to our api endpoint
 //     // const electionData = await getVoterInfo('9900 Koupela Drive Raleigh NC')
-//     const electionData = await fetch('/api/elections', {
+//     const electionData = await fetch('/api/web/elections', {
 //         method: "GET",
 //         headers: { "Content-Type": "application/json" },
 //         body: JSON.stringify({

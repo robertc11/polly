@@ -102,7 +102,7 @@ export default function ElectionDash(props){
                         </svg>    
                     </button>
                 </h1>
-                <div className="w-full flex flex-wrap items-center justify-between">
+                <div className="w-full flex flex-wrap items-center gap-x-[0.33%]">
                     {props.elections?.map((thisElection, index) => {
                         if(thisElection.ocdDivisionId){
                             var tmp = thisElection?.ocdDivisionId?.split('/')

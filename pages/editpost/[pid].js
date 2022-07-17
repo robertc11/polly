@@ -3,23 +3,38 @@ import { useRouter } from "next/router"
 import { useEffect, useState, useRef } from 'react'
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api"
 import * as React from 'react'
-import useUser from '../../lib/useUser'
 import Router from 'next/router'
-import { getCurrentUnix } from '../../lib/timestamp'
 import fetchJson from '../../lib/fetchJson'
 import Script from 'next/script'
 import Head from 'next/head'
 import styles from '../../styles/CreatePostPage.module.css'
 import { getGeocode, getLatLng } from "use-places-autocomplete"
 import AddrSearch from '../../components/addrsearch'
+import { getSessionSsr } from "../../lib/redis-auth/wrappers"
+import useUser from "../../lib/useUser"
 
 
 const LIBS = ["places"]
 
-export default function EditPostPage(){
-    const { user, mutateUser } = useUser({
-        redirectTo: "/login",
-    })
+export async function getServerSideProps({ req }){
+    const user = await getSessionSsr(req)
+
+    if(!user){
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            }
+        }
+    }
+
+    return {
+        props: { user }
+    }
+}
+
+export default function EditPostPage({ user }){
+    const verify_session = useUser({ redirectTo: '/login' })
 
     // preloaded form data
     const [ notFound, setNotFound ] = useState(false)

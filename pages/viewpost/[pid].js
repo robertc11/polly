@@ -2,20 +2,33 @@ import Link from "next/link"
 import { useRouter } from "next/router"
 import { useEffect, useState, useRef } from 'react'
 import * as React from 'react'
-import useUser from '../../lib/useUser'
 import Router from 'next/router'
 import { getCurrentUnix, timeAgo, unixToReg } from '../../lib/timestamp'
-import fetchJson from '../../lib/fetchJson'
-import Head from 'next/head'
-import styles from '../../styles/CreatePostPage.module.css'
 import Logo from "../../components/logo"
 import useUpdatesBulletin from "../../lib/useUpdates"
 import useOnScreen from "../../lib/useOnScreen"
+import { getSessionSsr } from "../../lib/redis-auth/wrappers"
+import useUser from "../../lib/useUser"
 
-export default function ViewPostPage(){
-    const { user, mutateUser } = useUser({
-        redirectTo: "/login",
-    })
+export async function getServerSideProps({ req }){
+    const user = await getSessionSsr(req)
+
+    if(!user){
+        return {
+            redirect: {
+                destination: '/login',
+                permanent: false,
+            }
+        }
+    }
+
+    return {
+        props: { user }
+    }
+}
+
+export default function ViewPostPage({ user }){
+    const verify_session = useUser({ redirectTo: '/login' })
 
     // grab the post id from url
     const router = useRouter()
@@ -243,19 +256,25 @@ export default function ViewPostPage(){
                         <div className="flex items-center">
                             <Link href="/"><a><Logo theme={"light"} /></a></Link>
                             <h1 className="text-2xl text-white">｜</h1>
-                            <Link href="/login">
-                                <a className="font-bold text-white mr-5 text-lg"
-                                    onClick={async (e) => {
-                                        e.preventDefault()
-                                        mutateUser(
-                                            await fetchJson("/api/logout", { method: "POST" }),
-                                            false,
-                                        );
-                                    }}
-                                >
-                                    Logout
-                                </a>
-                            </Link>
+                            <a className="font-bold text-white mr-5 text-lg cursor-pointer"
+                                onClick={async (e) => {
+                                    e.preventDefault()
+                                    // mutateUser(
+                                    //     await fetchJson("/api/web/logout", { method: "POST" }),
+                                    //     false,
+                                    // );
+                                    fetch("/api/auth/logout", { method: "POST"})
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if(!data.isLoggedIn){
+                                            Router.push("/login")
+                                        }
+                                    })
+                                    .catch(err => console.error(err))
+                                }}
+                            >
+                                Logout
+                            </a>
                         </div>
                     </div>
 
