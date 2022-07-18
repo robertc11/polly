@@ -6,11 +6,13 @@ import { getCurrentUnix } from '../lib/timestamp'
 import fetchJson from '../lib/fetchJson'
 import Script from 'next/script'
 import Head from 'next/head'
+import Image from 'next/image'
 import styles from '../styles/CreatePostPage.module.css'
 import { getGeocode, getLatLng } from "use-places-autocomplete"
 import AddrSearch from '../components/addrsearch'
 import { getSessionSsr } from '../lib/redis-auth/wrappers'
 import useUser from '../lib/useUser'
+import Swal from 'sweetalert2'
 
 const LIBS = ["places"]
 
@@ -50,12 +52,8 @@ export default function CreatePostPage({ user }){
         console.log("Rob Helper Logs 'setpoint' --- ", setPoint)
     }
 
-    //showHide functionality
-    const [ShowHide, setShowHide] = useState(false)
-    console.log(ShowHide)
     const [view, setView] =useState(null)
-    // post submission data
-    //const [toggleMap, setToggleMap] = useState(false)
+ 
     const handleMapToggle = (e) => {
         //setToggleMap(!toggleMap)
         //console.log("rob helper logs 'togglemap' ", toggleMap)
@@ -94,14 +92,9 @@ export default function CreatePostPage({ user }){
 
 //  ---------------------------------------------------------------START OF ROB MEDIA UPLOAD CODE-------------------------------------------------------------------------------------------------------------------------
 
-    //rob and dongji show/hide
-
-
-
 
 // handling the toggle when attachment icon is clicked
     const [toggleupload, setToggleUpload] = useState(false);
-    const [GoogleMapSpy, setGoogleMapSpy] = useState(false)
 
     const handleuploadtoggle = (e) => {
         setToggleUpload(!toggleupload)
@@ -117,191 +110,109 @@ export default function CreatePostPage({ user }){
     }
 
 
-    // why am I able to see the boolean for toggleupload w/ useeffect and not with the above console log?
-    useEffect(() => {
-        // console.log("use effect toggle map", toggleMap)
-        // console.log("use effect toggle upload", toggleupload)
-    })   
 
     // drop and drag event handler and parse
-    useEffect(() => {
+    // useEffect(() => {
+    //     const dropArea = document.getElementById("dropbox")
+    //     dropArea.addEventListener("dragover", (e) => {
+    //         e.preventDefault()
+    //         //console.log("I am in the drop area")
+    //     })
 
-        //const dropArea = document.querySelector(".dropbox-class")
-        const dropArea = document.getElementById("dropbox")
-        dropArea.addEventListener("dragover", (e) => {
-            e.preventDefault()
-            console.log("I am in the drop area")
-        })
+    //     dropArea.addEventListener("dragleave", (e) => {
+    //         //console.log("I am leaving the drop area")
+    //     })
 
-        dropArea.addEventListener("dragleave", (e) => {
-            console.log("I am leaving the drop area")
-        })
+    //     dropArea.addEventListener("drop", drop, false)
+    //     dropArea.addEventListener("dragenter", dragenter, false);
+    //     dropArea.addEventListener("dragover", dragover, false);  
 
-        dropArea.addEventListener("drop", drop, false)
-        dropArea.addEventListener("dragenter", dragenter, false);
-        dropArea.addEventListener("dragover", dragover, false);  
+    //     function drop(e) {
+    //         console.log('hoohoo', e)
+    //         e.stopPropagation();
+    //         e.preventDefault();
+    //         const dt = e.dataTransfer;
+    //         const files = dt.files;
+    //         //handleAttachments2(files)
+    //         console.log("here are the files", files);
+    //         for (const file of files) {
+    //             let size = file.size
+    //             console.log('file size ---- ', size)}
 
-        function drop(e) {
-            e.stopPropagation();
-            e.preventDefault();
-            const dt = e.dataTransfer;
-            const files = dt.files;
-            //handleAttachments2(files)
-            console.log("here are the files", files);
-            for (const file of files) {
-                let size = file.size
-                console.log('file size ---- ', size)}
+    //             // check file type and size 
 
-                // check file type and size 
+    //         //fileUpload(files)
+    //     }
 
-            fileUpload(files)
-        }
+    //     function dragenter(e) {
+    //         e.stopPropagation();
+    //         e.preventDefault();
+    //     }
 
-        function dragenter(e) {
-            e.stopPropagation();
-            e.preventDefault();
-        }
-
-        function dragover(e) {
-            e.stopPropagation();
-            e.preventDefault();
-        }
-    })
+    //     function dragover(e) {
+    //         e.stopPropagation();
+    //         e.preventDefault();
+    //     }
+    // })
 
     // svg icon calls this and calls the input
     // I need to delay this untill the upload button is selected in the hidden dropzone 
+    const [stagedFiles, setStagedFiles] = useState([])
 
-    const handleAttachments2 = (e) => {
-        let fileElem = document.getElementById('files');
-        if (fileAttachments == true) {
-            fileElem.click()
-        }
-        // if (fileElem) {
-        //     fileElem.click()
-        // }
-    }
-
-    //setup listener before the page initializes with useEffect
-    useEffect(() => {
-        const fileField2 = document.getElementById('fileSelect');
-        fileField2.addEventListener('click', function (e) {
-            console.log('I GOT TO handleAttachments2 -- line ~66 ')
-
-        }, false)
-    }, [])
-    const [fileAttachments, setFileAttachments] = useState(true)
-
-    // This is triggered whren the input element is clicked
-    const handleAttachments = (e) => {
-        // let eventy = e.target.value
-        // console.log(eventy)
-
-        //not sure what the value of this is 
-        setFileAttachments(!fileAttachments)
-        console.log('fileAttachments', fileAttachments)
-        if (fileAttachments == true) {
-            console.log(fileAttachments)
-            console.log("1")
-            //let inputboolean = fileAttachments
-            let inputboolean2 = "true"
-            fileUpload(null, inputboolean2);
-        }
-
-    }
-
-    // main funtion that parse and upload the media
-    // change direction of data flow depending on drop vs choose file action
-    const fileUpload = (files, inputboolean2) => {
-        console.log("input bool party", inputboolean2)
-        // if (files.length == 0) {
-        //     var files = false
-        // }
-        if (files > 0) {
-            fuHandler(files)
-            //console.log("got to fileUpload")
-            console.log(fileAttachments)
-            console.log("im a file", files)
-        } else if (inputboolean2) {
-            const fileAttachmentsval = true
-            if (fileAttachmentsval == true) {
-                console.log('GOT HERE HOORAY!')
-                const formData = new FormData();
-                const fileField = document.getElementById('files');
-                formData.append('username', 'abc123');  //need to get username and append here      
-                for (let i = 0; i < fileField.files.length; i++) {
-                    formData.append(`fileField_${i}`, fileField.files[i])
-                }
-
-
-                // listener that prints file object
-                //  file sniffing to reject bad media data
-                fileField.addEventListener("change", (e) => {
-
-                    for (const file of e.target.files) {
-                        let size = file.size
-                        console.log('file size ---- ', size)
-                    }
-
-                    if (size < 3000000) {
-                        let selectedfile = e.target.files
-                        fuHandler(selectedfile)
-                        console.log('selected files ---- ', selectedfile)
-
-                    } else {
-                        alert("The selected file is too large")
-                    }
-                })
+    // this function takes in a FileList data type
+    const handleUploadFiles = (uploaded_files) => {
+        console.log(uploaded_files)
+        const temp_staged_files = []
+        var unsupported = ""
+        var totalsize = 0
+        for(let i=0; i < uploaded_files.length; i++){
+            const file = uploaded_files.item(i)                  
+            if((file.type !== "application/pdf") && (file.type !==  "image/png") && (file.type !==  "image/jpeg") && (file.type !==  "video/quicktime") && (file.type !==  "video/mp4")) {              
+                unsupported += `${file.name}, `
+                continue
             }
-
-
+            totalsize += file.size 
+            let image_thumbnail = window.URL.createObjectURL(file)
+            temp_staged_files.push({file_data: file, file_url: image_thumbnail})
+            console.log(file)
         }
+        if(totalsize > 500000) {
+            Swal.fire("Your files are too large")
+            return
+        }
+        if(unsupported !== "") {            
+            Swal.fire(unsupported+' are not of a supported type')
+        }
+        
+        console.log('state of staging', temp_staged_files)
+        setStagedFiles(stagedFiles.concat(temp_staged_files))
+    }
+
+    const handleDrop = (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        // console.log(e.dataTransfer.files)
+        handleUploadFiles(e.dataTransfer.files)
+    }
+
+    const handleDragOver = (e) => {
+        e.stopPropagation()
+        e.preventDefault()
+    }
+    
+    const [trigger, setTrigger] = useState(false)
+    const handleDeleteFile = (index) => {
+        let temp_staged_files = stagedFiles       
+        URL.revokeObjectURL(temp_staged_files[index].file_url)
+        temp_staged_files.splice(index, 1)
+        setTrigger(!trigger)
+        setStagedFiles(temp_staged_files)        
 
     }
 
-    // POST file upload attatchment data to endpoint for Dongji to handle backend operation
-    // Captures username and postID to include in POST
-    function fuHandler(selectedfile) {
-        console.log("we got to our event handler --- its kung fu baby", selectedfile)
+    
 
-        //body
-        let attachmentUBody = {
-
-            Name: "",
-            File: selectedfile,
-            User: "",
-            PostID: ""
-
-        }
-
-        if (selectedfile.length > 0) {
-
-            let data = attachmentUBody
-
-            try {
-                const furesult = fetch('/api/blogs/blog.api', {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'image/jpeg/png'
-                    },
-                    Body: (data)
-
-                })
-                    .then(response => response.json)
-                    .then(response)
-                console.log(response)
-                console.log(furesult)
-
-            } catch (err) {
-                console.log(err)
-            }
-
-        }
-
-
-
-        //console.log(e.currentTarget)
-    }
+   
 
     //---------------------------------------------------------------END OF ROB MEDIA UPLOAD CODE-------------------------------------------------------------------------------------------------------------------------
 
@@ -321,7 +232,7 @@ export default function CreatePostPage({ user }){
             downvotes: 0,
             statement: e.currentTarget.title.value,
             map: (point !== null) ? true : false,
-            mapLink: (point !== null) ? generateLink(point) : '',
+            mapLink: (point !== null) ? generateLink(point) : '',   
             city: user.cityID[3],
             timestamp: getCurrentUnix(),
             body: e.currentTarget.textContent.value,
@@ -415,10 +326,7 @@ export default function CreatePostPage({ user }){
                         <div className="w-10/12 mx-auto flex text-gray-500 m-2">
                             <svg onClick={() => handleMapToggle()} className="mr-2 cursor-pointer hover:text-gray-700 border rounded-full p-1 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                             <svg onClick={() => handleEmoji()} className="mr-2 cursor-pointer hover:text-gray-700 border rounded-full p-1 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                            <input type="file" id="files" onClick={() => handleAttachments()} style={{ display: 'none' }} accept='image/*' multiple />
-                            <svg onClick={() => handleuploadtoggle()} id='fileSelect' className="mr-2 cursor-pointer hover:text-gray-700 border rounded-full p-1 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
-                            <div id='preview'></div>
-
+                            <svg onClick={() => handleuploadtoggle()} id='fileSelect2' className="mr-2 cursor-pointer hover:text-gray-700 border rounded-full p-1 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" /></svg>
                         </div>
 
 
@@ -437,32 +345,72 @@ export default function CreatePostPage({ user }){
                             )}
                         </div>
 
-                        {/* {This is rob trying to create a box using JSX} */}
-                        {/* {"dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15"} */}
+                        <div className="w-10/12 my-3 mx-auto flex items-center gap-1">
+                            {stagedFiles.map((file,index) => (
+                                <div key={file.file_data.name} className="flex flex-col h-36 w-36 rounded shadow-md border-[1px] border-slate-200 overflow-x-auto m-1 relative">
+                                    <button
+                                        type="button" 
+                                        onClick={() => handleDeleteFile(index)}
+                                        className="absolute top-0 right-0 z-10 bg-violet-500 text-white rounded-full"
+                                    >
+                                        <p className="mx-auto my-auto w-4 h-4">&times;</p>
+                                    </button>
+                                    <Image src={file.file_url} width={200} height={200}></Image>
+                                    <small className="text-xs">
+                                        {file.file_data.name} 
+                                    </small>
+                                </div>
+                            
 
-                        <div className={view !== "upload" ? "hidden" : "dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15"}>
-                            {/* <div class="dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15" id="dropbox"  className={toggleupload?  "hidden" : "dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15" } >   */}
-                            {/* ( if{toggleupload ==  false})  {
-                           <p>Hello</p> 
-                          } */}
-                            {/* <div class=""> */}
+                            ))}
+                        </div>
+
+                        <div 
+                            id="dropbox" 
+                            className={view !== "upload" ? "hidden" : "dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15"}
+                            onDrop={(e) => handleDrop(e)}
+                            onDragOver={(e) => handleDragOver(e)}
+                        >
+                                
+                    
                             <p class="space-x-7">Drag and drop your files here</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" id="dropbox" className="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"  >
+                            <svg xmlns="http://www.w3.org/2000/svg"  className="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"  >
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-
                             </svg>
-                            {/* </div> */}
+                          
                             <p class="space-x-7 mt-6">OR </p>
-                            {/* {:&nbsp;} */}
+                           
                             <br></br>
                             <label class="space-x-7 mt-6">Choose Your Files</label>
-                            <svg onClick={() => handleAttachments2()} xmlns="http://www.w3.org/2000/svg" id="dropbox" className="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"  >
+                            <svg 
+                                onClick={() => {
+                                    let elem = document.getElementById('fileClick')
+                                    elem.click()
+                                }} 
+                                id='fileSelect' 
+                                xmlns="http://www.w3.org/2000/svg"  
+                                className="h-9 w-9" 
+                                fill="none" 
+                                viewBox="0 0 24 24" 
+                                stroke="currentColor" 
+                                stroke-width="2"  
+                            >
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
                             </svg>
+                            <input 
+                                onChange={(e) => {
+                                    e.stopPropagation()
+                                    handleUploadFiles(e.target.files)
+                                }} 
+                                type="file" 
+                                id="fileClick" 
+                                style={{ display: 'none' }} 
+                                accept=".png,.jpg,.pdf,.mov,.mp4" 
+                                multiple 
+                            />
                         </div>
-                        {/* </div> */}
 
-                        {/* </div>  */}
+                   
 
 
 
@@ -471,9 +419,7 @@ export default function CreatePostPage({ user }){
 
 
 
-                        {/* {clicks.map((latLng, i) => (
-                            <pre key={i}>{JSON.stringify(latLng.toJSON(), null, 2)}</pre>
-                        ))} */}
+                      
 
                         <p className={error === '' ? "hidden" : "text-center w-full text-red-500"}>{error}</p>
 
@@ -557,73 +503,7 @@ const PlacesAutocomplete = ({ setSelected, setZoom, setCenter }) => {
 }
 
 
-// This is where I would put the pop up toggle box 
-
-const UploadDropZone = () => {
-    console.log("GOT HERE")
 
 
-}
-
-function HideShowActions(toggleupload2, showDropZone, hideDropZone, toggleMap) {
-
-    console.log("GOT HEREEEEEEEE")
-
-
-    let toggleHandler = toggleupload2
-    console.log("togleeeeeee", toggleHandler)
-    //console.log(toggleHandler)
-
-    if (toggleupload2 == false)
-        return (
-            <div className="dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15" >
-                {/* <div class="dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15" id="dropbox"  className={toggleupload?  "hidden" : "dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15" } >   */}
-                {/* ( if{toggleupload ==  false})  {
-                           <p>Hello</p> 
-                          } */}
-                {/* <div class=""> */}
-                <p class="space-x-7">Drag and drop your files here</p>
-                <svg xmlns="http://www.w3.org/2000/svg" id="dropbox" className="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"  >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-
-                </svg>
-                {/* </div> */}
-                <p class="space-x-7 mt-6">OR </p>
-                {/* {:&nbsp;} */}
-                <br></br>
-                <label class="space-x-7 mt-6">Choose Your Files</label>
-                <svg onClick={() => handleAttachments2()} xmlns="http://www.w3.org/2000/svg" id="dropbox" className="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"  >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
-                </svg>
-            </div>
-        )
-    else {
-        if (toggleMap == true && toggleupload == true) {
-
-            <div className="dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15" >
-                {/* <div class="dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15" id="dropbox"  className={toggleupload?  "hidden" : "dropbox-class flex flex-col text-slate-600 mx-auto items-center p-8 border-dashed border-width: 10px border-4 border-indigo-500/100 h-50 w-15" } >   */}
-                {/* ( if{toggleupload ==  false})  {
-                           <p>Hello</p> 
-                          } */}
-                {/* <div class=""> */}
-                <p class="space-x-7">Drag and drop your files here</p>
-                <svg xmlns="http://www.w3.org/2000/svg" id="dropbox" className="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"  >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-
-                </svg>
-                {/* </div> */}
-                <p class="space-x-7 mt-6">OR </p>
-                {/* {:&nbsp;} */}
-                <br></br>
-                <label class="space-x-7 mt-6">Choose Your Files</label>
-                <svg onClick={() => handleAttachments2()} xmlns="http://www.w3.org/2000/svg" id="dropbox" className="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"  >
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z" />
-                </svg>
-            </div>
-
-        }
-    }
-
-}
 
 
