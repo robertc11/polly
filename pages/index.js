@@ -10,11 +10,6 @@ import Image from 'next/image'
 import NavBar from '../components/navbar'
 import Footer from '../components/footer'
 
-// Content Imports
-import abbott from '../public/abbott.png'
-import beto from '../public/beto.png'
-import perry from '../public/perry.png'
-
 
 class Home extends React.Component{
     constructor(props){

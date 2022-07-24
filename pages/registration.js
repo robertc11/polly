@@ -56,7 +56,7 @@ export default function Register(){
                         console.log("> registration.js: NEW USER:",body)
 
                         try{
-                            const res = await fetchJson("/api/web/createuser", {
+                            const res = await fetchJson("/api/user/createuser", {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify(body),

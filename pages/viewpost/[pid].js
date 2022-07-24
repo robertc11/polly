@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/router"
 import { useEffect, useState, useRef } from 'react'
 import * as React from 'react'
@@ -9,6 +10,8 @@ import useUpdatesBulletin from "../../lib/useUpdates"
 import useOnScreen from "../../lib/useOnScreen"
 import { getSessionSsr } from "../../lib/redis-auth/wrappers"
 import useUser from "../../lib/useUser"
+import Webnav from "../../components/webnav"
+import { fullToAbbr } from "../../lib/extensions"
 
 export async function getServerSideProps({ req }){
     const user = await getSessionSsr(req)
@@ -45,6 +48,8 @@ export default function ViewPostPage({ user }){
     const [postid, setpostid] = useState(null)
     const [timestamp, setTimestamp] = useState(null)
     const [authorName, setAuthorName] = useState(null)
+    const [files, setFiles] = useState(null)
+    const [totalContent, setTotalContent] = useState(0)
     const [selected, setSelected] = useState(null)
     const [changed, setChanged] = useState(false)
     const [comments, setComments] = useState([])
@@ -73,7 +78,9 @@ export default function ViewPostPage({ user }){
                     setTimestamp(data.data[0]?.timestamp)
                     setSelected([data.data[0]?.useractions[0]?.action?.upvote||false, data.data[0]?.useractions[0]?.action?.downvote||false])
                     setAuthorName(data.data[0]?.author.authorName)
+                    setFiles(data.data[0]?.attachments)
                     setCommentsCount(data.data[0]?.comments[0]?.numComments || 0)
+                    setTotalContent(data.data[0]?.map+data.data[0]?.attachments.length)
                     document.title = data.data[0]?.statement
                 }
 
@@ -239,6 +246,8 @@ export default function ViewPostPage({ user }){
         e.currentTarget.commentBody.value = ''
     }
 
+    const [selectedContent, setSelectedContent] = useState(0)
+
     return (
         <>
             { notFound ? (
@@ -248,38 +257,10 @@ export default function ViewPostPage({ user }){
                 </div>
             ) : (
                 <>
-                    <div id="webnav" className="w-full flex justify-between p-3 bg-gradient-to-r from-violet-500 to-indigo-500">
-                        <div className="flex items-center">
-                            <h1 className="text-xl text-white font-bold ml-5">Hello, {user?.first} {user?.last}</h1>
-                        </div>
+                    <Webnav user={user} redirect={'/web'}></Webnav>
 
-                        <div className="flex items-center">
-                            <Link href="/"><a><Logo theme={"light"} /></a></Link>
-                            <h1 className="text-2xl text-white">｜</h1>
-                            <a className="font-bold text-white mr-5 text-lg cursor-pointer"
-                                onClick={async (e) => {
-                                    e.preventDefault()
-                                    // mutateUser(
-                                    //     await fetchJson("/api/web/logout", { method: "POST" }),
-                                    //     false,
-                                    // );
-                                    fetch("/api/auth/logout", { method: "POST"})
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        if(!data.isLoggedIn){
-                                            Router.push("/login")
-                                        }
-                                    })
-                                    .catch(err => console.error(err))
-                                }}
-                            >
-                                Logout
-                            </a>
-                        </div>
-                    </div>
-
-                    <div className="bg-gray-100 min-h-screen w-screen relative">
-                        <button onClick={() => handleBack()} className="bg-gray-100 w-[24%] h-full absolute left-0 top-0">
+                    <div className="bg-[#f5f5f5] min-h-screen w-screen relative">
+                        <button onClick={() => handleBack()} className="bg-[#f5f5f5] w-[24%] h-full absolute left-0 top-0">
                             <p className="invisible">filler text</p>
                         </button>
 
@@ -287,14 +268,70 @@ export default function ViewPostPage({ user }){
                             <div className="relative">
                                 <div className="w-full font-dongji font-semibold">
                                     <h1 className="text-2xl">{statement}</h1>
-                                    {/* <p>{last_up} {last_down}</p> */}
-                                    <p className="mt-5 leading-8 tracking-wide text-slate-600 text-xl">{body}</p>
+                                    <p className="mt-3 text-slate-600 text-md">{body}</p>
                                 </div>
                                 
-                                <div id="contentWrapper" className="mt-3 flex justify-center items-center">
-                                    { mapEnabled ? (
-                                        <iframe name="map" width="600" height="375" className="mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={mapLink}></iframe>
-                                    ) : ""}
+                                <div id="contentWrapper" className={totalContent === 0 ? "hidden" : "mt-3 flex justify-center items-center w-4/5 mx-auto relative"}>
+                                    <button 
+                                        onClick={() => {
+                                            if(selectedContent === 0){
+                                                setSelectedContent(totalContent-1)
+                                            }else{
+                                                setSelectedContent(selectedContent-1)
+                                            }
+                                        }} 
+                                        className="bg-violet-300 py-5 px-1 rounded-l-md"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                    </button>
+                                    <div id="mediawrapper" className="bg-black/70 w-11/12 flex flex-col items-center py-3 border-4 border-violet-300 mt-2 rounded relative">
+                                        { (mapEnabled && selectedContent === 0) ? (
+                                            <iframe name="map" width="99%" height={375} loading="lazy" allowFullScreen src={mapLink}></iframe>
+                                        ) : ""}
+
+                                        {files?.map((file,index) => {
+                                            if(file.file_type === 'image/jpeg' || file.file_type === 'image/png'){
+                                                return (
+                                                    <div className={(selectedContent === index+mapEnabled) ? null : "hidden"} key={file.file_name}>
+                                                        <Image width={600} height={375} objectFit="contain" src={`http://localhost:3000/api/web/content/${file.file_name}${fullToAbbr(file.file_type)}`} />
+                                                        <div className="absolute top-1 right-1 flex gap-1">
+                                                            <button onClick={() => window.open(`http://localhost:3000/api/web/content/${file.file_name}${fullToAbbr(file.file_type)}`,'_blank')} className="bg-violet-500 rounded px-3 text-white py-1">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            }else if(file.file_type === 'video/quicktime' || file.file_type === 'video/mp4'){
+                                                return (
+                                                    <video className={(selectedContent === index+mapEnabled) ? null : "hidden"} key={file.file_name} controls width={600} height={375}>
+                                                        <source src={`http://localhost:3000/api/web/content/${file.file_name}${fullToAbbr(file.file_type)}`} type={file.file_type}></source>
+                                                    </video>
+                                                )
+                                            }else{
+                                                return (
+                                                    <div className={(selectedContent === index+mapEnabled) ? null : "hidden"} key={file.file_name}>
+                                                        <Image src={'/file-earmark-pdf-white.svg'} objectFit="contain" width={600} height={375} alt="File Thumbnail"></Image>
+                                                        <div className="absolute top-1 right-1 flex gap-1">
+                                                            <a href={`http://localhost:3000/api/web/content/${file.file_name}${fullToAbbr(file.file_type)}`} download={file.file_name} className="bg-violet-500 rounded px-3 text-white py-1">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            }
+                                        })}
+                                    </div>
+                                    <button onClick={() => setSelectedContent((selectedContent+1)%totalContent)} className="bg-violet-300 py-5 px-1 rounded-r-md">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
                                 </div>
 
                                 <div id="voteWrapper" className="mt-5 flex items-center">
@@ -367,7 +404,7 @@ export default function ViewPostPage({ user }){
                             </div>
                         </div>
 
-                        <button onClick={() => handleBack()} className="bg-gray-100 w-[24%] h-full absolute right-0 top-0">
+                        <button onClick={() => handleBack()} className="bg-[#f5f5f5] w-[24%] h-full absolute right-0 top-0">
                             <p className="invisible">filler text</p>
                         </button>
                     </div>

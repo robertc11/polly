@@ -2,10 +2,10 @@
 import React, { useState, useRef, useEffect } from 'react'
 
 // component imports
-import Logo from '../components/logo'
 import BulletinDash from '../components/bulletinDash'
 import ElectionDash from '../components/electionDash'
 import CustomPopup from '../components/customPopup'
+import Webnav from '../components/webnav'
 
 // Lib imports (data fetching)
 import useOnScreen from '../lib/useOnScreen'
@@ -102,14 +102,14 @@ export default function WebApp({ user }){
             left: 0,
             behavior: 'smooth',
         })
-        console.log('yuhh got to end of the scroll')
+        //console.log('yuhh got to end of the scroll')
 
         return new Promise((resolve, reject) => {
             const failed = setTimeout(() => {
                 reject()
             }, 2000)
 
-            console.log('window pos', scrollY)
+            //console.log('window pos', scrollY)
             const scrollHandler = () => {
                 if(self.scrollY == 0){
                     window.removeEventListener('scroll', scrollHandler)
@@ -144,11 +144,11 @@ export default function WebApp({ user }){
         if(sessionStorage.getItem('bulletins') || sessionStorage.getItem('scrollY') || sessionStorage.getItem('page')) return
         //console.log('eenie', bulletins)
         sessionStorage.setItem('bulletins', JSON.stringify(bulletins))
-        console.log('setting the session',window.scrollY)
+        //console.log('setting the session',window.scrollY)
         sessionStorage.setItem('scrollY', window.scrollY)
         sessionStorage.setItem('page', 'bulletins')
         Router.push(`/viewpost/${postid}`)
-        console.log('hello!',postid)
+        //console.log('hello!',postid)
     }
 
     useEffect(() => {
@@ -169,7 +169,7 @@ export default function WebApp({ user }){
         console.log(JSON.parse(sessionStorage.getItem('bulletins')))
         const scrollDiff = parseFloat(sessionStorage.getItem('scrollY'))
         completeLoadingAssets.then((res) => {
-            console.log('retrieving the session',scrollDiff)
+            //console.log('retrieving the session',scrollDiff)
             window.scrollTo(0, scrollDiff)
         }).catch((err) => {
             console.log('an error occurred!', err)
@@ -194,49 +194,7 @@ export default function WebApp({ user }){
                 <title>Polly-App</title>
             </Head>
 
-            <div id="webnav" className="w-full flex justify-between p-3 bg-gradient-to-r from-violet-500 to-indigo-500">
-                <div className="flex items-center">
-                    <h1 className="text-xl text-white font-bold ml-5">Hello, {user?.first} {user?.last}</h1>
-                </div>
-
-                {/* <div className="md:block w-1/4">
-                    <div className="relative flex items-center text-gray-400 focus-within:text-violet-400">
-                        <span className="absolute left-4 h-6 flex items-center pr-3 border-r border-gray-300">
-                            <svg xmlns="http://ww50w3.org/2000/svg" className="w-4 fill-current" viewBox="0 0 35.997 36.004">
-                                <path id="Icon_awesome-search" data-name="search" d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z"></path>
-                            </svg>
-                        </span>
-                        <input type="search" name="leadingIcon" id="leadingIcon" placeholder="Search here" className="w-full pl-14 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-cyan-300 transition" />
-                    </div>
-                </div> */}
-
-                <div className="flex items-center">
-                    <Link href="/"><a><Logo theme={"light"} /></a></Link>
-                    <h1 className="text-2xl text-white">｜</h1>
-                    <a className="font-bold text-white mr-5 text-lg cursor-pointer"
-                        onClick={async (e) => {
-                            e.preventDefault()
-                            
-                            // mutateUser(
-                            //     await fetchJson("/api/web/logout", { method: "POST" }),
-                            //     false,
-                            // );
-
-                            fetch('/api/auth/logout', { method: "POST" })
-                            .then(res => res.json)
-                            .then(data => {
-                                if(!data.isLoggedIn){
-                                    sessionStorage.clear()
-                                    Router.push("/login")
-                                }
-                            })
-                            .catch(err => console.error(err))
-                        }}
-                    >
-                        Logout
-                    </a>
-                </div>
-            </div>
+            <Webnav user={user}></Webnav>
             
 
             {/* <p>{JSON.stringify(bulletins)}</p> */}
@@ -253,6 +211,13 @@ export default function WebApp({ user }){
                 >
                     <p className="text-lg w-full text-center">Pet Me!</p>
                     <div className="-mt-4 w-[400px] h-[400px] bg-[url('../public/kittenopen.svg')] bg-no-repeat hover:bg-[url('../public/kittenclosedhearts.svg')] hover:cursor-grabbing"></div>
+                    {/*
+                        You say you love rain, but you use an umbrella to walk under it.
+                        You say you love sun, but you seek shelter when it is shining.
+                        You say you love wind, but when it comes you close your windows.
+                        So that's why I'm scared when you say you love me.
+                        - Bob Marley 
+                    */}
                 </CustomPopup>
 
 
@@ -262,7 +227,7 @@ export default function WebApp({ user }){
                     <div className="flex flex-col items-baseline text-violet-500 text-sm">
                         <button className="px-2 py-5 border-b-2 border-white h-1/4 duration-200 hover:text-violet-100 flex justify-center items-center" onClick={() => setScreen('elections')}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
 
                             <h1 className="ml-2">Elections</h1>
@@ -270,7 +235,7 @@ export default function WebApp({ user }){
 
                         <button className="px-2 py-5 border-b-2 border-white h-1/4 duration-200 hover:text-violet-100 flex justify-center items-center" onClick={() => setScreen('bulletins')}>                        
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                             </svg>
 
                             <h1 className="ml-2">Bulletin Board</h1>
@@ -278,7 +243,7 @@ export default function WebApp({ user }){
 
                         <button className="px-2 py-5 border-b-2 border-white h-1/4 duration-200 hover:text-violet-100 flex justify-center items-center" onClick={() => setScreen('cards')}>                        
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                             </svg>
 
                             <h1 className="ml-2">Polly Cards</h1>
@@ -303,7 +268,7 @@ export default function WebApp({ user }){
                             }}
                         >                        
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                             </svg>
 
                             <h1 className="ml-2 font-medium">Logout</h1>
@@ -363,13 +328,13 @@ export default function WebApp({ user }){
                     <div className="sticky top-10 w-full">
                         { screen === "elections" ? (
                             <>
-                                <div className="bg-gray-200 w-full py-6 h-screen rounded-md">
+                                <div className="bg-slate-200 w-full py-6 h-screen rounded-md">
                                     
                                 </div>
                             </>
                         ) : screen === "bulletins" ? (
                             <div className="h-screen relative">
-                                <div id="newpostcontainer" className="bg-gray-200 w-full py-6 h-72 rounded-md">
+                                <div id="newpostcontainer" className="bg-slate-200 w-full py-6 h-72 rounded-md">
                                     <button onClick={() => Router.push("/create")} className="py-1.5 px-3 xl:px-5 xl:py-2 rounded-md bg-emerald-300 text-md text-white right-4 hover:bg-emerald-500 flex items-center justify-center w-5/6 xl:w-3/4 mx-auto">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
@@ -386,7 +351,7 @@ export default function WebApp({ user }){
                             </div>
                         ) : screen === "cards" ? (
                             <>
-                                <div className="bg-gray-200 w-full py-6 h-screen rounded-md">
+                                <div className="bg-slate-200 w-full py-6 h-screen rounded-md">
                                     
                                 </div>
                             </>

@@ -56,6 +56,7 @@ export default function BulletinDash(props){
                                             isAuthor={thisBulletin.author.authorID == user.uid}
                                             authorName={thisBulletin.author.authorName}
                                             handleOpenPost={(id) => props.handlePost(id)}
+                                            attachments={thisBulletin.attachments}
                                         >
                                             <iframe name="map" width="450" height="300" className="hidden mt-2 rounded border-2 border-violet-300" loading="lazy" allowFullScreen src={thisBulletin.mapLink} key={thisBulletin.mapLink}></iframe>
 
