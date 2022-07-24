@@ -1,13 +1,12 @@
 import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
+import { setResetCode } from "../../../lib/redis-auth/sessions";
+import Email from "../../../lib/email";
 import { runner } from "../../../lib/database/dbusers";
-import { destroyResetCode } from "../../../lib/redis-auth/sessions";
-const bcrypt = require('bcrypt');
-const saltRounds = 10
 
 export default async function handler(req,res){
     if(req.method === "POST"){
         const user = await getSessionSsr(req)
-        const { uid, newPass } = await req.body
+        const { uid } = await req.body
 
         if(!user || user.uid !== uid) {
             res.status(401).end();
@@ -16,20 +15,18 @@ export default async function handler(req,res){
         }
 
         try{
-            await bcrypt.hash(newPass,saltRounds, async (err,hash) => {
-                if(err){
-                    res.status(500).json({message:err})
-                }
-                const resdb = await runner('editPassword',[ uid,hash ])
-                console.log('> passwordreset.js: Result:', resdb)
-    
-                if(!resdb.success){
-                    res.status(500).json({message:resdb.error})
-                }
+            const status_code = await setResetCode(user.uid)
+            if(!status_code.success) throw status_code.msg
 
-                await destroyResetCode(uid)
-                res.json(resdb)
-            })  
+            const user_email = await runner("getEmail", [uid])
+            if(!user_email.success) throw "Could not find user email!"
+            
+            let email_res = await new Email(user, user_email.email, `https://www.pollyapp.io/verify/${uid}`).sendResetEmail(status_code.reset_code)
+            if(!email_res) throw "Error sending email to address on file."
+
+            res.status(200).json({
+                success: true,
+            })    
         }catch(err){
             console.log('> passwordreset.js:', err)
             res.status(500).json({

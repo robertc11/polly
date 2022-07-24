@@ -147,8 +147,8 @@ export default function Settings({ user, email, address }){
                                         onClick={() => {
                                             Swal.fire({
                                                 icon: 'warning',
-                                                title: 'Are you sure?',
-                                                text: 'This action cannot be undone.',
+                                                title: 'Danger Zone',
+                                                text: 'Are you sure you want to delete your account? This action cannot be undone.',
                                                 backdrop: true,
                                                 showConfirmButton: false,
                                                 showDenyButton: true,
@@ -212,10 +212,14 @@ export default function Settings({ user, email, address }){
                         <div className="px-5 py-5 bg-white flex-1 border-l-[3px] border-slate-300 pb-10">
                             <h1 className="text-3xl font-semibold">Password Center</h1>
                             <br />
-                            <button 
+                            <button
+                                id="resetpass"
                                 className="border-2 px-5 py-1 rounded-md border-red-500 hover:bg-red-500 hover:text-white"
                                 onClick={() => {
-                                    fetch('/api/user/passwordreset', {
+                                    const disabledClasses = ['cursor-not-allowed', 'animate-pulse', 'pointer-events-none']
+                                    disabledClasses.map(item => document.getElementById("resetpass").classList.toggle(item))
+
+                                    fetch('/api/user/passwordresetemail', {
                                         method: "POST",
                                         headers: {
                                             'Content-Type': 'application/json',
@@ -225,13 +229,15 @@ export default function Settings({ user, email, address }){
                                     .then(data => {
                                         if(data.success){
                                             setMessage([1,'Please check your email for steps to reset your password!'])
+                                            disabledClasses.map(item => document.getElementById("resetpass").classList.toggle(item))
                                         }else{
-                                            throw "Error generating reset token"
+                                            throw data.msg || "No error message was provided"
                                         }
                                     })
                                     .catch(err => {
                                         console.error(err)
-                                        setMessage([0,'We\'re sorry, something went wrong - please try again later!'])
+                                        setMessage([0,err])
+                                        disabledClasses.map(item => document.getElementById("resetpass").classList.toggle(item))
                                     })
                                 }}
                             >
