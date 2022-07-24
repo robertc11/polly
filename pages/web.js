@@ -329,13 +329,13 @@ export default function WebApp({ user }){
                     <div className="sticky top-10 w-full">
                         { screen === "elections" ? (
                             <>
-                                <div className="bg-gray-200 w-full py-6 h-screen rounded-md">
+                                <div className="bg-slate-200 w-full py-6 h-screen rounded-md">
                                     
                                 </div>
                             </>
                         ) : screen === "bulletins" ? (
                             <div className="h-screen relative">
-                                <div id="newpostcontainer" className="bg-gray-200 w-full py-6 h-72 rounded-md">
+                                <div id="newpostcontainer" className="bg-slate-200 w-full py-6 h-72 rounded-md">
                                     <button onClick={() => Router.push("/create")} className="py-1.5 px-3 xl:px-5 xl:py-2 rounded-md bg-emerald-300 text-md text-white right-4 hover:bg-emerald-500 flex items-center justify-center w-5/6 xl:w-3/4 mx-auto">
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
@@ -352,7 +352,7 @@ export default function WebApp({ user }){
                             </div>
                         ) : screen === "cards" ? (
                             <>
-                                <div className="bg-gray-200 w-full py-6 h-screen rounded-md">
+                                <div className="bg-slate-200 w-full py-6 h-screen rounded-md">
                                     
                                 </div>
                             </>

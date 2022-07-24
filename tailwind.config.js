@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       animation: {
         fadedongji: 'fadeIn 4s linear',
-        slideIn: 'inLeft 1.5s ease-out',
+        slideIn: 'inLeft 1s ease-out',
         slideOut: 'outLeft 1.5s ease-in',
         slideInTop: 'inTop 1.3s ease-out',
       },
