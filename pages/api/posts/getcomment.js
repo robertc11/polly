@@ -1,5 +1,6 @@
 import { runner } from '../../../lib/database/dbbulletins'
 import { getSessionSsr } from '../../../lib/redis-auth/wrappers';
+import logger from '../../../logger/logger'
 
 export default async function bulletinRoute(req,res){
     if(req.method === "GET"){
@@ -7,7 +8,7 @@ export default async function bulletinRoute(req,res){
         
         if(!user) {
             res.status(401).end();
-            console.log("> getpost.js: ERROR: User not logged in!")
+            logger.info("> getpost.js: ERROR: User not logged in!")
             return;
         }
         
@@ -16,9 +17,9 @@ export default async function bulletinRoute(req,res){
         } = req
         
         
-        console.log("> getcomment.js: QUERY PARAMS:", post, per_page, obj_id)
-        // console.log("> getpost.js: User's City:", user.cityID[3])
-        // console.log("> getpost.js: User's ID:", user.uid)
+        logger.info("> getcomment.js: QUERY PARAMS:", post, per_page, obj_id)
+        // logger.info("> getpost.js: User's City:", user.cityID[3])
+        // logger.info("> getpost.js: User's ID:", user.uid)
 
         try{
             const data = await runner('getComments',[ post, parseInt(per_page), obj_id ])
@@ -27,7 +28,7 @@ export default async function bulletinRoute(req,res){
             }
             res.json(data.resdb)
         }catch(err){
-            console.log("> getcomment.js: ERROR:",err)
+            logger.info("> getcomment.js: ERROR:",err)
             res.status(500).json({message:err})
         }
     }else{

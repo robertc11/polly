@@ -1,21 +1,22 @@
 import cookie from 'cookie'
 import { runner } from '../../../lib/database/dbusers'
 import { setSession } from '../../../lib/redis-auth/sessions';
+import logger from '../../../logger/logger'
 const bcrypt = require('bcrypt');
 
 export default async (req, res) => {
     if(req.method === "POST"){
         const { username, password } = await req.body
-        console.log('> login.js:', username, password)
+        logger.info('> login.js:', username, password)
 
         try {
             if(username==="" || password===""){
                 throw "Please fill in all fields!"
             }
 
-            console.log('> login.js: Performing validation...')
+            logger.info('> login.js: Performing validation...')
             const resdb = await runner('validateInfo',[ username.toLowerCase() ])
-            console.log('> login.js: Validation result:', resdb)
+            logger.info('> login.js: Validation result:', resdb)
 
             if(!resdb.found){
                 throw resdb.error
@@ -23,7 +24,7 @@ export default async (req, res) => {
             
             await bcrypt.compare(password,resdb.password, async (err,result) => {
                 if(err){
-                    console.log(err)
+                    logger.info(err)
                     res.status(500).json({ message: "Authentication Error" })
                     return
                 }
@@ -38,7 +39,7 @@ export default async (req, res) => {
                         last: resdb.last,
                     }
                     const token = await setSession(user)
-                    console.log('this is the token', token.session)
+                    logger.info('this is the token', token.session)
                     res.setHeader( "Set-Cookie", cookie.serialize( "pollytoken", token.session, {
                             httpOnly: true,
                             secure: process.env.NODE_ENV === "production",
@@ -54,7 +55,7 @@ export default async (req, res) => {
                 }
             })
         }catch(error){
-            console.log('> login.js: ERROR:', error)
+            logger.info('> login.js: ERROR:', error)
             let errMsg = error.message===undefined ? error : error.message
             res.status(500).json({ message: errMsg })
         }

@@ -1,5 +1,6 @@
 import { runner } from "../../../lib/database/dbbulletins"
 import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
+import  logger  from '../../../logger/logger'
 
 export default async function handler(req,res){
     if(req.method === "POST"){
@@ -8,6 +9,7 @@ export default async function handler(req,res){
         if(!user) {
             res.status(401).end();
             console.log("> getpost.js: ERROR: User not logged in!")
+
             return;
         }
         
@@ -22,6 +24,7 @@ export default async function handler(req,res){
             }
 
             res.status(200).json({ success: true })
+            logger.info('post has been deleted')
         }catch(err){
             res.status(500).json({success: false, msg: err})
         }

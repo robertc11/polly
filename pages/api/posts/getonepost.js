@@ -1,5 +1,6 @@
 import { runner } from '../../../lib/database/dbbulletins'
 import { getSessionSsr } from '../../../lib/redis-auth/wrappers';
+import logger from '../../../logger/logger'
 
 export default async function handler(req,res){
     if(req.method === "GET"){
@@ -7,25 +8,25 @@ export default async function handler(req,res){
         
         if(!user) {
             res.status(401).end();
-            console.log("> getpost.js: ERROR: User not logged in!")
+            logger.info("> getpost.js: ERROR: User not logged in!")
             return;
         }
 
         const {
             query: { obj_id },
         } = req
-        console.log("> getonepost.js: QUERY PARAMS:", obj_id)
+        logger.info("> getonepost.js: QUERY PARAMS:", obj_id)
 
 
         try{
             const resdb = await runner('getOneBulletin',[ obj_id, user.uid ])
-            console.log(resdb)
+            logger.info(resdb)
             if(!resdb.success){
                 throw "An error occurred while retrieving the data"
             }
             res.json({data: resdb.data, success: true})
         }catch(err){
-            console.log("> getonepost.js: ERROR:",err)
+            logger.info("> getonepost.js: ERROR:",err)
             res.status(500).json({success:false, message:err})
         }
     }else{
