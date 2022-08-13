@@ -3,7 +3,7 @@ import logger from '../../logger/logger'
 
 export default async function handler(req,res){
     const {upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user} = await req.body
-    logger.info('> createPost.js: Recieved Info:',upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user)
+    logger.info(['> createPost.js: Recieved Info:',upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user])
     try{
         const resdb = await createBulletin(upvotes, downvotes, statement, map, mapLink, city, timestamp, body, user)
         

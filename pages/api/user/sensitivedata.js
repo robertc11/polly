@@ -8,7 +8,7 @@ export default async function handler(req,res){
         
         if(!user) {
             res.status(401).end();
-            logger.error("> sensitivedata.js: ERROR: User not logged in!")
+            logger.warn("> sensitivedata.js: ERROR: User not logged in!")
             return;
         }
 

@@ -13,7 +13,7 @@ export default async function electionsRoute(req,res){
 
         if(!user){
             res.status(401).end();
-            logger.error("> getpost.js: ERROR: User not logged in!")
+            logger.warn("> getpost.js: ERROR: User not logged in!")
             return;
         }
 

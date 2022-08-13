@@ -39,7 +39,7 @@ export default async (req, res) => {
                         last: resdb.last,
                     }
                     const token = await setSession(user)
-                    logger.info('this is the token', token.session)
+                    logger.info(['this is the token', token.session])
                     res.setHeader( "Set-Cookie", cookie.serialize( "pollytoken", token.session, {
                             httpOnly: true,
                             secure: process.env.NODE_ENV === "production",
@@ -55,7 +55,7 @@ export default async (req, res) => {
                 }
             })
         }catch(error){
-            console.log('> login.js: ERROR:', error)
+            logger.error(['> login.js: ERROR:', error.name, error.message, error.cause])
             let errMsg = error.message===undefined ? error : error.message
             res.status(500).json({ message: errMsg })
         }

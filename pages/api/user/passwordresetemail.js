@@ -11,7 +11,7 @@ export default async function handler(req,res){
 
         if(!user || user.uid !== uid) {
             res.status(401).end();
-            logger.error("> passwordreset.js: ERROR: User not logged in!")
+            logger.warn("> passwordreset.js: ERROR: User not logged in!")
             return
         }
 
