@@ -1,6 +1,7 @@
 import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
 import { runner } from "../../../lib/database/dbusers";
 import { destroyResetCode } from "../../../lib/redis-auth/sessions";
+import logger from '../../../logger/logger'
 const bcrypt = require('bcrypt');
 const saltRounds = 10
 
@@ -11,7 +12,7 @@ export default async function handler(req,res){
 
         if(!user || user.uid !== uid) {
             res.status(401).end();
-            console.log("> passwordreset.js: ERROR: User not logged in!")
+            logger.warn("> passwordreset.js: ERROR: User not logged in!")
             return
         }
 
@@ -21,7 +22,7 @@ export default async function handler(req,res){
                     res.status(500).json({message:err})
                 }
                 const resdb = await runner('editPassword',[ uid,hash ])
-                console.log('> passwordreset.js: Result:', resdb)
+                logger.info(['> passwordreset.js: Result:', resdb])
     
                 if(!resdb.success){
                     res.status(500).json({message:resdb.error})
@@ -31,7 +32,7 @@ export default async function handler(req,res){
                 res.json(resdb)
             })  
         }catch(err){
-            console.log('> passwordreset.js:', err)
+            logger.error(['> passwordreset.js:', err.name, err.message, err.cause])
             res.status(500).json({
                 success: false,
                 msg: err,

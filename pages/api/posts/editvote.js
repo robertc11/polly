@@ -1,5 +1,6 @@
 import { runner } from "../../../lib/database/dbbulletins"
 import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
+import logger from '../../../logger/logger'
 
 export default async function handler(req,res){
     if(req.method === "POST"){
@@ -7,13 +8,13 @@ export default async function handler(req,res){
         
         if(!user) {
             res.status(401).end();
-            console.log("> getpost.js: ERROR: User not logged in!")
+            logger.warn("> getpost.js: ERROR: User not logged in!")
             return;
         }
 
         
         const { upDelta, downDelta, upvoteSelected, downvoteSelected, postid, uid } = await req.body
-        console.log('> editvote.js: Incoming Params:',postid,uid,upDelta,downDelta,upvoteSelected,downvoteSelected)
+        logger.info(['> editvote.js: Incoming Params:',postid,uid,upDelta,downDelta,upvoteSelected,downvoteSelected])
 
         var chosenVote = ""
         if(upvoteSelected){
@@ -26,13 +27,13 @@ export default async function handler(req,res){
 
         try{
             const resdb = await runner('setVotes', [ postid,uid,chosenVote,upDelta,downDelta ])
-            console.log('> editvote.js',resdb.success)
+            logger.info(['> editvote.js',resdb.success])
             if(!resdb.success){
                 throw "database error!"
             }
             res.status(200).json({success:true})
         }catch(err){
-            console.error(err)
+            logger.error([err.name, err.message, err.cause])
             res.status(500).json({success:false})
         }
     }else{

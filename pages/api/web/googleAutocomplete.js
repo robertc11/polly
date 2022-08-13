@@ -1,3 +1,6 @@
+//import logger from '../../../logger/logger'
+
+
 export const googleAutocomplete = async text => {
     return new Promise((resolve, reject) => {
         if(!text){

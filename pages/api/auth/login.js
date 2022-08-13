@@ -1,6 +1,7 @@
 import cookie from 'cookie'
 import { runner } from '../../../lib/database/dbusers'
 import { setSession } from '../../../lib/redis-auth/sessions';
+import logger from '../../../logger/logger'
 const bcrypt = require('bcrypt');
 
 export default async (req, res) => {
@@ -13,9 +14,9 @@ export default async (req, res) => {
                 throw "Please fill in all fields!"
             }
 
-            console.log('> login.js: Performing validation...')
+            logger.info('> login.js: Performing validation...')
             const resdb = await runner('validateInfo',[ username.toLowerCase() ])
-            console.log('> login.js: Validation result:', resdb)
+            logger.info(['> login.js: Validation result:', JSON.stringify(resdb)])
 
             if(!resdb.found){
                 throw resdb.error
@@ -38,7 +39,7 @@ export default async (req, res) => {
                         last: resdb.last,
                     }
                     const token = await setSession(user)
-                    console.log('this is the token', token.session)
+                    logger.info(['this is the token', token.session])
                     res.setHeader( "Set-Cookie", cookie.serialize( "pollytoken", token.session, {
                             httpOnly: true,
                             secure: process.env.NODE_ENV === "production",
@@ -54,7 +55,7 @@ export default async (req, res) => {
                 }
             })
         }catch(error){
-            console.log('> login.js: ERROR:', error)
+            logger.error(['> login.js: ERROR:', error.name, error.message, error.cause])
             let errMsg = error.message===undefined ? error : error.message
             res.status(500).json({ message: errMsg })
         }

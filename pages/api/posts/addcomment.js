@@ -1,5 +1,6 @@
 import { runner } from "../../../lib/database/dbbulletins"
 import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
+import logger from '../../../logger/logger'
 
 export default async function handler(req,res){
     if(req.method === "POST"){
@@ -7,13 +8,13 @@ export default async function handler(req,res){
         
         if(!user) {
             res.status(401).end();
-            console.log("> getpost.js: ERROR: User not logged in!")
+            logger.warn("> getpost.js: ERROR: User not logged in!")
             return;
         }
 
 
         const {bulletinpostID, comment, author, timestamp} = await req.body
-        console.log('> addcomment.js: Recieved Info:',bulletinpostID, comment, author, timestamp)
+        logger.info(['> addcomment.js: Recieved Info:',bulletinpostID, comment, author, timestamp])
 
         try{
             if(comment.trim() === ''){
@@ -21,7 +22,7 @@ export default async function handler(req,res){
             }
             
             const resdb = await runner('addComment', [bulletinpostID, comment, author.authorID, author.authorName, timestamp])
-            console.log('> addcomment.js', resdb)
+            logger.info(['> addcomment.js', JSON.stringify(resdb)])
             
             if(!resdb.success){
                 throw resdb.msg
@@ -29,7 +30,7 @@ export default async function handler(req,res){
 
             res.status(200).json({ success: true, commentID: resdb.commentID, })
         }catch(err){
-            console.log('> createpost.js: ERR:',err)
+            logger.error(['> createpost.js: ERR:',err.name, err.message, err.cause])
             res.status(400).json({success: false, msg: err})
         }
     }else{

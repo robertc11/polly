@@ -1,5 +1,6 @@
 import { getSessionSsr } from '../../../lib/redis-auth/wrappers';
 import { runner } from '../../../lib/database/dbusers';
+import logger from '../../../logger/logger'
 
 export default async function handler(req,res){
     if(req.method === "GET"){
@@ -7,7 +8,7 @@ export default async function handler(req,res){
         
         if(!user) {
             res.status(401).end();
-            console.log("> sensitivedata.js: ERROR: User not logged in!")
+            logger.warn("> sensitivedata.js: ERROR: User not logged in!")
             return;
         }
 
@@ -28,7 +29,7 @@ export default async function handler(req,res){
                 throw "Error fetching sensitive data!"
             }
         }catch(err){
-            console.log("ERR:",err)
+            logger.error(["ERR:",err.name, err.message, err.cause])
             res.status(500).json({success: false})
         }
 

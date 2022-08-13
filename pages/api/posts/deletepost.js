@@ -1,5 +1,6 @@
 import { runner } from "../../../lib/database/dbbulletins"
 import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
+import logger from "../../../logger/logger";
 
 export default async function handler(req,res){
     if(req.method === "POST"){
@@ -7,12 +8,12 @@ export default async function handler(req,res){
         
         if(!user) {
             res.status(401).end();
-            console.log("> getpost.js: ERROR: User not logged in!")
+            logger.warn("> getpost.js: ERROR: User not logged in!")
             return;
         }
         
         const { postID } = await req.body
-        console.log('> deletepost.js:',postID)
+        logger.info(['> deletepost.js:',postID])
 
         try{
             const resdb = await runner('removeBulletin', [ postID ])

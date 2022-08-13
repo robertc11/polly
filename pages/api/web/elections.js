@@ -5,6 +5,7 @@ import { getVoterInfo } from "../../../lib/civic";
 var stringSimilarity = require("string-similarity")
 import { getCurrentUnix } from "../../../lib/timestamp";
 import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
+import logger from '../../../logger/logger'
 
 export default async function electionsRoute(req,res){
     if(req.method === "GET"){
@@ -12,7 +13,7 @@ export default async function electionsRoute(req,res){
 
         if(!user){
             res.status(401).end();
-            console.log("> getpost.js: ERROR: User not logged in!")
+            logger.warn("> getpost.js: ERROR: User not logged in!")
             return;
         }
 
@@ -22,15 +23,15 @@ export default async function electionsRoute(req,res){
 
         try{
             const id = [country, state, county, city]
-            console.log(id, user.uid)
+            logger.info([JSON.stringify(id, user.uid)])
             var eventsData = await eventsRunner('getElections', [id, getCurrentUnix()])
-            console.log(eventsData)
+            logger.info([eventsData])
             var userData = await usersRunner('getAddress', [ user.uid ])
             var civicData = null
             if(userData.success){
-                console.log('> elections.js: Address String', userData.address+' '+id[3]+' '+id[1])
+                logger.info(['> elections.js: Address String', userData.address+' '+id[3]+' '+id[1]])
                 civicData = await getVoterInfo(userData.address+' '+id[3]+' '+id[1])
-                console.log('this is civicdata!', civicData)
+                logger.info(['this is civicdata!', JSON.stringify(civicData)])
             }
             
             if(civicData === null || civicData.error|| civicData.notFound){
@@ -51,7 +52,7 @@ export default async function electionsRoute(req,res){
                 }
             }
         }catch(err){
-            console.log("> elections.js: ERROR", err)
+            logger.error(["> elections.js: ERROR", JSON.stringify(err)])
             res.status(500).json({message:err})
         }
     }else{
@@ -62,7 +63,7 @@ export default async function electionsRoute(req,res){
 function mergeData(a,b){
     var combined = a.concat(b)
     combined.sort((a,b) => (a.name.toLowerCase() > b.name.toLowerCase()) ? 1 : -1)  // sort by name in asc order
-    console.log('this is combined!',combined)
+    logger.info(['this is combined!',combined])
 
     var lp = 1
     for(var rp=1; rp < combined.length; rp++){
