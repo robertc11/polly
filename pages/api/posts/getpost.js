@@ -1,5 +1,6 @@
 import { runner } from '../../../lib/database/dbbulletins'
 import { getSessionSsr } from '../../../lib/redis-auth/wrappers';
+import logger from '../../../logger/logger'
 
 export default async function bulletinRoute(req,res){
     if(req.method === "GET"){
@@ -7,7 +8,7 @@ export default async function bulletinRoute(req,res){
         
         if(!user) {
             res.status(401).end();
-            console.log("> getpost.js: ERROR: User not logged in!")
+            logger.error("> getpost.js: ERROR: User not logged in!")
             return;
         }
         
@@ -25,7 +26,7 @@ export default async function bulletinRoute(req,res){
             }
             res.json(data.resdb)
         }catch(err){
-            console.log("> getpost.js: ERROR:",err)
+            logger.error(["> getpost.js: ERROR:",err.name, err.message, err.cause])
             res.status(500).json({message:err})
         }
     }else{

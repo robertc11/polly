@@ -1,5 +1,6 @@
 import { runner } from "../../../lib/database/dbbulletins"
 import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
+import logger from '../../../logger/logger'
 import formidable from 'formidable'
 import path from "path"
 
@@ -15,7 +16,7 @@ export default async function handler(req,res){
         
         if(!user) {
             res.status(401).end();
-            console.log("> getpost.js: ERROR: User not logged in!")
+            logger.warn("> getpost.js: ERROR: User not logged in!")
             return;
         }
 
@@ -23,7 +24,7 @@ export default async function handler(req,res){
         var attachments = []
         form.parse(req, async(err, fields, files) => {
             if(err){
-                console.log('> editpost.js: ERROR PARSING INCOMING DATA')
+                logger.error('> editpost.js: ERROR PARSING INCOMING DATA')
                 res.status(500).end()
             }
 
@@ -43,7 +44,7 @@ export default async function handler(req,res){
                     file_type: file.file_data.type
                 })
             }
-            console.log(attachments)
+            logger.info([attachments])
             try{
                 if(fields.statement[0].trim()===''||fields.body[0].trim()===''){
                     throw "Please fill in all fields!"

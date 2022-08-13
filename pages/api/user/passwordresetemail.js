@@ -2,6 +2,7 @@ import { getSessionSsr } from "../../../lib/redis-auth/wrappers";
 import { setResetCode } from "../../../lib/redis-auth/sessions";
 import Email from "../../../lib/email";
 import { runner } from "../../../lib/database/dbusers";
+import logger from '../../../logger/logger'
 
 export default async function handler(req,res){
     if(req.method === "POST"){
@@ -10,7 +11,7 @@ export default async function handler(req,res){
 
         if(!user || user.uid !== uid) {
             res.status(401).end();
-            console.log("> passwordreset.js: ERROR: User not logged in!")
+            logger.error("> passwordreset.js: ERROR: User not logged in!")
             return
         }
 
@@ -28,7 +29,7 @@ export default async function handler(req,res){
                 success: true,
             })    
         }catch(err){
-            console.log('> passwordreset.js:', err)
+            logger.error(['> passwordreset.js:', err.name, err.message, err.cause])
             res.status(500).json({
                 success: false,
                 msg: err,
